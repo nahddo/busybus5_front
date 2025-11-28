@@ -8,4 +8,4 @@ class bus_arrival_past(models.Model):
     station_num = models.IntegerField()
 
     class Meta:
-        db_table = "bus_arrival_train_data"
+        db_table = "bus_arrival_past"
