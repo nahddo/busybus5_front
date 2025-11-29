@@ -12,10 +12,13 @@ import {
   findStationInRoute,
   getBusesAtStation,
   getRouteStops,
+  getRouteStopsByRouteId,
   getStationBusInfo,
   getStationIdByName,
+  getRouteIdsByRouteNm,
   StationBusInfo,
 } from "../data";
+import { getStationRealtimeData, getBusRealtimeData, BusRealtimeData, getCongestionLevel } from "../api/bus";
 
 type CongestionLevel = "empty" | "normal" | "crowded" | "veryCrowded";
 
@@ -94,6 +97,33 @@ const StationSearchScreen = ({ currentScreen, onNavigate }: StationSearchProps):
     return getStationBusInfo(selectedStationId);
   }, [selectedStationId]);
 
+  // 실시간 정류장 데이터 조회
+  const [realtimeData, setRealtimeData] = useState<BusRealtimeData[]>([]);
+  const [isLoadingData, setIsLoadingData] = useState(false);
+
+  useEffect(() => {
+    const fetchRealtimeData = async () => {
+      if (!selectedStationId) return;
+
+      setIsLoadingData(true);
+      try {
+        // 오늘 날짜를 YYYY-MM-DD 형식으로 변환
+        const today = new Date();
+        const service_date = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+        
+        const data = await getStationRealtimeData(selectedStationId, service_date, selectedTime);
+        setRealtimeData(data);
+      } catch (error) {
+        console.error("실시간 정류장 데이터 조회 실패:", error);
+        setRealtimeData([]);
+      } finally {
+        setIsLoadingData(false);
+      }
+    };
+
+    fetchRealtimeData();
+  }, [selectedStationId, selectedTime]);
+
   useEffect(() => {
     const unsubscribe = subscribeStationSearch((state) => {
       setDepartureStationValue(state.departureStation);
@@ -114,7 +144,12 @@ const StationSearchScreen = ({ currentScreen, onNavigate }: StationSearchProps):
           <DepartureField value={departureStationValue} onChange={handleDepartureChange} />
           <TimeFilterTabs selectedTime={selectedTime} onTimeSelect={setSelectedTime} />
           {selectedStationId !== null && stationBusInfo && (
-            <StationBusList stationBusInfo={stationBusInfo} stationId={selectedStationId} selectedTime={selectedTime} />
+            <StationBusList 
+              stationBusInfo={stationBusInfo} 
+              stationId={selectedStationId} 
+              selectedTime={selectedTime}
+              realtimeData={realtimeData}
+            />
           )}
         </ScrollView>
         <BottomTabBar currentScreen={currentScreen} onNavigate={onNavigate} />
@@ -194,21 +229,29 @@ const StationBusList = ({
   stationBusInfo,
   stationId,
   selectedTime,
+  realtimeData,
 }: {
   stationBusInfo: StationBusInfo;
   stationId: string;
   selectedTime: TimeSlot;
+  realtimeData: BusRealtimeData[];
 }): ReactElement => {
   return (
     <View style={styles.bus_routes_section}>
-      {stationBusInfo.busNums.map((busNum) => (
-        <BusRouteCard
-          key={busNum}
-          busNum={busNum}
-          stationId={stationId}
-          selectedTime={selectedTime}
-        />
-      ))}
+      {stationBusInfo.busNums.map((busNum) => {
+        // 해당 버스 번호의 실시간 데이터 찾기 (routename으로 매칭)
+        // 이 데이터는 선택된 정류장에서의 데이터이므로, BusRouteCard에서 노선 전체 데이터를 별도로 조회함
+        const busRealtimeData = realtimeData.find((data) => data.routename === busNum);
+        return (
+          <BusRouteCard
+            key={busNum}
+            busNum={busNum}
+            stationId={stationId}
+            selectedTime={selectedTime}
+            stationRealtimeData={busRealtimeData}
+          />
+        );
+      })}
     </View>
   );
 };
@@ -222,20 +265,22 @@ const BusRouteCard = ({
   busNum,
   stationId,
   selectedTime,
+  stationRealtimeData,
 }: {
   busNum: string;
   stationId: string;
   selectedTime: TimeSlot;
+  stationRealtimeData?: BusRealtimeData;
 }): ReactElement => {
   // 해당 버스 노선에서 정류장의 위치 찾기
   const stationPosition = findStationInRoute(busNum, stationId);
 
-  // 상행과 하행 중 어느 방향에 있는지 확인
-  const direction = stationPosition?.direction ?? 0;
+  // route_id와 order 정보 가져오기
+  const routeId = stationPosition?.routeId;
   const myPosition = stationPosition?.order ?? -1;
 
-  // 해당 방향의 정류장 목록 가져오기
-  const routeStops = getRouteStops(busNum, direction);
+  // 해당 route_id의 정류장 목록 가져오기
+  const routeStops = routeId ? getRouteStopsByRouteId(routeId) : [];
   const totalStops = routeStops.length;
 
   // 목적지 정류장 이름 (마지막 정류장)
@@ -245,20 +290,106 @@ const BusRouteCard = ({
   const displayStops = totalStops > 0 ? Math.min(8, totalStops) : 8;
   const step = totalStops > 8 ? Math.floor(totalStops / displayStops) : 1;
 
-  // 혼잡도 데이터 (임시로 고정값 사용, 실제로는 시간대별 데이터 필요)
-  const congestionData: CongestionLevel[] = [
-    "empty",
-    "empty",
-    "normal",
-    "normal",
-    "crowded",
-    "veryCrowded",
-    "veryCrowded",
-    "crowded",
-  ];
+  // 해당 버스 노선의 모든 정류장별 실시간 데이터 조회
+  const [routeRealtimeData, setRouteRealtimeData] = useState<BusRealtimeData[]>([]);
+  const [isLoadingRouteData, setIsLoadingRouteData] = useState(false);
 
-  // 버스 위치 (임시로 고정, 실제로는 실시간 데이터 필요)
-  const busPosition = Math.floor(displayStops * 0.3); // 30% 위치
+  useEffect(() => {
+    const fetchRouteRealtimeData = async () => {
+      if (!routeId) return;
+
+      setIsLoadingRouteData(true);
+      try {
+        // 오늘 날짜를 YYYY-MM-DD 형식으로 변환
+        const today = new Date();
+        const service_date = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+        
+        // 해당 노선의 모든 정류장별 실시간 데이터 조회
+        const data = await getBusRealtimeData(routeId, service_date, selectedTime);
+        console.log(`[BusRouteCard] 버스 ${busNum} (routeId: ${routeId}) 실시간 데이터:`, {
+          데이터_개수: data.length,
+          vehid1_있는_데이터: data.filter((d) => d.vehid1 && d.vehid1.trim() !== "").length,
+          샘플_데이터: data.slice(0, 3).map((d) => ({
+            stationid: d.stationid,
+            vehid1: d.vehid1,
+            station_num: d.station_num,
+          })),
+        });
+        setRouteRealtimeData(data);
+      } catch (error) {
+        console.error(`버스 ${busNum} 노선 실시간 데이터 조회 실패:`, error);
+        setRouteRealtimeData([]);
+      } finally {
+        setIsLoadingRouteData(false);
+      }
+    };
+
+    fetchRouteRealtimeData();
+  }, [routeId, selectedTime, busNum]);
+
+  // 실시간 데이터를 정류장별로 매핑 (stationid 기준)
+  const realtimeDataMap = new Map<string, BusRealtimeData>();
+  routeRealtimeData.forEach((data) => {
+    realtimeDataMap.set(data.stationid, data);
+  });
+
+  // 각 정류장의 혼잡도 데이터: 실시간 데이터에서 각 정류장별 혼잡도 가져오기
+  const congestionData: CongestionLevel[] = Array.from({ length: displayStops }).map((_, index) => {
+    // 실제 정류장 인덱스 계산 (step을 고려하여)
+    const actualIndex = step > 1 ? index * step : index;
+    const stop = routeStops[actualIndex];
+    
+    if (stop) {
+      // 해당 정류장의 실시간 데이터 찾기
+      const stopRealtimeData = realtimeDataMap.get(stop.stationId);
+      if (stopRealtimeData) {
+        return getCongestionLevel(stopRealtimeData.crowded_level);
+      }
+    }
+    
+    // 기본값: 인덱스에 따라 분산
+    const defaultLevels: CongestionLevel[] = ["empty", "empty", "normal", "normal", "crowded", "veryCrowded", "veryCrowded", "crowded"];
+    return defaultLevels[index] || "normal";
+  });
+
+  // 버스 위치: 각 정류장별로 vehid1이 있는지 확인 (bus_search.tsx와 동일한 방식)
+  // vehid1이 있으면 해당 정류장에 버스가 있음
+  // displayStops에 맞춰 각 정류장의 버스 위치 정보 계산
+  const busPositions = Array.from({ length: displayStops }).map((_, index) => {
+    // 실제 정류장 인덱스 계산 (step을 고려하여)
+    const actualIndex = step > 1 ? index * step : index;
+    const stop = routeStops[actualIndex];
+    
+    if (stop) {
+      // 해당 정류장의 실시간 데이터 찾기
+      const stopRealtimeData = realtimeDataMap.get(stop.stationId);
+      // vehid1이 있고 빈 문자열이 아니면 버스가 해당 정류장에 있음
+      const hasBus = !!(stopRealtimeData?.vehid1 && stopRealtimeData.vehid1.trim() !== "");
+      if (hasBus) {
+        console.log(`[BusRouteCard] 버스 ${busNum} 위치 발견:`, {
+          정류장_인덱스: index,
+          정류장_ID: stop.stationId,
+          정류장_이름: stop.stationName,
+          vehid1: stopRealtimeData.vehid1,
+        });
+      }
+      return hasBus;
+    }
+    return false;
+  });
+  
+  // 버스가 있는 첫 번째 정류장의 인덱스 찾기
+  const busPositionIndex = busPositions.findIndex((hasBus) => hasBus);
+  
+  // 디버깅: 버스 위치 정보 출력
+  if (routeRealtimeData.length > 0) {
+    console.log(`[BusRouteCard] 버스 ${busNum} 위치 요약:`, {
+      전체_데이터_개수: routeRealtimeData.length,
+      vehid1_있는_데이터_개수: routeRealtimeData.filter((d) => d.vehid1 && d.vehid1.trim() !== "").length,
+      타임라인_버스_위치: busPositions.map((hasBus, idx) => hasBus ? idx : -1).filter((idx) => idx >= 0),
+      첫_버스_위치_인덱스: busPositionIndex,
+    });
+  }
 
   // 내 위치를 타임라인 인덱스로 변환
   let myPositionIndex = -1;
@@ -288,7 +419,8 @@ const BusRouteCard = ({
             {Array.from({ length: displayStops }).map((_, index) => {
               const congestionLevel = congestionData[index] || "normal";
               const color = CONGESTION_COLORS[congestionLevel];
-              const isBusPosition = index === busPosition;
+              // 버스 위치: 해당 정류장에 vehid1이 있으면 버스가 있음
+              const isBusPosition = busPositions[index] === true;
               const isMyPosition = index === myPositionIndex;
 
               return (

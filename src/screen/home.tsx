@@ -41,7 +41,7 @@ const FAST_OPTIONS: FastOption[] = ["최단시간", "최소대기"];
 
 const ICONS = {
   house: require("../../assets/images/home/Home.png"),
-  bus: require("../../assets/images/home/Rectangle 19.png"),
+  bus: require("../../assets/images/searching/bus.png"),
   arrow: require("../../assets/images/home/화살표.png"),
   bookmark: require("../../assets/images/home/Bookmark.png"),
   marked: require("../../assets/images/home/marked.png"),
@@ -141,8 +141,8 @@ const Home = ({ currentScreen, onNavigate }: HomeProps): ReactElement => {
       return { from_label, to_label, bus_numbers_text, duration_text };
     }
 
-    // 방향이 다르면 단일 노선으로 바로 이동할 수 없다고 판단
-    if (origin_pos.direction !== dest_pos.direction) {
+    // route_id가 다르면 단일 노선으로 바로 이동할 수 없다고 판단
+    if (origin_pos.routeId !== dest_pos.routeId) {
       duration_text = "환승 필요";
       return { from_label, to_label, bus_numbers_text, duration_text };
     }
@@ -265,7 +265,7 @@ const Home = ({ currentScreen, onNavigate }: HomeProps): ReactElement => {
         <View style={styles.busCard}>
           <View style={styles.busRowTop}>
             <View style={styles.busCircle}>
-              <Image source={ICONS.house} style={styles.busIconImage} resizeMode="contain" />
+              <Image source={ICONS.bus} style={styles.busIconImage} resizeMode="contain" />
             </View>
             <View style={styles.busBar}>
               <Text style={styles.busNumberText}>{routeSummary.bus_numbers_text}</Text>

@@ -9,7 +9,7 @@ import { setRouteLocation } from "../store/routeSelectionStore";
 import { setBusSearchNumber } from "../store/busSearchStore";
 import { setDepartureStation } from "../store/stationSearchStore";
 import { addSearchHistory } from "../store/searchHistoryStore";
-import { getAllRouteNumbers, getAllStations, getBusesAtStation, getRouteStops, RouteStop } from "../data";
+import { getAllRouteNumbers, getAllStations, getBusesAtStation, getStationsForRoute, RouteStop } from "../data";
 
 type SearchingProps = {
   currentScreen: ScreenName;
@@ -53,9 +53,9 @@ const SearchingScreen = ({ currentScreen, onNavigate }: SearchingProps): ReactEl
   // 실제 데이터에서 버스 검색 결과 생성
   const filteredBus = useMemo(() => {
     const busResults: SearchResult[] = ALL_ROUTE_NUMBERS.map((routeNum) => {
-      const stops0 = getRouteStops(routeNum, 0);
-      const stops1 = getRouteStops(routeNum, 1);
-      const totalStops = stops0.length + stops1.length;
+      // route_nm에 해당하는 모든 route_id의 정류장을 합쳐서 계산
+      const allStops = getStationsForRoute(routeNum);
+      const totalStops = allStops.length;
       const description = totalStops > 0 ? `${totalStops}개의 정류장` : "경로 정보 없음";
       return {
         id: `bus-${routeNum}`,

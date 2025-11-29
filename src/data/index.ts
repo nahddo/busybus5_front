@@ -4,20 +4,34 @@ import stationBusRaw from "./stationBus.json";
 
 // ---------- 타입 정의 ----------
 
-// "3302" 이런 키 (버스번호_방향)
-export type RouteKey = string;
+// route_id (예: "218000005")
+export type RouteId = string;
 
+// routes.json의 각 정류장 정보
+export type RouteStopRaw = {
+  route_nm: string;      // 버스 번호 (예: "3200", "3302")
+  sta_order: number;     // 정류장 순서
+  station_id: string;    // 정류장 ID
+  station_nm?: string;   // 정류장 이름 (선택적, 없으면 stationBus.json에서 가져옴)
+};
+
+// 정규화된 RouteStop 타입
 export type RouteStop = {
   order: number;
   stationId: string;
   stationName: string;
 };
 
-export type RoutesMap = Record<RouteKey, RouteStop[]>;
+// routes.json 구조: route_id -> RouteStopRaw[]
+export type RoutesMapRaw = Record<RouteId, RouteStopRaw[]>;
 
+// 정규화된 RoutesMap: route_id -> RouteStop[]
+export type RoutesMap = Record<RouteId, RouteStop[]>;
+
+// stationBus.json 구조
 export type StationBusInfo = {
   name: string;
-  busNums: string[];
+  busNums: string[];  // route_nm 배열
   busCount: number;
 };
 
@@ -25,22 +39,120 @@ export type StationBusMap = Record<string, StationBusInfo>;
 
 // ---------- 실제 데이터 ----------
 
-export const ROUTES = routesRaw as RoutesMap;
-export const STATION_BUS = stationBusRaw as StationBusMap;
+const ROUTES_RAW = routesRaw as RoutesMapRaw;
+const STATION_BUS_RAW = stationBusRaw as StationBusMap;
+
+// 정규화된 ROUTES (route_id -> RouteStop[])
+// station_nm이 없으면 stationBus.json에서 정류장 이름을 가져옴
+export const ROUTES: RoutesMap = Object.fromEntries(
+  Object.entries(ROUTES_RAW).map(([routeId, stops]) => [
+    routeId,
+    stops.map((stop) => {
+      // station_nm이 있으면 사용, 없으면 stationBus.json에서 가져오기
+      const stationName = stop.station_nm || STATION_BUS_RAW[stop.station_id]?.name || `정류장 ${stop.station_id}`;
+      return {
+        order: stop.sta_order,
+        stationId: stop.station_id,
+        stationName: stationName,
+      };
+    }),
+  ])
+);
+
+// STATION_BUS는 그대로 사용
+export const STATION_BUS: StationBusMap = STATION_BUS_RAW;
+
+// route_nm -> route_id[] 매핑 (캐시)
+const ROUTE_NM_TO_IDS: Map<string, RouteId[]> = (() => {
+  const map = new Map<string, RouteId[]>();
+  Object.entries(ROUTES_RAW).forEach(([routeId, stops]) => {
+    if (stops.length > 0) {
+      const routeNm = stops[0].route_nm;
+      if (!map.has(routeNm)) {
+        map.set(routeNm, []);
+      }
+      map.get(routeNm)!.push(routeId);
+    }
+  });
+  return map;
+})();
 
 // ---------- 헬퍼 함수들 ----------
 
 /**
- * 노선 번호 + 방향으로 정류장 리스트 가져오기
+ * route_id로 정류장 리스트 가져오기
+ * @param routeId 예: "218000005"
+ */
+export function getRouteStopsByRouteId(routeId: RouteId): RouteStop[] {
+  return ROUTES[routeId] ?? [];
+}
+
+/**
+ * route_nm으로 해당하는 모든 route_id 목록 가져오기
  * @param routeNm 예: "3302"
- * @param direction 0(상행) / 1(하행)
+ */
+export function getRouteIdsByRouteNm(routeNm: string): RouteId[] {
+  return ROUTE_NM_TO_IDS.get(routeNm) ?? [];
+}
+
+/**
+ * route_nm과 station_id로 해당하는 route_id 찾기
+ * @param routeNm 버스 번호
+ * @param stationId 정류장 ID
+ * @returns 해당하는 route_id, 없으면 null
+ */
+export function findRouteIdByRouteNmAndStation(
+  routeNm: string,
+  stationId: string
+): RouteId | null {
+  const routeIds = getRouteIdsByRouteNm(routeNm);
+  for (const routeId of routeIds) {
+    const stops = ROUTES[routeId];
+    if (stops?.some((stop) => stop.stationId === stationId)) {
+      return routeId;
+    }
+  }
+  return null;
+}
+
+/**
+ * route_nm과 station_id로 정류장의 위치 찾기
+ * @param routeNm 버스 번호
+ * @param stationId 정류장 ID
+ * @returns route_id와 order를 포함한 정보, 없으면 null
+ */
+export function findStationInRoute(
+  routeNm: string,
+  stationId: string
+): { routeId: RouteId; order: number } | null {
+  const routeId = findRouteIdByRouteNmAndStation(routeNm, stationId);
+  if (!routeId) return null;
+
+  const stops = ROUTES[routeId];
+  const found = stops?.find((stop) => stop.stationId === stationId);
+  if (!found) return null;
+
+  return { routeId, order: found.order };
+}
+
+/**
+ * 호환성을 위한 함수: route_nm과 direction으로 정류장 리스트 가져오기
+ * direction은 무시되고, route_nm에 해당하는 첫 번째 route_id를 사용
+ * @param routeNm 예: "3302"
+ * @param direction 0(상행) / 1(하행) - 현재는 무시됨
+ * @deprecated route_id 중심 구조로 변경되었으므로 getRouteStopsByRouteId 사용 권장
  */
 export function getRouteStops(
   routeNm: string,
   direction: 0 | 1
 ): RouteStop[] {
-  const key = `${routeNm}_${direction}`;
-  return ROUTES[key] ?? [];
+  const routeIds = getRouteIdsByRouteNm(routeNm);
+  if (routeIds.length === 0) return [];
+
+  // direction에 따라 선택 (0이면 첫 번째, 1이면 두 번째)
+  const index = direction < routeIds.length ? direction : 0;
+  const routeId = routeIds[index];
+  return getRouteStopsByRouteId(routeId);
 }
 
 /**
@@ -60,33 +172,24 @@ export function getBusesAtStation(stationId: string): string[] {
 }
 
 /**
- * 특정 버스번호가 정차하는 정류장 목록 (양방향 다 합쳐서)
+ * 특정 버스번호(route_nm)가 정차하는 모든 정류장 목록
+ * (모든 route_id의 정류장을 합쳐서 반환)
  */
 export function getStationsForRoute(routeNm: string): RouteStop[] {
-  const keys = Object.keys(ROUTES).filter((k) =>
-    k.startsWith(`${routeNm}_`)
-  );
+  const routeIds = getRouteIdsByRouteNm(routeNm);
   const result: RouteStop[] = [];
-  keys.forEach((key) => {
-    result.push(...ROUTES[key]);
+  routeIds.forEach((routeId) => {
+    result.push(...getRouteStopsByRouteId(routeId));
   });
-  // 필요하면 order 기준 정렬
+  // order 기준 정렬
   return result.sort((a, b) => a.order - b.order);
 }
 
 /**
- * 모든 고유 버스 번호 목록 가져오기
+ * 모든 고유 버스 번호(route_nm) 목록 가져오기
  */
 export function getAllRouteNumbers(): string[] {
-  const routeKeys = Object.keys(ROUTES);
-  const routeNums = new Set<string>();
-  routeKeys.forEach((key) => {
-    const routeNum = key.split("_")[0];
-    if (routeNum) {
-      routeNums.add(routeNum);
-    }
-  });
-  return Array.from(routeNums).sort();
+  return Array.from(ROUTE_NM_TO_IDS.keys()).sort();
 }
 
 /**
@@ -103,25 +206,8 @@ export function getAllStations(): Array<{ stationId: string; name: string }> {
  * 정류장 이름으로 stationId 찾기 (정확히 일치)
  */
 export function getStationIdByName(stationName: string): string | null {
-  const entry = Object.entries(STATION_BUS).find(([_, info]) => info.name === stationName);
+  const entry = Object.entries(STATION_BUS).find(
+    ([_, info]) => info.name === stationName
+  );
   return entry ? entry[0] : null;
-}
-
-/**
- * 특정 정류장이 특정 버스 노선의 어느 순서에 있는지 찾기
- * @param routeNm 버스 번호
- * @param stationId 정류장 ID
- * @returns direction과 order를 포함한 정보, 없으면 null
- */
-export function findStationInRoute(routeNm: string, stationId: string): { direction: 0 | 1; order: number } | null {
-  // 상행(0)과 하행(1) 모두 확인
-  for (let dir = 0; dir <= 1; dir++) {
-    const direction = dir as 0 | 1;
-    const stops = getRouteStops(routeNm, direction);
-    const found = stops.find((stop) => stop.stationId === stationId);
-    if (found) {
-      return { direction, order: found.order };
-    }
-  }
-  return null;
 }

@@ -5,7 +5,8 @@ import Svg, { Defs, LinearGradient, Path, Stop } from "react-native-svg";
 import BottomTabBar from "../components/BottomTabBar";
 import { NavigateHandler, ScreenName } from "../types/navigation";
 import { getBusSearchState, setBusSearchNumber, subscribeBusSearch } from "../store/busSearchStore";
-import { getRouteStops, RouteStop } from "../data";
+import { getRouteStops, RouteStop, getRouteIdsByRouteNm } from "../data";
+import { getBusRealtimeData, BusRealtimeData } from "../api/bus";
 
 type BusSearchProps = {
   currentScreen: ScreenName;
@@ -78,13 +79,53 @@ const BusSearchScreen = ({ currentScreen, onNavigate }: BusSearchProps): ReactEl
   const initialBusNumber = getBusSearchState().busNumber;
   const [busNumber, setBusNumber] = useState(initialBusNumber);
   const [selectedTime, setSelectedTime] = useState<TimeSlot>("6:30");
-  const [selectedRoute, setSelectedRoute] = useState<string>(initialBusNumber || "1005");
+  // 기본값을 실제 데이터에 존재하는 버스 번호로 변경 (3302 또는 3200)
+  const [selectedRoute, setSelectedRoute] = useState<string>(initialBusNumber || "3302");
   const [direction, setDirection] = useState<0 | 1>(0);
 
   // 선택된 노선과 방향에 따라 정류장 목록 가져오기
   const routeStops = useMemo(() => {
     return getRouteStops(selectedRoute, direction);
   }, [selectedRoute, direction]);
+
+  // 실시간 버스 데이터 조회
+  const [realtimeData, setRealtimeData] = useState<BusRealtimeData[]>([]);
+  const [isLoadingData, setIsLoadingData] = useState(false);
+
+  useEffect(() => {
+    const fetchRealtimeData = async () => {
+      if (!selectedRoute) return;
+
+      setIsLoadingData(true);
+      try {
+        // 버스 번호(routename)로 route_id 찾기
+        const routeIds = getRouteIdsByRouteNm(selectedRoute);
+        if (routeIds.length === 0) {
+          console.warn(`버스 번호 ${selectedRoute}에 해당하는 route_id를 찾을 수 없습니다.`);
+          setRealtimeData([]);
+          return;
+        }
+
+        // direction에 따라 route_id 선택 (0이면 첫 번째, 1이면 두 번째)
+        const selectedRouteId = routeIds[direction < routeIds.length ? direction : 0];
+
+        // 오늘 날짜를 YYYY-MM-DD 형식으로 변환
+        const today = new Date();
+        const service_date = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+        
+        // route_id로 실시간 데이터 조회
+        const data = await getBusRealtimeData(selectedRouteId, service_date, selectedTime);
+        setRealtimeData(data);
+      } catch (error) {
+        console.error("실시간 버스 데이터 조회 실패:", error);
+        setRealtimeData([]);
+      } finally {
+        setIsLoadingData(false);
+      }
+    };
+
+    fetchRealtimeData();
+  }, [selectedRoute, selectedTime, direction]);
 
   useEffect(() => {
     const unsubscribe = subscribeBusSearch((state) => {
@@ -112,7 +153,7 @@ const BusSearchScreen = ({ currentScreen, onNavigate }: BusSearchProps): ReactEl
         <View style={styles.content_wrapper}>
           <BusNumberField busNumber={busNumber} onBusNumberChange={handleBusNumberChange} />
           <TimeFilterTabs selectedTime={selectedTime} onTimeSelect={setSelectedTime} />
-          <BusSeatsVisualization routeStops={routeStops} />
+          <BusSeatsVisualization routeStops={routeStops} realtimeData={realtimeData} />
         </View>
         <BottomTabBar currentScreen={currentScreen} onNavigate={onNavigate} />
       </View>
@@ -192,30 +233,46 @@ const TimeFilterTabs = ({
  * 버스 좌석/혼잡도 시각화 (Vertical Area Shape)
  * y축: 정류장 목록(카테고리), x축: 잔여좌석(연속값)
  */
-const BusSeatsVisualization = ({ routeStops }: { routeStops: RouteStop[] }): ReactElement => {
+const BusSeatsVisualization = ({ 
+  routeStops, 
+  realtimeData 
+}: { 
+  routeStops: RouteStop[];
+  realtimeData: BusRealtimeData[];
+}): ReactElement => {
   // 각 정류장의 높이 (일직선 배치를 위해)
   const stationHeight = 48;
   const MAX_WIDTH = 70; // 그래프 최대 너비 (60~80px 범위)
   const totalHeight = routeStops.length * stationHeight; // 전체 높이
   
-  // 최대 좌석 수 (전체 좌석 수)
-  const maxSeats = 45; // 기본값 사용 (실제 데이터에는 좌석 정보가 없으므로)
+  // 실시간 데이터를 정류장별로 매핑 (stationid 기준)
+  const realtimeDataMap = new Map<string, BusRealtimeData>();
+  realtimeData.forEach((data) => {
+    realtimeDataMap.set(data.stationid, data);
+  });
+
+  // 최대 좌석 수 계산 (실시간 데이터에서 최대값 찾기, 없으면 기본값 45)
+  const maxSeats = realtimeData.length > 0
+    ? Math.max(...realtimeData.map((d) => d.remainseat_at_arrival), 45)
+    : 45;
   
   // 각 정류장의 좌표 계산
   // y: 타임라인의 점들과 정확히 일치 (정류장 중앙)
   // x: 잔여좌석 수에 비례하여 계산
-  // 정류장이 진행될수록 좌석이 자연스럽게 줄어드는 패턴
-  const points: Array<{ x: number; y: number; seats: number }> = routeStops.map((stop, index) => {
+  // 실시간 데이터가 있으면 사용, 없으면 기본값 사용
+  const points: Array<{ x: number; y: number; seats: number; vehid1?: string }> = routeStops.map((stop, index) => {
     const y = index * stationHeight + stationHeight / 2; // 정류장 중앙 (타임라인과 일치)
     
-    // 전체 정류장 수에 따라 좌석 감소 패턴 계산
-    // 첫 정류장부터 마지막 정류장까지 자연스럽게 감소
-    const progress = routeStops.length > 1 ? index / (routeStops.length - 1) : 0;
-    // 좌석 수에 따라 그래프 모양이 자연스럽게 변하도록 계산
-    // 진행률에 따라 좌석이 줄어들지만, 최소값은 0까지 가능
-    const seats = Math.max(0, Math.floor(maxSeats * (1 - progress * 0.8))); // 최대 80%까지 감소 가능
+    // 실시간 데이터에서 해당 정류장의 좌석 수 가져오기
+    const realtimeInfo = realtimeDataMap.get(stop.stationId);
+    const seats = realtimeInfo?.remainseat_at_arrival ?? Math.max(0, Math.floor(maxSeats * (1 - (index / Math.max(routeStops.length - 1, 1)) * 0.8)));
     
-    return { x: 0, y, seats }; // x는 나중에 정규화 후 계산
+    return { 
+      x: 0, 
+      y, 
+      seats,
+      vehid1: realtimeInfo?.vehid1, // 버스 ID (버스 위치 표시용)
+    };
   });
   
   // 실제 좌석 수의 최대값과 최소값 계산
@@ -364,7 +421,8 @@ const BusSeatsVisualization = ({ routeStops }: { routeStops: RouteStop[] }): Rea
             {normalizedPoints.map((point, index) => {
               const stop = routeStops[index];
               const color = getSeatColor(point.seats);
-              const isBusPosition = index === 1 || index === 5; // 버스 위치
+              // 실시간 데이터에서 버스 위치 확인 (vehid1이 있으면 버스가 해당 정류장에 있음)
+              const isBusPosition = !!point.vehid1;
               const y = point.y; // 정류장 중앙
 
               return (
@@ -388,8 +446,10 @@ const BusSeatsVisualization = ({ routeStops }: { routeStops: RouteStop[] }): Rea
                     )}
                   </View>
                   
-                  {/* 정류장 이름 */}
-                  <Text style={styles.station_text}>{stop.stationName}</Text>
+                  {/* 정류장 이름 - 정류장 원 오른쪽에 배치 */}
+                  <Text style={styles.station_text} numberOfLines={1} ellipsizeMode="tail">
+                    {stop.stationName || stop.stationId || `정류장 ${stop.order}`}
+                  </Text>
                 </View>
               );
             })}
@@ -574,7 +634,6 @@ const styles = StyleSheet.create({
     height: 48,
     left: 0,
     right: 0,
-    paddingLeft: TIMELINE_TEXT_OFFSET,
     zIndex: 2, // 맨 앞
     position: "absolute",
     width: "100%",
@@ -615,6 +674,15 @@ const styles = StyleSheet.create({
     fontFamily: "Inter-Regular",
     lineHeight: 24,
     textAlign: "left",
+    // timeline_container의 paddingLeft를 고려하여 정류장 원 오른쪽부터 시작
+    // 정류장 원 중심: TIMELINE_LINE_OFFSET + TIMELINE_LINE_WIDTH / 2 = 22 + 2.5 = 24.5
+    // 정류장 원 오른쪽 끝: 24.5 + TIMELINE_DOT_SIZE / 2 = 24.5 + 8 = 32.5
+    // 텍스트 시작: 32.5 + TIMELINE_TEXT_SPACING = 32.5 + 12 = 44.5
+    // timeline_container paddingLeft: TIMELINE_TEXT_OFFSET = 42
+    // 따라서 marginLeft: 44.5 - 42 = 2.5, 하지만 더 명확하게 하기 위해 간단히 계산
+    // 추가로 16px 더 오른쪽으로 이동
+    marginLeft: TIMELINE_DOT_SIZE / 2 + TIMELINE_TEXT_SPACING + 22, // 정류장 원 중심에서 오른쪽 끝까지 + 간격 + 16px
+    paddingRight: 8, // 오른쪽 여백
   },
   empty_text: {
     fontSize: 15,
