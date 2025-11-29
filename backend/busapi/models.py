@@ -9,3 +9,4 @@ class bus_arrival_past(models.Model):
 
     class Meta:
         db_table = "bus_arrival_past"
+
