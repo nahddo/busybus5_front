@@ -1,0 +1,6266 @@
+{
+  "218000005": [
+      {
+          "route_nm": "3200",
+          "sta_order": 1,
+          "station_id": "218000501"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 2,
+          "station_id": "218000503"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 3,
+          "station_id": "218000504"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 4,
+          "station_id": "218000093"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 5,
+          "station_id": "218000104"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 6,
+          "station_id": "218000103"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 7,
+          "station_id": "218000102"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 8,
+          "station_id": "218000101"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 9,
+          "station_id": "218000100"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 10,
+          "station_id": "218000099"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 11,
+          "station_id": "218000014"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 12,
+          "station_id": "218000013"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 13,
+          "station_id": "218000039"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 14,
+          "station_id": "218000342"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 15,
+          "station_id": "218000197"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 16,
+          "station_id": "218000196"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 17,
+          "station_id": "218000520"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 18,
+          "station_id": "218000081"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 19,
+          "station_id": "218000118"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 20,
+          "station_id": "218000089"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 21,
+          "station_id": "218000318"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 22,
+          "station_id": "218000517"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 23,
+          "station_id": "277103305"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 24,
+          "station_id": "277102410"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 25,
+          "station_id": "277103435"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 26,
+          "station_id": "277103433"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 27,
+          "station_id": "277103783"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 28,
+          "station_id": "277103781"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 29,
+          "station_id": "277103779"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 30,
+          "station_id": "277103776"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 31,
+          "station_id": "161000536"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 32,
+          "station_id": "277103796"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 33,
+          "station_id": "277103801"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 34,
+          "station_id": "277103802"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 35,
+          "station_id": "277103772"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 36,
+          "station_id": "161000611"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 37,
+          "station_id": "277103771"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 38,
+          "station_id": "277104744"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 39,
+          "station_id": "277104745"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 40,
+          "station_id": "161000612"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 41,
+          "station_id": "277103774"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 42,
+          "station_id": "277103797"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 43,
+          "station_id": "277103773"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 44,
+          "station_id": "277103798"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 45,
+          "station_id": "277103783"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 46,
+          "station_id": "277103781"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 47,
+          "station_id": "277103779"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 48,
+          "station_id": "277103780"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 49,
+          "station_id": "161000535"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 50,
+          "station_id": "161000207"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 51,
+          "station_id": "161000026"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 52,
+          "station_id": "277103354"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 53,
+          "station_id": "277103434"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 54,
+          "station_id": "277103436"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 55,
+          "station_id": "277102492"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 56,
+          "station_id": "277103304"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 57,
+          "station_id": "218000518"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 58,
+          "station_id": "218000078"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 59,
+          "station_id": "218000076"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 60,
+          "station_id": "218000126"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 61,
+          "station_id": "218000084"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 62,
+          "station_id": "218000193"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 63,
+          "station_id": "218000192"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 64,
+          "station_id": "218000343"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 65,
+          "station_id": "218000539"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 66,
+          "station_id": "218000234"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 67,
+          "station_id": "218000232"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 68,
+          "station_id": "218000020"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 69,
+          "station_id": "218000019"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 70,
+          "station_id": "218000072"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 71,
+          "station_id": "218000071"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 72,
+          "station_id": "218000070"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 73,
+          "station_id": "218000069"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 74,
+          "station_id": "218000068"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 75,
+          "station_id": "218000067"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 76,
+          "station_id": "218000092"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 77,
+          "station_id": "218000505"
+      },
+      {
+          "route_nm": "3200",
+          "sta_order": 78,
+          "station_id": "218000502"
+      }
+  ],
+  "234000011": [
+      {
+          "route_nm": "1113-1",
+          "sta_order": 1,
+          "station_id": "234000604"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 2,
+          "station_id": "277101661"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 3,
+          "station_id": "234000349"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 4,
+          "station_id": "234000348"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 5,
+          "station_id": "234000347"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 6,
+          "station_id": "234000346"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 7,
+          "station_id": "234000345"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 8,
+          "station_id": "234001068"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 9,
+          "station_id": "234000344"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 10,
+          "station_id": "234000343"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 11,
+          "station_id": "234000673"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 12,
+          "station_id": "234000943"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 13,
+          "station_id": "234000089"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 14,
+          "station_id": "234000342"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 15,
+          "station_id": "234000341"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 16,
+          "station_id": "234000340"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 17,
+          "station_id": "234000339"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 18,
+          "station_id": "234000338"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 19,
+          "station_id": "234000337"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 20,
+          "station_id": "234000336"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 21,
+          "station_id": "234000335"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 22,
+          "station_id": "234000334"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 23,
+          "station_id": "234000333"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 24,
+          "station_id": "234000332"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 25,
+          "station_id": "234000331"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 26,
+          "station_id": "234000284"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 27,
+          "station_id": "234000283"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 28,
+          "station_id": "234000282"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 29,
+          "station_id": "234000949"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 30,
+          "station_id": "234000466"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 31,
+          "station_id": "234000281"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 32,
+          "station_id": "234000280"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 33,
+          "station_id": "234000603"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 34,
+          "station_id": "234000279"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 35,
+          "station_id": "234000278"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 36,
+          "station_id": "277103263"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 37,
+          "station_id": "277102517"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 38,
+          "station_id": "277102818"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 39,
+          "station_id": "277102518"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 40,
+          "station_id": "124000348"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 41,
+          "station_id": "124000369"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 42,
+          "station_id": "124000360"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 43,
+          "station_id": "124000359"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 44,
+          "station_id": "124000358"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 45,
+          "station_id": "124000357"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 46,
+          "station_id": "124000453"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 47,
+          "station_id": "104000269"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 48,
+          "station_id": "277102674"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 49,
+          "station_id": "277103309"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 50,
+          "station_id": "104000069"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 51,
+          "station_id": "104000064"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 52,
+          "station_id": "104000074"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 53,
+          "station_id": "277102303"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 54,
+          "station_id": "277102304"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 55,
+          "station_id": "124000454"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 56,
+          "station_id": "124000366"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 57,
+          "station_id": "124000365"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 58,
+          "station_id": "124000364"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 59,
+          "station_id": "124000363"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 60,
+          "station_id": "124000370"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 61,
+          "station_id": "124000356"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 62,
+          "station_id": "277102817"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 63,
+          "station_id": "277103086"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 64,
+          "station_id": "234000275"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 65,
+          "station_id": "234000274"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 66,
+          "station_id": "277104324"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 67,
+          "station_id": "234000868"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 68,
+          "station_id": "234000273"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 69,
+          "station_id": "234000467"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 70,
+          "station_id": "234000950"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 71,
+          "station_id": "234000272"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 72,
+          "station_id": "234000271"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 73,
+          "station_id": "234000270"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 74,
+          "station_id": "234000371"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 75,
+          "station_id": "234000370"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 76,
+          "station_id": "234000369"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 77,
+          "station_id": "234000368"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 78,
+          "station_id": "234000366"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 79,
+          "station_id": "234000365"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 80,
+          "station_id": "234000364"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 81,
+          "station_id": "234000363"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 82,
+          "station_id": "234000362"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 83,
+          "station_id": "234000361"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 84,
+          "station_id": "234000360"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 85,
+          "station_id": "234000359"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 86,
+          "station_id": "234000358"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 87,
+          "station_id": "234001005"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 88,
+          "station_id": "234000357"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 89,
+          "station_id": "234000356"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 90,
+          "station_id": "234000355"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 91,
+          "station_id": "234001061"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 92,
+          "station_id": "234000354"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 93,
+          "station_id": "234000353"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 94,
+          "station_id": "234000352"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 95,
+          "station_id": "234000351"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 96,
+          "station_id": "234000350"
+      },
+      {
+          "route_nm": "1113-1",
+          "sta_order": 97,
+          "station_id": "234000605"
+      }
+  ],
+  "234000075": [
+      {
+          "route_nm": "500-2",
+          "sta_order": 1,
+          "station_id": "234000604"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 2,
+          "station_id": "277101661"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 3,
+          "station_id": "234000349"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 4,
+          "station_id": "234000348"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 5,
+          "station_id": "234000347"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 6,
+          "station_id": "234000346"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 7,
+          "station_id": "234000345"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 8,
+          "station_id": "234001068"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 9,
+          "station_id": "234000344"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 10,
+          "station_id": "234000343"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 11,
+          "station_id": "234000673"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 12,
+          "station_id": "234000943"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 13,
+          "station_id": "234000089"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 14,
+          "station_id": "234000342"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 15,
+          "station_id": "234000341"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 16,
+          "station_id": "234000340"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 17,
+          "station_id": "234000339"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 18,
+          "station_id": "234000338"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 19,
+          "station_id": "234000337"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 20,
+          "station_id": "234000336"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 21,
+          "station_id": "234000335"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 22,
+          "station_id": "234000334"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 23,
+          "station_id": "234000333"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 24,
+          "station_id": "234000332"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 25,
+          "station_id": "234000331"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 26,
+          "station_id": "277103685"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 27,
+          "station_id": "234001077"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 28,
+          "station_id": "234000330"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 29,
+          "station_id": "234000436"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 30,
+          "station_id": "234001004"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 31,
+          "station_id": "234000435"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 32,
+          "station_id": "234000434"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 33,
+          "station_id": "234000064"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 34,
+          "station_id": "234001169"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 35,
+          "station_id": "234000063"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 36,
+          "station_id": "277103681"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 37,
+          "station_id": "205000078"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 38,
+          "station_id": "205000074"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 39,
+          "station_id": "205000069"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 40,
+          "station_id": "204000087"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 41,
+          "station_id": "204000019"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 42,
+          "station_id": "204000022"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 43,
+          "station_id": "204000021"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 44,
+          "station_id": "204000020"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 45,
+          "station_id": "204000227"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 46,
+          "station_id": "204000116"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 47,
+          "station_id": "204000115"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 48,
+          "station_id": "204000114"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 49,
+          "station_id": "123000343"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 50,
+          "station_id": "122000312"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 51,
+          "station_id": "122000313"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 52,
+          "station_id": "122000315"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 53,
+          "station_id": "122000316"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 54,
+          "station_id": "122000317"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 55,
+          "station_id": "122000718"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 56,
+          "station_id": "122000295"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 57,
+          "station_id": "122000398"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 58,
+          "station_id": "122000643"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 59,
+          "station_id": "122000137"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 60,
+          "station_id": "122000388"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 61,
+          "station_id": "122000386"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 62,
+          "station_id": "122000098"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 63,
+          "station_id": "122000099"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 64,
+          "station_id": "122000100"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 65,
+          "station_id": "122000088"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 66,
+          "station_id": "122000095"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 67,
+          "station_id": "122000096"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 68,
+          "station_id": "122000330"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 69,
+          "station_id": "122000142"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 70,
+          "station_id": "122000133"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 71,
+          "station_id": "122000644"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 72,
+          "station_id": "122000397"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 73,
+          "station_id": "122000747"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 74,
+          "station_id": "122000717"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 75,
+          "station_id": "122000320"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 76,
+          "station_id": "122000321"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 77,
+          "station_id": "122000304"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 78,
+          "station_id": "122000309"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 79,
+          "station_id": "122000310"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 80,
+          "station_id": "122000311"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 81,
+          "station_id": "123000319"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 82,
+          "station_id": "123000249"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 83,
+          "station_id": "204000113"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 84,
+          "station_id": "204000112"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 85,
+          "station_id": "204000253"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 86,
+          "station_id": "204000111"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 87,
+          "station_id": "204000110"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 88,
+          "station_id": "204000023"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 89,
+          "station_id": "204000011"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 90,
+          "station_id": "204000088"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 91,
+          "station_id": "205000207"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 92,
+          "station_id": "205000073"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 93,
+          "station_id": "205000079"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 94,
+          "station_id": "205000267"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 95,
+          "station_id": "234000066"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 96,
+          "station_id": "234001168"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 97,
+          "station_id": "234000065"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 98,
+          "station_id": "234000439"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 99,
+          "station_id": "234000438"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 100,
+          "station_id": "234000437"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 101,
+          "station_id": "234000372"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 102,
+          "station_id": "277103686"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 103,
+          "station_id": "234000371"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 104,
+          "station_id": "234000370"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 105,
+          "station_id": "234000369"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 106,
+          "station_id": "234000368"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 107,
+          "station_id": "234000366"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 108,
+          "station_id": "234000365"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 109,
+          "station_id": "234000364"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 110,
+          "station_id": "234000363"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 111,
+          "station_id": "234000362"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 112,
+          "station_id": "234000361"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 113,
+          "station_id": "234000360"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 114,
+          "station_id": "234000359"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 115,
+          "station_id": "234000358"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 116,
+          "station_id": "234001005"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 117,
+          "station_id": "234000357"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 118,
+          "station_id": "234000356"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 119,
+          "station_id": "234000355"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 120,
+          "station_id": "234001061"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 121,
+          "station_id": "234000354"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 122,
+          "station_id": "234000353"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 123,
+          "station_id": "234000352"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 124,
+          "station_id": "234000351"
+      },
+      {
+          "route_nm": "500-2",
+          "sta_order": 125,
+          "station_id": "234000605"
+      }
+  ],
+  "234000079": [
+      {
+          "route_nm": "500-1",
+          "sta_order": 1,
+          "station_id": "234000604"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 2,
+          "station_id": "277101661"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 3,
+          "station_id": "234000349"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 4,
+          "station_id": "234000348"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 5,
+          "station_id": "234000347"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 6,
+          "station_id": "234000346"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 7,
+          "station_id": "234000345"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 8,
+          "station_id": "234001068"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 9,
+          "station_id": "234000344"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 10,
+          "station_id": "234000343"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 11,
+          "station_id": "234000673"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 12,
+          "station_id": "234000943"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 13,
+          "station_id": "234000089"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 14,
+          "station_id": "234000342"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 15,
+          "station_id": "234000341"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 16,
+          "station_id": "234000340"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 17,
+          "station_id": "234000339"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 18,
+          "station_id": "234000338"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 19,
+          "station_id": "234000337"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 20,
+          "station_id": "234000336"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 21,
+          "station_id": "234000335"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 22,
+          "station_id": "234000334"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 23,
+          "station_id": "234000333"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 24,
+          "station_id": "234000332"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 25,
+          "station_id": "234000331"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 26,
+          "station_id": "277103685"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 27,
+          "station_id": "234001077"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 28,
+          "station_id": "234000330"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 29,
+          "station_id": "234000436"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 30,
+          "station_id": "234001004"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 31,
+          "station_id": "234000435"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 32,
+          "station_id": "234000434"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 33,
+          "station_id": "234000064"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 34,
+          "station_id": "234001169"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 35,
+          "station_id": "234000063"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 36,
+          "station_id": "277103681"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 37,
+          "station_id": "205000078"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 38,
+          "station_id": "205000074"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 39,
+          "station_id": "205000069"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 40,
+          "station_id": "204000087"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 41,
+          "station_id": "204000019"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 42,
+          "station_id": "204000022"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 43,
+          "station_id": "204000021"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 44,
+          "station_id": "204000020"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 45,
+          "station_id": "204000227"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 46,
+          "station_id": "204000116"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 47,
+          "station_id": "204000115"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 48,
+          "station_id": "204000114"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 49,
+          "station_id": "123000329"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 50,
+          "station_id": "123000015"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 51,
+          "station_id": "123000013"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 52,
+          "station_id": "123000011"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 53,
+          "station_id": "123000009"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 54,
+          "station_id": "123000007"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 55,
+          "station_id": "123000005"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 56,
+          "station_id": "123000003"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 57,
+          "station_id": "277102839"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 58,
+          "station_id": "123000611"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 59,
+          "station_id": "277102843"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 60,
+          "station_id": "123000004"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 61,
+          "station_id": "123000006"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 62,
+          "station_id": "123000008"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 63,
+          "station_id": "123000010"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 64,
+          "station_id": "123000012"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 65,
+          "station_id": "123000014"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 66,
+          "station_id": "123000016"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 67,
+          "station_id": "204000113"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 68,
+          "station_id": "204000112"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 69,
+          "station_id": "204000253"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 70,
+          "station_id": "204000111"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 71,
+          "station_id": "204000110"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 72,
+          "station_id": "204000023"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 73,
+          "station_id": "204000011"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 74,
+          "station_id": "204000088"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 75,
+          "station_id": "205000207"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 76,
+          "station_id": "205000073"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 77,
+          "station_id": "205000079"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 78,
+          "station_id": "205000267"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 79,
+          "station_id": "234000066"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 80,
+          "station_id": "234001168"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 81,
+          "station_id": "234000065"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 82,
+          "station_id": "234000439"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 83,
+          "station_id": "234000438"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 84,
+          "station_id": "234000437"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 85,
+          "station_id": "234000372"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 86,
+          "station_id": "277103686"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 87,
+          "station_id": "234000371"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 88,
+          "station_id": "234000370"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 89,
+          "station_id": "234000369"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 90,
+          "station_id": "234000368"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 91,
+          "station_id": "234000366"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 92,
+          "station_id": "234000365"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 93,
+          "station_id": "234000364"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 94,
+          "station_id": "234000363"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 95,
+          "station_id": "234000362"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 96,
+          "station_id": "234000361"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 97,
+          "station_id": "234000360"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 98,
+          "station_id": "234000359"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 99,
+          "station_id": "234000358"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 100,
+          "station_id": "234001005"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 101,
+          "station_id": "234000357"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 102,
+          "station_id": "234000356"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 103,
+          "station_id": "234000355"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 104,
+          "station_id": "234001061"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 105,
+          "station_id": "234000354"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 106,
+          "station_id": "234000353"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 107,
+          "station_id": "234000352"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 108,
+          "station_id": "234000351"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 109,
+          "station_id": "234000350"
+      },
+      {
+          "route_nm": "500-1",
+          "sta_order": 110,
+          "station_id": "234000605"
+      }
+  ],
+  "234001203": [
+      {
+          "route_nm": "1113-10",
+          "sta_order": 1,
+          "station_id": "234000604"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 2,
+          "station_id": "277101661"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 3,
+          "station_id": "234000349"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 4,
+          "station_id": "234000348"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 5,
+          "station_id": "234000347"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 6,
+          "station_id": "234000346"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 7,
+          "station_id": "234000345"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 8,
+          "station_id": "234001068"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 9,
+          "station_id": "234000344"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 10,
+          "station_id": "234000343"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 11,
+          "station_id": "234000673"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 12,
+          "station_id": "234000943"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 13,
+          "station_id": "234000089"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 14,
+          "station_id": "234000342"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 15,
+          "station_id": "234000341"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 16,
+          "station_id": "234000340"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 17,
+          "station_id": "234000339"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 18,
+          "station_id": "234000338"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 19,
+          "station_id": "234000337"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 20,
+          "station_id": "234000336"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 21,
+          "station_id": "234000335"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 22,
+          "station_id": "234000334"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 23,
+          "station_id": "234000333"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 24,
+          "station_id": "234000332"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 25,
+          "station_id": "234000331"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 26,
+          "station_id": "234000284"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 27,
+          "station_id": "234000283"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 28,
+          "station_id": "234000282"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 29,
+          "station_id": "234000949"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 30,
+          "station_id": "234000466"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 31,
+          "station_id": "234000281"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 32,
+          "station_id": "234000280"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 33,
+          "station_id": "234000603"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 34,
+          "station_id": "234000279"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 35,
+          "station_id": "234000278"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 36,
+          "station_id": "277103263"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 37,
+          "station_id": "277102517"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 38,
+          "station_id": "277102818"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 39,
+          "station_id": "277102518"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 40,
+          "station_id": "124000348"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 41,
+          "station_id": "124000369"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 42,
+          "station_id": "124000360"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 43,
+          "station_id": "124000359"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 44,
+          "station_id": "124000358"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 45,
+          "station_id": "124000357"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 46,
+          "station_id": "124000453"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 47,
+          "station_id": "104000269"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 48,
+          "station_id": "277102674"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 49,
+          "station_id": "277103309"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 50,
+          "station_id": "104000069"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 51,
+          "station_id": "104000064"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 52,
+          "station_id": "104000074"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 53,
+          "station_id": "277102303"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 54,
+          "station_id": "277102304"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 55,
+          "station_id": "124000454"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 56,
+          "station_id": "124000366"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 57,
+          "station_id": "124000365"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 58,
+          "station_id": "124000364"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 59,
+          "station_id": "124000363"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 60,
+          "station_id": "124000370"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 61,
+          "station_id": "124000356"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 62,
+          "station_id": "277102817"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 63,
+          "station_id": "277103086"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 64,
+          "station_id": "277103262"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 65,
+          "station_id": "277103259"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 66,
+          "station_id": "234000359"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 67,
+          "station_id": "234000358"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 68,
+          "station_id": "234001005"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 69,
+          "station_id": "234000357"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 70,
+          "station_id": "234000356"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 71,
+          "station_id": "234000355"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 72,
+          "station_id": "234001061"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 73,
+          "station_id": "234000354"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 74,
+          "station_id": "234000353"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 75,
+          "station_id": "234000352"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 76,
+          "station_id": "234000351"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 77,
+          "station_id": "234000350"
+      },
+      {
+          "route_nm": "1113-10",
+          "sta_order": 78,
+          "station_id": "234000605"
+      }
+  ],
+  "234001204": [
+      {
+          "route_nm": "1113-11",
+          "sta_order": 1,
+          "station_id": "234000604"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 2,
+          "station_id": "277101661"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 3,
+          "station_id": "234000349"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 4,
+          "station_id": "234000348"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 5,
+          "station_id": "234000347"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 6,
+          "station_id": "234000346"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 7,
+          "station_id": "234000345"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 8,
+          "station_id": "234001068"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 9,
+          "station_id": "234000344"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 10,
+          "station_id": "234000343"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 11,
+          "station_id": "234000673"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 12,
+          "station_id": "234000943"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 13,
+          "station_id": "234000089"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 14,
+          "station_id": "234000342"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 15,
+          "station_id": "234000341"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 16,
+          "station_id": "277103604"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 17,
+          "station_id": "277103263"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 18,
+          "station_id": "277102517"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 19,
+          "station_id": "277102818"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 20,
+          "station_id": "277102518"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 21,
+          "station_id": "124000348"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 22,
+          "station_id": "124000369"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 23,
+          "station_id": "124000360"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 24,
+          "station_id": "124000359"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 25,
+          "station_id": "124000358"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 26,
+          "station_id": "124000357"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 27,
+          "station_id": "124000453"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 28,
+          "station_id": "104000269"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 29,
+          "station_id": "277102674"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 30,
+          "station_id": "277103309"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 31,
+          "station_id": "104000069"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 32,
+          "station_id": "104000064"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 33,
+          "station_id": "104000074"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 34,
+          "station_id": "277102303"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 35,
+          "station_id": "277102304"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 36,
+          "station_id": "124000454"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 37,
+          "station_id": "124000366"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 38,
+          "station_id": "124000365"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 39,
+          "station_id": "124000364"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 40,
+          "station_id": "124000363"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 41,
+          "station_id": "124000370"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 42,
+          "station_id": "124000356"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 43,
+          "station_id": "277102817"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 44,
+          "station_id": "277103086"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 45,
+          "station_id": "234000275"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 46,
+          "station_id": "234000274"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 47,
+          "station_id": "277104324"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 48,
+          "station_id": "234000868"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 49,
+          "station_id": "234000273"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 50,
+          "station_id": "234000467"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 51,
+          "station_id": "234000950"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 52,
+          "station_id": "234000272"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 53,
+          "station_id": "234000271"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 54,
+          "station_id": "234000270"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 55,
+          "station_id": "277103686"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 56,
+          "station_id": "234000371"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 57,
+          "station_id": "234000370"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 58,
+          "station_id": "234000369"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 59,
+          "station_id": "234000368"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 60,
+          "station_id": "234000366"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 61,
+          "station_id": "234000365"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 62,
+          "station_id": "234000364"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 63,
+          "station_id": "234000363"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 64,
+          "station_id": "234000362"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 65,
+          "station_id": "234000361"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 66,
+          "station_id": "234000360"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 67,
+          "station_id": "234000359"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 68,
+          "station_id": "234000358"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 69,
+          "station_id": "234001005"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 70,
+          "station_id": "234000357"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 71,
+          "station_id": "234000356"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 72,
+          "station_id": "234000355"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 73,
+          "station_id": "234001061"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 74,
+          "station_id": "234000354"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 75,
+          "station_id": "234000353"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 76,
+          "station_id": "234000352"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 77,
+          "station_id": "234000351"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 78,
+          "station_id": "234000350"
+      },
+      {
+          "route_nm": "1113-11",
+          "sta_order": 79,
+          "station_id": "234000605"
+      }
+  ],
+  "234001206": [
+      {
+          "route_nm": "20-33",
+          "sta_order": 1,
+          "station_id": "230000470"
+      },
+      {
+          "route_nm": "20-33",
+          "sta_order": 2,
+          "station_id": "230000469"
+      },
+      {
+          "route_nm": "20-33",
+          "sta_order": 3,
+          "station_id": "230000863"
+      },
+      {
+          "route_nm": "20-33",
+          "sta_order": 4,
+          "station_id": "230000191"
+      },
+      {
+          "route_nm": "20-33",
+          "sta_order": 5,
+          "station_id": "230000188"
+      },
+      {
+          "route_nm": "20-33",
+          "sta_order": 6,
+          "station_id": "230000187"
+      },
+      {
+          "route_nm": "20-33",
+          "sta_order": 7,
+          "station_id": "230000186"
+      },
+      {
+          "route_nm": "20-33",
+          "sta_order": 8,
+          "station_id": "230001304"
+      },
+      {
+          "route_nm": "20-33",
+          "sta_order": 9,
+          "station_id": "230000251"
+      },
+      {
+          "route_nm": "20-33",
+          "sta_order": 10,
+          "station_id": "230000179"
+      },
+      {
+          "route_nm": "20-33",
+          "sta_order": 11,
+          "station_id": "230000892"
+      },
+      {
+          "route_nm": "20-33",
+          "sta_order": 12,
+          "station_id": "230001531"
+      },
+      {
+          "route_nm": "20-33",
+          "sta_order": 13,
+          "station_id": "230001210"
+      }
+  ],
+  "234001218": [
+      {
+          "route_nm": "26-11",
+          "sta_order": 1,
+          "station_id": "230000736"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 2,
+          "station_id": "230000733"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 3,
+          "station_id": "230000731"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 4,
+          "station_id": "230001037"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 5,
+          "station_id": "230000729"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 6,
+          "station_id": "230001250"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 7,
+          "station_id": "230001541"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 8,
+          "station_id": "230001251"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 9,
+          "station_id": "230000772"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 10,
+          "station_id": "230001252"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 11,
+          "station_id": "230000718"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 12,
+          "station_id": "230000716"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 13,
+          "station_id": "230000714"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 14,
+          "station_id": "230000689"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 15,
+          "station_id": "230000691"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 16,
+          "station_id": "230000693"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 17,
+          "station_id": "230001165"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 18,
+          "station_id": "230000695"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 19,
+          "station_id": "230000697"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 20,
+          "station_id": "230000699"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 21,
+          "station_id": "230001166"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 22,
+          "station_id": "230001018"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 23,
+          "station_id": "230001515"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 24,
+          "station_id": "230000704"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 25,
+          "station_id": "230000956"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 26,
+          "station_id": "230000708"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 27,
+          "station_id": "230001019"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 28,
+          "station_id": "230001020"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 29,
+          "station_id": "230000712"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 30,
+          "station_id": "230000186"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 31,
+          "station_id": "230001304"
+      },
+      {
+          "route_nm": "26-11",
+          "sta_order": 32,
+          "station_id": "230000251"
+      }
+  ],
+  "234001244": [
+      {
+          "route_nm": "9600",
+          "sta_order": 1,
+          "station_id": "219000706"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 2,
+          "station_id": "219000704"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 3,
+          "station_id": "219000248"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 4,
+          "station_id": "219000247"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 5,
+          "station_id": "219000034"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 6,
+          "station_id": "218000117"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 7,
+          "station_id": "218000066"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 8,
+          "station_id": "218000065"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 9,
+          "station_id": "218000501"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 10,
+          "station_id": "218000503"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 11,
+          "station_id": "218000504"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 12,
+          "station_id": "218000510"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 13,
+          "station_id": "218000093"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 14,
+          "station_id": "218000104"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 15,
+          "station_id": "218000103"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 16,
+          "station_id": "218000102"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 17,
+          "station_id": "218000101"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 18,
+          "station_id": "218000100"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 19,
+          "station_id": "218000099"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 20,
+          "station_id": "218000014"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 21,
+          "station_id": "218000013"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 22,
+          "station_id": "218000039"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 23,
+          "station_id": "218000018"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 24,
+          "station_id": "218000017"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 25,
+          "station_id": "218000008"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 26,
+          "station_id": "277103489"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 27,
+          "station_id": "277104677"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 28,
+          "station_id": "277103428"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 29,
+          "station_id": "277104684"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 30,
+          "station_id": "277103426"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 31,
+          "station_id": "277103491"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 32,
+          "station_id": "277103493"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 33,
+          "station_id": "277103495"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 34,
+          "station_id": "277103497"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 35,
+          "station_id": "277103499"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 36,
+          "station_id": "277103501"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 37,
+          "station_id": "277103503"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 38,
+          "station_id": "277103399"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 39,
+          "station_id": "121000015"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 40,
+          "station_id": "121000013"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 41,
+          "station_id": "122000163"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 42,
+          "station_id": "122000694"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 43,
+          "station_id": "122000165"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 44,
+          "station_id": "122000179"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 45,
+          "station_id": "122000745"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 46,
+          "station_id": "122000616"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 47,
+          "station_id": "277101814"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 48,
+          "station_id": "121000014"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 49,
+          "station_id": "121000016"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 50,
+          "station_id": "277103400"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 51,
+          "station_id": "277103393"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 52,
+          "station_id": "277103395"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 53,
+          "station_id": "277103397"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 54,
+          "station_id": "277103408"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 55,
+          "station_id": "277100138"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 56,
+          "station_id": "277103411"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 57,
+          "station_id": "277103407"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 58,
+          "station_id": "277103405"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 59,
+          "station_id": "277103901"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 60,
+          "station_id": "277103402"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 61,
+          "station_id": "277104624"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 62,
+          "station_id": "277103401"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 63,
+          "station_id": "277103488"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 64,
+          "station_id": "218000206"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 65,
+          "station_id": "218000016"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 66,
+          "station_id": "218000489"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 67,
+          "station_id": "218000234"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 68,
+          "station_id": "218000020"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 69,
+          "station_id": "218000019"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 70,
+          "station_id": "218000072"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 71,
+          "station_id": "218000071"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 72,
+          "station_id": "218000070"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 73,
+          "station_id": "218000069"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 74,
+          "station_id": "218000068"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 75,
+          "station_id": "218000067"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 76,
+          "station_id": "218000092"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 77,
+          "station_id": "218000506"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 78,
+          "station_id": "218000505"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 79,
+          "station_id": "218000502"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 80,
+          "station_id": "218000107"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 81,
+          "station_id": "218000105"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 82,
+          "station_id": "218000112"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 83,
+          "station_id": "219000244"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 84,
+          "station_id": "219000243"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 85,
+          "station_id": "219000054"
+      },
+      {
+          "route_nm": "9600",
+          "sta_order": 86,
+          "station_id": "219000703"
+      }
+  ],
+  "234001516": [
+      {
+          "route_nm": "1113-2",
+          "sta_order": 1,
+          "station_id": "234001048"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 2,
+          "station_id": "234000283"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 3,
+          "station_id": "277101685"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 4,
+          "station_id": "234000857"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 5,
+          "station_id": "234000254"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 6,
+          "station_id": "234000253"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 7,
+          "station_id": "234000258"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 8,
+          "station_id": "234000266"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 9,
+          "station_id": "234000265"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 10,
+          "station_id": "234000264"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 11,
+          "station_id": "234000281"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 12,
+          "station_id": "234000280"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 13,
+          "station_id": "234000603"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 14,
+          "station_id": "234000279"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 15,
+          "station_id": "234000278"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 16,
+          "station_id": "277103263"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 17,
+          "station_id": "277102517"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 18,
+          "station_id": "277102818"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 19,
+          "station_id": "277102518"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 20,
+          "station_id": "124000348"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 21,
+          "station_id": "124000369"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 22,
+          "station_id": "124000360"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 23,
+          "station_id": "124000359"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 24,
+          "station_id": "124000358"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 25,
+          "station_id": "124000357"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 26,
+          "station_id": "124000453"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 27,
+          "station_id": "104000269"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 28,
+          "station_id": "277102674"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 29,
+          "station_id": "277103309"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 30,
+          "station_id": "104000069"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 31,
+          "station_id": "104000064"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 32,
+          "station_id": "104000074"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 33,
+          "station_id": "277102303"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 34,
+          "station_id": "277102304"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 35,
+          "station_id": "124000454"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 36,
+          "station_id": "124000366"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 37,
+          "station_id": "124000365"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 38,
+          "station_id": "124000364"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 39,
+          "station_id": "124000363"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 40,
+          "station_id": "124000370"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 41,
+          "station_id": "124000356"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 42,
+          "station_id": "277102817"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 43,
+          "station_id": "277103086"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 44,
+          "station_id": "234000275"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 45,
+          "station_id": "234000274"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 46,
+          "station_id": "277104324"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 47,
+          "station_id": "234000868"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 48,
+          "station_id": "234000273"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 49,
+          "station_id": "234000261"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 50,
+          "station_id": "234000255"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 51,
+          "station_id": "234000479"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 52,
+          "station_id": "234000259"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 53,
+          "station_id": "234000252"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 54,
+          "station_id": "234000251"
+      },
+      {
+          "route_nm": "1113-2",
+          "sta_order": 55,
+          "station_id": "234000271"
+      }
+  ],
+  "234001609": [
+      {
+          "route_nm": "500-1A",
+          "sta_order": 1,
+          "station_id": "234000604"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 2,
+          "station_id": "277101661"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 3,
+          "station_id": "234000349"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 4,
+          "station_id": "234000348"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 5,
+          "station_id": "234000347"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 6,
+          "station_id": "234000346"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 7,
+          "station_id": "234000345"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 8,
+          "station_id": "234001068"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 9,
+          "station_id": "234000344"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 10,
+          "station_id": "234000343"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 11,
+          "station_id": "234000673"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 12,
+          "station_id": "234000943"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 13,
+          "station_id": "234000089"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 14,
+          "station_id": "234000342"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 15,
+          "station_id": "234000341"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 16,
+          "station_id": "234000340"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 17,
+          "station_id": "234000339"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 18,
+          "station_id": "234000338"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 19,
+          "station_id": "234000337"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 20,
+          "station_id": "234000336"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 21,
+          "station_id": "234000335"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 22,
+          "station_id": "234000334"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 23,
+          "station_id": "234000333"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 24,
+          "station_id": "234000332"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 25,
+          "station_id": "234000643"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 26,
+          "station_id": "234000269"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 27,
+          "station_id": "234000268"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 28,
+          "station_id": "234000267"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 29,
+          "station_id": "234000251"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 30,
+          "station_id": "234000271"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 31,
+          "station_id": "234000270"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 32,
+          "station_id": "234001077"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 33,
+          "station_id": "234000330"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 34,
+          "station_id": "234000436"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 35,
+          "station_id": "234001004"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 36,
+          "station_id": "234000435"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 37,
+          "station_id": "234000434"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 38,
+          "station_id": "234000064"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 39,
+          "station_id": "234001169"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 40,
+          "station_id": "234000063"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 41,
+          "station_id": "277103681"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 42,
+          "station_id": "205000078"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 43,
+          "station_id": "205000074"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 44,
+          "station_id": "205000069"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 45,
+          "station_id": "204000087"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 46,
+          "station_id": "204000019"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 47,
+          "station_id": "204000022"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 48,
+          "station_id": "204000021"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 49,
+          "station_id": "204000020"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 50,
+          "station_id": "204000227"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 51,
+          "station_id": "204000116"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 52,
+          "station_id": "204000115"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 53,
+          "station_id": "204000114"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 54,
+          "station_id": "123000329"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 55,
+          "station_id": "123000015"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 56,
+          "station_id": "123000013"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 57,
+          "station_id": "123000011"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 58,
+          "station_id": "123000009"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 59,
+          "station_id": "123000007"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 60,
+          "station_id": "123000005"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 61,
+          "station_id": "123000003"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 62,
+          "station_id": "277102839"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 63,
+          "station_id": "123000611"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 64,
+          "station_id": "277102843"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 65,
+          "station_id": "123000004"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 66,
+          "station_id": "123000006"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 67,
+          "station_id": "123000008"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 68,
+          "station_id": "123000010"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 69,
+          "station_id": "123000012"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 70,
+          "station_id": "123000014"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 71,
+          "station_id": "123000016"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 72,
+          "station_id": "204000113"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 73,
+          "station_id": "204000112"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 74,
+          "station_id": "204000253"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 75,
+          "station_id": "204000111"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 76,
+          "station_id": "204000110"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 77,
+          "station_id": "204000023"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 78,
+          "station_id": "204000011"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 79,
+          "station_id": "204000088"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 80,
+          "station_id": "205000207"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 81,
+          "station_id": "205000073"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 82,
+          "station_id": "205000079"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 83,
+          "station_id": "205000267"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 84,
+          "station_id": "234000066"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 85,
+          "station_id": "234001168"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 86,
+          "station_id": "234000065"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 87,
+          "station_id": "234000439"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 88,
+          "station_id": "234000438"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 89,
+          "station_id": "234000437"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 90,
+          "station_id": "234000372"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 91,
+          "station_id": "234000269"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 92,
+          "station_id": "234000268"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 93,
+          "station_id": "234000267"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 94,
+          "station_id": "234000251"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 95,
+          "station_id": "234000271"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 96,
+          "station_id": "234000270"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 97,
+          "station_id": "234000371"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 98,
+          "station_id": "234000370"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 99,
+          "station_id": "234000369"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 100,
+          "station_id": "234000368"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 101,
+          "station_id": "234000366"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 102,
+          "station_id": "234000365"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 103,
+          "station_id": "234000364"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 104,
+          "station_id": "234000363"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 105,
+          "station_id": "234000362"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 106,
+          "station_id": "234000361"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 107,
+          "station_id": "234000360"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 108,
+          "station_id": "234000359"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 109,
+          "station_id": "234000358"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 110,
+          "station_id": "234001005"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 111,
+          "station_id": "234000357"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 112,
+          "station_id": "234000356"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 113,
+          "station_id": "234000355"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 114,
+          "station_id": "234001061"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 115,
+          "station_id": "234000354"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 116,
+          "station_id": "234000353"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 117,
+          "station_id": "234000352"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 118,
+          "station_id": "234000351"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 119,
+          "station_id": "234000350"
+      },
+      {
+          "route_nm": "500-1A",
+          "sta_order": 120,
+          "station_id": "234000605"
+      }
+  ],
+  "234001694": [
+      {
+          "route_nm": "3201",
+          "sta_order": 1,
+          "station_id": "234001038"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 2,
+          "station_id": "234001299"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 3,
+          "station_id": "234001278"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 4,
+          "station_id": "234001270"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 5,
+          "station_id": "234001272"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 6,
+          "station_id": "234001213"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 7,
+          "station_id": "234001214"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 8,
+          "station_id": "234001062"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 9,
+          "station_id": "234001226"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 10,
+          "station_id": "234000646"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 11,
+          "station_id": "234000411"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 12,
+          "station_id": "234000510"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 13,
+          "station_id": "277104431"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 14,
+          "station_id": "277103730"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 15,
+          "station_id": "277104433"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 16,
+          "station_id": "277104326"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 17,
+          "station_id": "277104436"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 18,
+          "station_id": "277104327"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 19,
+          "station_id": "277103725"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 20,
+          "station_id": "121000004"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 21,
+          "station_id": "277101814"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 22,
+          "station_id": "277103400"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 23,
+          "station_id": "277104182"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 24,
+          "station_id": "102000069"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 25,
+          "station_id": "277104180"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 26,
+          "station_id": "277104186"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 27,
+          "station_id": "101000002"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 28,
+          "station_id": "101000059"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 29,
+          "station_id": "101000303"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 30,
+          "station_id": "277104283"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 31,
+          "station_id": "101000128"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 32,
+          "station_id": "101000005"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 33,
+          "station_id": "277101742"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 34,
+          "station_id": "277102115"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 35,
+          "station_id": "277102114"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 36,
+          "station_id": "101000148"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 37,
+          "station_id": "101000001"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 38,
+          "station_id": "277104824"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 39,
+          "station_id": "277104181"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 40,
+          "station_id": "277104179"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 41,
+          "station_id": "102000070"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 42,
+          "station_id": "277103399"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 43,
+          "station_id": "277103392"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 44,
+          "station_id": "277103389"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 45,
+          "station_id": "121000969"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 46,
+          "station_id": "277103726"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 47,
+          "station_id": "277104435"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 48,
+          "station_id": "277104653"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 49,
+          "station_id": "277104439"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 50,
+          "station_id": "277104434"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 51,
+          "station_id": "277103729"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 52,
+          "station_id": "277104432"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 53,
+          "station_id": "234000511"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 54,
+          "station_id": "234000410"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 55,
+          "station_id": "234000944"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 56,
+          "station_id": "234000405"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 57,
+          "station_id": "234001097"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 58,
+          "station_id": "234001209"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 59,
+          "station_id": "234001210"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 60,
+          "station_id": "234001273"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 61,
+          "station_id": "234001271"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 62,
+          "station_id": "234001279"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 63,
+          "station_id": "234001298"
+      },
+      {
+          "route_nm": "3201",
+          "sta_order": 64,
+          "station_id": "234001266"
+      }
+  ],
+  "234001695": [
+      {
+          "route_nm": "G3202",
+          "sta_order": 1,
+          "station_id": "234001038"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 2,
+          "station_id": "234001299"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 3,
+          "station_id": "234001278"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 4,
+          "station_id": "234001270"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 5,
+          "station_id": "234001213"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 6,
+          "station_id": "234001201"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 7,
+          "station_id": "234001215"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 8,
+          "station_id": "234000646"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 9,
+          "station_id": "277104431"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 10,
+          "station_id": "277103730"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 11,
+          "station_id": "277104433"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 12,
+          "station_id": "277104326"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 13,
+          "station_id": "277104436"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 14,
+          "station_id": "277104327"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 15,
+          "station_id": "277104437"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 16,
+          "station_id": "122000223"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 17,
+          "station_id": "122000117"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 18,
+          "station_id": "122000149"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 19,
+          "station_id": "122000156"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 20,
+          "station_id": "122000099"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 21,
+          "station_id": "122000100"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 22,
+          "station_id": "122000088"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 23,
+          "station_id": "122000095"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 24,
+          "station_id": "122000096"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 25,
+          "station_id": "122000098"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 26,
+          "station_id": "122000114"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 27,
+          "station_id": "122000645"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 28,
+          "station_id": "122000205"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 29,
+          "station_id": "122000229"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 30,
+          "station_id": "122000225"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 31,
+          "station_id": "277104435"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 32,
+          "station_id": "277104653"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 33,
+          "station_id": "277104439"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 34,
+          "station_id": "277104434"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 35,
+          "station_id": "277103729"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 36,
+          "station_id": "277104432"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 37,
+          "station_id": "234000944"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 38,
+          "station_id": "234001206"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 39,
+          "station_id": "234001195"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 40,
+          "station_id": "234001210"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 41,
+          "station_id": "234001271"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 42,
+          "station_id": "234001279"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 43,
+          "station_id": "234001298"
+      },
+      {
+          "route_nm": "G3202",
+          "sta_order": 44,
+          "station_id": "234001266"
+      }
+  ],
+  "234001705": [
+      {
+          "route_nm": "3800",
+          "sta_order": 1,
+          "station_id": "234000148"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 2,
+          "station_id": "234000614"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 3,
+          "station_id": "234001041"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 4,
+          "station_id": "234000147"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 5,
+          "station_id": "234000146"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 6,
+          "station_id": "234000145"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 7,
+          "station_id": "234000903"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 8,
+          "station_id": "234000144"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 9,
+          "station_id": "234000675"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 10,
+          "station_id": "234000143"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 11,
+          "station_id": "234000141"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 12,
+          "station_id": "234000124"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 13,
+          "station_id": "234001208"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 14,
+          "station_id": "234000123"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 15,
+          "station_id": "234000122"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 16,
+          "station_id": "234000121"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 17,
+          "station_id": "234001043"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 18,
+          "station_id": "234000181"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 19,
+          "station_id": "234000663"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 20,
+          "station_id": "234001219"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 21,
+          "station_id": "234000180"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 22,
+          "station_id": "234001065"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 23,
+          "station_id": "234001020"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 24,
+          "station_id": "234000271"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 25,
+          "station_id": "234000330"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 26,
+          "station_id": "277103939"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 27,
+          "station_id": "277104444"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 28,
+          "station_id": "277103730"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 29,
+          "station_id": "277104433"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 30,
+          "station_id": "277104326"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 31,
+          "station_id": "277104436"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 32,
+          "station_id": "277104327"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 33,
+          "station_id": "277103725"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 34,
+          "station_id": "121001343"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 35,
+          "station_id": "121000002"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 36,
+          "station_id": "121000004"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 37,
+          "station_id": "277104591"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 38,
+          "station_id": "277104592"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 39,
+          "station_id": "121000969"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 40,
+          "station_id": "277104385"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 41,
+          "station_id": "121001344"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 42,
+          "station_id": "277103726"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 43,
+          "station_id": "277104435"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 44,
+          "station_id": "277104653"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 45,
+          "station_id": "277104439"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 46,
+          "station_id": "277101624"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 47,
+          "station_id": "277104434"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 48,
+          "station_id": "277103729"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 49,
+          "station_id": "277104445"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 50,
+          "station_id": "234000372"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 51,
+          "station_id": "234000283"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 52,
+          "station_id": "234000232"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 53,
+          "station_id": "234001064"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 54,
+          "station_id": "234000179"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 55,
+          "station_id": "234001177"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 56,
+          "station_id": "234001046"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 57,
+          "station_id": "234000182"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 58,
+          "station_id": "234000974"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 59,
+          "station_id": "234000106"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 60,
+          "station_id": "234000105"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 61,
+          "station_id": "234000104"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 62,
+          "station_id": "234001207"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 63,
+          "station_id": "234000103"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 64,
+          "station_id": "234000164"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 65,
+          "station_id": "234000163"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 66,
+          "station_id": "234000674"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 67,
+          "station_id": "234000162"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 68,
+          "station_id": "234000904"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 69,
+          "station_id": "234000161"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 70,
+          "station_id": "234000615"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 71,
+          "station_id": "234000160"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 72,
+          "station_id": "234001042"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 73,
+          "station_id": "234000159"
+      },
+      {
+          "route_nm": "3800",
+          "sta_order": 74,
+          "station_id": "234000913"
+      }
+  ],
+  "234001736": [
+      {
+          "route_nm": "3302",
+          "sta_order": 1,
+          "station_id": "234001276"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 2,
+          "station_id": "234001278"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 3,
+          "station_id": "234001270"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 4,
+          "station_id": "234001272"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 5,
+          "station_id": "234001211"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 6,
+          "station_id": "234000189"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 7,
+          "station_id": "234001196"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 8,
+          "station_id": "234000384"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 9,
+          "station_id": "277104444"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 10,
+          "station_id": "277103730"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 11,
+          "station_id": "205000069"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 12,
+          "station_id": "277104601"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 13,
+          "station_id": "277104607"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 14,
+          "station_id": "277104604"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 15,
+          "station_id": "277104325"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 16,
+          "station_id": "123000015"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 17,
+          "station_id": "123000013"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 18,
+          "station_id": "123000011"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 19,
+          "station_id": "123000009"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 20,
+          "station_id": "123000007"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 21,
+          "station_id": "123000005"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 22,
+          "station_id": "123000003"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 23,
+          "station_id": "277102839"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 24,
+          "station_id": "123000045"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 25,
+          "station_id": "277101832"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 26,
+          "station_id": "123000041"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 27,
+          "station_id": "123000002"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 28,
+          "station_id": "277101950"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 29,
+          "station_id": "123000004"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 30,
+          "station_id": "123000006"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 31,
+          "station_id": "123000008"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 32,
+          "station_id": "123000010"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 33,
+          "station_id": "123000012"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 34,
+          "station_id": "123000014"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 35,
+          "station_id": "123000016"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 36,
+          "station_id": "277104603"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 37,
+          "station_id": "277104605"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 38,
+          "station_id": "277104606"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 39,
+          "station_id": "277104602"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 40,
+          "station_id": "205000207"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 41,
+          "station_id": "277103729"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 42,
+          "station_id": "277104445"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 43,
+          "station_id": "234001294"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 44,
+          "station_id": "234001137"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 45,
+          "station_id": "234001200"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 46,
+          "station_id": "234000221"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 47,
+          "station_id": "234001212"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 48,
+          "station_id": "234001273"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 49,
+          "station_id": "234001271"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 50,
+          "station_id": "234001279"
+      },
+      {
+          "route_nm": "3302",
+          "sta_order": 51,
+          "station_id": "234001277"
+      }
+  ],
+  "234001738": [
+      {
+          "route_nm": "500-2N",
+          "sta_order": 1,
+          "station_id": "234000604"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 2,
+          "station_id": "277101661"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 3,
+          "station_id": "234000349"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 4,
+          "station_id": "234000348"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 5,
+          "station_id": "234000347"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 6,
+          "station_id": "234000346"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 7,
+          "station_id": "234000345"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 8,
+          "station_id": "234001068"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 9,
+          "station_id": "234000344"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 10,
+          "station_id": "234000343"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 11,
+          "station_id": "234000673"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 12,
+          "station_id": "234000943"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 13,
+          "station_id": "234000089"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 14,
+          "station_id": "234000342"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 15,
+          "station_id": "234000341"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 16,
+          "station_id": "234000340"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 17,
+          "station_id": "234000339"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 18,
+          "station_id": "234000338"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 19,
+          "station_id": "234000337"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 20,
+          "station_id": "234000336"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 21,
+          "station_id": "234000335"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 22,
+          "station_id": "234000334"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 23,
+          "station_id": "234000333"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 24,
+          "station_id": "234000332"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 25,
+          "station_id": "234000331"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 26,
+          "station_id": "277103685"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 27,
+          "station_id": "234001077"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 28,
+          "station_id": "234000330"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 29,
+          "station_id": "234000436"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 30,
+          "station_id": "234001004"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 31,
+          "station_id": "234000435"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 32,
+          "station_id": "234000434"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 33,
+          "station_id": "234000064"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 34,
+          "station_id": "234001169"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 35,
+          "station_id": "234000063"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 36,
+          "station_id": "277103681"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 37,
+          "station_id": "205000078"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 38,
+          "station_id": "205000074"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 39,
+          "station_id": "205000069"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 40,
+          "station_id": "204000087"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 41,
+          "station_id": "204000019"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 42,
+          "station_id": "204000022"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 43,
+          "station_id": "204000021"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 44,
+          "station_id": "204000020"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 45,
+          "station_id": "204000227"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 46,
+          "station_id": "204000116"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 47,
+          "station_id": "204000115"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 48,
+          "station_id": "204000114"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 49,
+          "station_id": "123000343"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 50,
+          "station_id": "122000312"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 51,
+          "station_id": "122000313"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 52,
+          "station_id": "122000315"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 53,
+          "station_id": "122000316"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 54,
+          "station_id": "122000317"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 55,
+          "station_id": "122000718"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 56,
+          "station_id": "122000295"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 57,
+          "station_id": "122000398"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 58,
+          "station_id": "122000643"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 59,
+          "station_id": "122000137"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 60,
+          "station_id": "122000388"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 61,
+          "station_id": "122000386"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 62,
+          "station_id": "122000098"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 63,
+          "station_id": "122000099"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 64,
+          "station_id": "122000100"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 65,
+          "station_id": "122000088"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 66,
+          "station_id": "122000095"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 67,
+          "station_id": "122000096"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 68,
+          "station_id": "122000330"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 69,
+          "station_id": "122000142"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 70,
+          "station_id": "122000133"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 71,
+          "station_id": "122000644"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 72,
+          "station_id": "122000397"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 73,
+          "station_id": "122000747"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 74,
+          "station_id": "122000717"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 75,
+          "station_id": "122000320"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 76,
+          "station_id": "122000321"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 77,
+          "station_id": "122000304"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 78,
+          "station_id": "122000309"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 79,
+          "station_id": "122000310"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 80,
+          "station_id": "122000311"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 81,
+          "station_id": "123000319"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 82,
+          "station_id": "123000249"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 83,
+          "station_id": "204000113"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 84,
+          "station_id": "204000112"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 85,
+          "station_id": "204000253"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 86,
+          "station_id": "204000111"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 87,
+          "station_id": "204000110"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 88,
+          "station_id": "204000023"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 89,
+          "station_id": "204000011"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 90,
+          "station_id": "204000088"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 91,
+          "station_id": "205000207"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 92,
+          "station_id": "205000073"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 93,
+          "station_id": "205000079"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 94,
+          "station_id": "205000267"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 95,
+          "station_id": "234000066"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 96,
+          "station_id": "234001168"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 97,
+          "station_id": "234000065"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 98,
+          "station_id": "234000439"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 99,
+          "station_id": "234000438"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 100,
+          "station_id": "234000437"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 101,
+          "station_id": "234000372"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 102,
+          "station_id": "277103686"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 103,
+          "station_id": "234000371"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 104,
+          "station_id": "234000370"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 105,
+          "station_id": "234000369"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 106,
+          "station_id": "234000368"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 107,
+          "station_id": "234000366"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 108,
+          "station_id": "234000365"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 109,
+          "station_id": "234000364"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 110,
+          "station_id": "234000363"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 111,
+          "station_id": "234000362"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 112,
+          "station_id": "234000361"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 113,
+          "station_id": "234000360"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 114,
+          "station_id": "234000359"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 115,
+          "station_id": "234000358"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 116,
+          "station_id": "234001005"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 117,
+          "station_id": "234000357"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 118,
+          "station_id": "234000356"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 119,
+          "station_id": "234000355"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 120,
+          "station_id": "234001061"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 121,
+          "station_id": "234000354"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 122,
+          "station_id": "234000353"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 123,
+          "station_id": "234000352"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 124,
+          "station_id": "234000351"
+      },
+      {
+          "route_nm": "500-2N",
+          "sta_order": 125,
+          "station_id": "234000605"
+      }
+  ],
+  "234001743": [
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 1,
+          "station_id": "234000454"
+      },
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 2,
+          "station_id": "234000453"
+      },
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 3,
+          "station_id": "234000452"
+      },
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 4,
+          "station_id": "234000256"
+      },
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 5,
+          "station_id": "234000451"
+      },
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 6,
+          "station_id": "234001056"
+      },
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 7,
+          "station_id": "121000054"
+      },
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 8,
+          "station_id": "121000213"
+      },
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 9,
+          "station_id": "121000215"
+      },
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 10,
+          "station_id": "121000220"
+      },
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 11,
+          "station_id": "234001054"
+      },
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 12,
+          "station_id": "234000458"
+      },
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 13,
+          "station_id": "234000457"
+      },
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 14,
+          "station_id": "234000456"
+      },
+      {
+          "route_nm": "신현양재MDRT",
+          "sta_order": 15,
+          "station_id": "234000455"
+      }
+  ]
+}
