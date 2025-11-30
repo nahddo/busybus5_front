@@ -82,12 +82,13 @@ const BusSearchScreen = ({ currentScreen, onNavigate }: BusSearchProps): ReactEl
   const [selectedTime, setSelectedTime] = useState<TimeSlot>("6:30");
   // 기본값을 실제 데이터에 존재하는 버스 번호로 변경 (3302 또는 3200)
   const [selectedRoute, setSelectedRoute] = useState<string>(initialBusNumber || "3302");
-  const [direction, setDirection] = useState<0 | 1>(0);
+  // 상행만 있으므로 direction을 항상 0으로 고정
+  const direction: 0 = 0;
 
-  // 선택된 노선과 방향에 따라 정류장 목록 가져오기
+  // 선택된 노선에 따라 정류장 목록 가져오기 (상행만)
   const routeStops = useMemo(() => {
-    return getRouteStops(selectedRoute, direction);
-  }, [selectedRoute, direction]);
+    return getRouteStops(selectedRoute, 0);
+  }, [selectedRoute]);
 
   // 실시간 버스 데이터 조회
   const [realtimeData, setRealtimeData] = useState<BusRealtimeData[]>([]);
@@ -107,8 +108,8 @@ const BusSearchScreen = ({ currentScreen, onNavigate }: BusSearchProps): ReactEl
           return;
         }
 
-        // direction에 따라 routeid 선택 (0이면 첫 번째, 1이면 두 번째)
-        const selectedRouteId = routeIds[direction < routeIds.length ? direction : 0];
+        // 상행만 있으므로 첫 번째 routeid 선택
+        const selectedRouteId = routeIds[0];
 
         // 오늘 날짜를 YYYY-MM-DD 형식으로 변환
         const today = new Date();
@@ -126,7 +127,7 @@ const BusSearchScreen = ({ currentScreen, onNavigate }: BusSearchProps): ReactEl
     };
 
     fetchRealtimeData();
-  }, [selectedRoute, selectedTime, direction]);
+  }, [selectedRoute, selectedTime]);
 
   useEffect(() => {
     const unsubscribe = subscribeBusSearch((state) => {

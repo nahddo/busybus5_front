@@ -169,22 +169,21 @@ export function canGoFromTo(
 }
 
 /**
- * 호환성을 위한 함수: route_nm과 direction으로 정류장 리스트 가져오기
- * direction은 무시되고, route_nm에 해당하는 첫 번째 routeid를 사용
+ * 호환성을 위한 함수: route_nm으로 정류장 리스트 가져오기
+ * 상행만 있으므로 첫 번째 routeid를 사용
  * @param routeNm 예: "3302"
- * @param direction 0(상행) / 1(하행) - 현재는 무시됨
+ * @param direction 0(상행) - 호환성을 위해 유지하지만 항상 0으로 고정
  * @deprecated routeid 중심 구조로 변경되었으므로 getRouteStopsByRouteId 사용 권장
  */
 export function getRouteStops(
   routeNm: string,
-  direction: 0 | 1
+  direction: 0 | 1 = 0
 ): RouteStop[] {
   const routeIds = getRouteIdsByRouteNm(routeNm);
   if (routeIds.length === 0) return [];
 
-  // direction에 따라 선택 (0이면 첫 번째, 1이면 두 번째)
-  const index = direction < routeIds.length ? direction : 0;
-  const routeId = routeIds[index];
+  // 상행만 있으므로 첫 번째 routeid 사용
+  const routeId = routeIds[0];
   return getRouteStopsByRouteId(routeId);
 }
 

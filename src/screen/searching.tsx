@@ -266,19 +266,16 @@ const ResultSection = ({
 
 /**
  * RouteTimelineSection
- * 선택된 route와 direction에 따라 vertical timeline을 그리는 컴포넌트
+ * 선택된 route에 따라 vertical timeline을 그리는 컴포넌트
  * 각 station에 지나가는 버스 목록도 표시
+ * (상행만 있으므로 direction은 항상 0으로 고정)
  */
 const RouteTimelineSection = ({
   routeNm,
-  direction,
-  onDirectionChange,
   onBack,
   routeStops,
 }: {
   routeNm: string;
-  direction: 0 | 1;
-  onDirectionChange: (direction: 0 | 1) => void;
   onBack: () => void;
   routeStops: RouteStop[];
 }): ReactElement => {
@@ -286,26 +283,12 @@ const RouteTimelineSection = ({
 
   return (
     <View style={styles.route_timeline_container}>
-      {/* 헤더: 버스 번호와 방향 선택 */}
+      {/* 헤더: 버스 번호 (상행만 있으므로 방향 선택 제거) */}
       <View style={styles.route_header}>
         <TouchableOpacity onPress={onBack} style={styles.back_button}>
           <Text style={styles.back_text}>← 뒤로</Text>
         </TouchableOpacity>
         <Text style={styles.route_title}>{routeNm}</Text>
-        <View style={styles.direction_buttons}>
-          <TouchableOpacity
-            style={[styles.direction_button, direction === 0 && styles.direction_button_active]}
-            onPress={() => onDirectionChange(0)}
-          >
-            <Text style={[styles.direction_text, direction === 0 && styles.direction_text_active]}>상행</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.direction_button, direction === 1 && styles.direction_button_active]}
-            onPress={() => onDirectionChange(1)}
-          >
-            <Text style={[styles.direction_text, direction === 1 && styles.direction_text_active]}>하행</Text>
-          </TouchableOpacity>
-        </View>
       </View>
 
       {/* Vertical Timeline */}
