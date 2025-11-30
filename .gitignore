@@ -86,3 +86,21 @@ frontend/BusApp/android/.gradle/
 frontend/BusApp/android/app/build/
 frontend/BusApp/android/build/
 frontend/BusApp/android/local.properties
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.coverage
+htmlcov/
