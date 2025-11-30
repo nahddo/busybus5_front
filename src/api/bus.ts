@@ -98,24 +98,20 @@ export const getCongestionLevel = (level: number): "empty" | "normal" | "crowded
  * 좌석 예측 API 응답 타입
  */
 export type PredictSeatResponse = {
-  ok: boolean;
-  routeid?: string;
-  select_time?: string;
-  predications?: number[]; // 각 정류장별 예측 좌석 수 배열
+  routeid: number;
+  select_time: number;
+  predictions: {
+    routeid: number;
+    station_num: number;
+    slot_index: number;
+    remainseat_pred: number;
+  }[];
   error?: string;
 };
 
-/**
- * 좌석 예측 API
- * - 백엔드 엔드포인트: /api/predict-seat/
- * - routeid와 select_time을 쿼리 파라미터로 전달
- * @param routeid 노선 ID (예: "234001736")
- * @param select_time 선택 시간 (예: "8" - 시간만 숫자로)
- * @returns 예측 좌석 수 배열
- */
 export const predictSeat = async (
-  routeid: string,
-  select_time: string
+  routeid: number,
+  select_time: number   // 0~7
 ): Promise<PredictSeatResponse> => {
   try {
     const response = await api_client.get<PredictSeatResponse>("/predict-seat/", {
@@ -127,11 +123,9 @@ export const predictSeat = async (
 
     return response.data;
   } catch (error: any) {
-    // 에러 응답 처리
     if (error.response?.data) {
       return error.response.data;
     }
     throw error;
   }
 };
-
