@@ -29,9 +29,9 @@ type LoginProps = {
 };
 
 const LoginVersion1 = ({ onNavigate }: LoginProps) => {
-  // 4) 실제 입력 값 상태 (마스터 계정 기본값)
-  const [email, setEmail] = useState("aaaa@gmail.com");
-  const [password, setPassword] = useState("0000");
+  // 4) 실제 입력 값 상태
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   // 서버 통신 상태 및 에러 메시지 관리
   const [is_loading, setIs_loading] = useState(false);
