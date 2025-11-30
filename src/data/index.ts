@@ -4,7 +4,7 @@ import stationBusRaw from "./stationBus.json";
 
 // ---------- 타입 정의 ----------
 
-// route_id (예: "218000005")
+// routeid (예: "218000005")
 export type RouteId = string;
 
 // routes.json의 각 정류장 정보
@@ -22,10 +22,10 @@ export type RouteStop = {
   stationName: string;
 };
 
-// routes.json 구조: route_id -> RouteStopRaw[]
+// routes.json 구조: routeid -> RouteStopRaw[]
 export type RoutesMapRaw = Record<RouteId, RouteStopRaw[]>;
 
-// 정규화된 RoutesMap: route_id -> RouteStop[]
+// 정규화된 RoutesMap: routeid -> RouteStop[]
 export type RoutesMap = Record<RouteId, RouteStop[]>;
 
 // stationBus.json 구조
@@ -42,7 +42,7 @@ export type StationBusMap = Record<string, StationBusInfo>;
 const ROUTES_RAW = routesRaw as RoutesMapRaw;
 const STATION_BUS_RAW = stationBusRaw as StationBusMap;
 
-// 정규화된 ROUTES (route_id -> RouteStop[])
+// 정규화된 ROUTES (routeid -> RouteStop[])
 // station_nm이 없으면 stationBus.json에서 정류장 이름을 가져옴
 export const ROUTES: RoutesMap = Object.fromEntries(
   Object.entries(ROUTES_RAW).map(([routeId, stops]) => [
@@ -62,7 +62,7 @@ export const ROUTES: RoutesMap = Object.fromEntries(
 // STATION_BUS는 그대로 사용
 export const STATION_BUS: StationBusMap = STATION_BUS_RAW;
 
-// route_nm -> route_id[] 매핑 (캐시)
+// route_nm -> routeid[] 매핑 (캐시)
 const ROUTE_NM_TO_IDS: Map<string, RouteId[]> = (() => {
   const map = new Map<string, RouteId[]>();
   Object.entries(ROUTES_RAW).forEach(([routeId, stops]) => {
@@ -80,7 +80,7 @@ const ROUTE_NM_TO_IDS: Map<string, RouteId[]> = (() => {
 // ---------- 헬퍼 함수들 ----------
 
 /**
- * route_id로 정류장 리스트 가져오기
+ * routeid로 정류장 리스트 가져오기
  * @param routeId 예: "218000005"
  */
 export function getRouteStopsByRouteId(routeId: RouteId): RouteStop[] {
@@ -88,7 +88,7 @@ export function getRouteStopsByRouteId(routeId: RouteId): RouteStop[] {
 }
 
 /**
- * route_nm으로 해당하는 모든 route_id 목록 가져오기
+ * route_nm으로 해당하는 모든 routeid 목록 가져오기
  * @param routeNm 예: "3302"
  */
 export function getRouteIdsByRouteNm(routeNm: string): RouteId[] {
@@ -96,10 +96,10 @@ export function getRouteIdsByRouteNm(routeNm: string): RouteId[] {
 }
 
 /**
- * route_nm과 station_id로 해당하는 route_id 찾기
+ * route_nm과 station_id로 해당하는 routeid 찾기
  * @param routeNm 버스 번호
  * @param stationId 정류장 ID
- * @returns 해당하는 route_id, 없으면 null
+ * @returns 해당하는 routeid, 없으면 null
  */
 export function findRouteIdByRouteNmAndStation(
   routeNm: string,
@@ -119,7 +119,7 @@ export function findRouteIdByRouteNmAndStation(
  * route_nm과 station_id로 정류장의 위치 찾기
  * @param routeNm 버스 번호
  * @param stationId 정류장 ID
- * @returns route_id와 order를 포함한 정보, 없으면 null
+ * @returns routeid와 order를 포함한 정보, 없으면 null
  */
 export function findStationInRoute(
   routeNm: string,
@@ -137,7 +137,7 @@ export function findStationInRoute(
 
 /**
  * 버스 번호로 출발지에서 도착지로 갈 수 있는지 확인
- * 같은 route_id에서 출발지가 도착지보다 앞에 있어야 함
+ * 같은 routeid에서 출발지가 도착지보다 앞에 있어야 함
  * @param routeNm 버스 번호
  * @param originStationId 출발지 정류장 ID
  * @param destStationId 도착지 정류장 ID
@@ -150,7 +150,7 @@ export function canGoFromTo(
 ): boolean {
   const routeIds = getRouteIdsByRouteNm(routeNm);
   
-  // 모든 route_id를 확인하여 출발지와 도착지가 같은 route_id에 있고
+  // 모든 routeid를 확인하여 출발지와 도착지가 같은 routeid에 있고
   // 출발지가 도착지보다 앞에 있는 경우가 있는지 확인
   for (const routeId of routeIds) {
     const stops = ROUTES[routeId];
@@ -159,7 +159,7 @@ export function canGoFromTo(
     const originStop = stops.find((stop) => stop.stationId === originStationId);
     const destStop = stops.find((stop) => stop.stationId === destStationId);
 
-    // 둘 다 같은 route_id에 있고, 출발지가 도착지보다 앞에 있어야 함
+    // 둘 다 같은 routeid에 있고, 출발지가 도착지보다 앞에 있어야 함
     if (originStop && destStop && originStop.order < destStop.order) {
       return true;
     }
@@ -170,10 +170,10 @@ export function canGoFromTo(
 
 /**
  * 호환성을 위한 함수: route_nm과 direction으로 정류장 리스트 가져오기
- * direction은 무시되고, route_nm에 해당하는 첫 번째 route_id를 사용
+ * direction은 무시되고, route_nm에 해당하는 첫 번째 routeid를 사용
  * @param routeNm 예: "3302"
  * @param direction 0(상행) / 1(하행) - 현재는 무시됨
- * @deprecated route_id 중심 구조로 변경되었으므로 getRouteStopsByRouteId 사용 권장
+ * @deprecated routeid 중심 구조로 변경되었으므로 getRouteStopsByRouteId 사용 권장
  */
 export function getRouteStops(
   routeNm: string,
@@ -206,7 +206,7 @@ export function getBusesAtStation(stationId: string): string[] {
 
 /**
  * 특정 버스번호(route_nm)가 정차하는 모든 정류장 목록
- * (모든 route_id의 정류장을 합쳐서 반환)
+ * (모든 routeid의 정류장을 합쳐서 반환)
  */
 export function getStationsForRoute(routeNm: string): RouteStop[] {
   const routeIds = getRouteIdsByRouteNm(routeNm);

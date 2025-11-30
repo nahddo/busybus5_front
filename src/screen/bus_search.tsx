@@ -99,22 +99,22 @@ const BusSearchScreen = ({ currentScreen, onNavigate }: BusSearchProps): ReactEl
 
       setIsLoadingData(true);
       try {
-        // 버스 번호(routename)로 route_id 찾기
+        // 버스 번호(routename)로 routeid 찾기
         const routeIds = getRouteIdsByRouteNm(selectedRoute);
         if (routeIds.length === 0) {
-          console.warn(`버스 번호 ${selectedRoute}에 해당하는 route_id를 찾을 수 없습니다.`);
+          console.warn(`버스 번호 ${selectedRoute}에 해당하는 routeid를 찾을 수 없습니다.`);
           setRealtimeData([]);
           return;
         }
 
-        // direction에 따라 route_id 선택 (0이면 첫 번째, 1이면 두 번째)
+        // direction에 따라 routeid 선택 (0이면 첫 번째, 1이면 두 번째)
         const selectedRouteId = routeIds[direction < routeIds.length ? direction : 0];
 
         // 오늘 날짜를 YYYY-MM-DD 형식으로 변환
         const today = new Date();
         const service_date = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
         
-        // route_id로 실시간 데이터 조회
+        // routeid로 실시간 데이터 조회
         const data = await getBusRealtimeData(selectedRouteId, service_date, selectedTime);
         setRealtimeData(data);
       } catch (error) {

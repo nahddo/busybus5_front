@@ -276,11 +276,11 @@ const BusRouteCard = ({
   // 해당 버스 노선에서 정류장의 위치 찾기
   const stationPosition = findStationInRoute(busNum, stationId);
 
-  // route_id와 order 정보 가져오기
+  // routeid와 order 정보 가져오기
   const routeId = stationPosition?.routeId;
   const myPosition = stationPosition?.order ?? -1;
 
-  // 해당 route_id의 정류장 목록 가져오기
+  // 해당 routeid의 정류장 목록 가져오기
   const routeStops = routeId ? getRouteStopsByRouteId(routeId) : [];
   const totalStops = routeStops.length;
 

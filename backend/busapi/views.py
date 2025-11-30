@@ -43,7 +43,7 @@ def predict_seat(request):
         select_time_int = int(select_time)
     except ValueError:
         return JsonResponse(
-            {"ok": False, "error": "routeId와 select_time은 정수여야 합니다."},
+            {"ok": False, "error": "routeid와 select_time은 정수여야 합니다."},
             status=400,
         )
 

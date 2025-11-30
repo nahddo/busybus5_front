@@ -47,7 +47,7 @@ const BookmarkScreen = ({ currentScreen, onNavigate }: BookmarkProps): ReactElem
     return unsubscribe;
   }, []);
 
-  const handleDeleteFavorite = async (id: string) => {
+  const handleDeleteFavorite = async (id: string | number) => {
     try {
       await removeFavorite(id);
     } catch (error) {
@@ -73,7 +73,7 @@ const BookmarkScreen = ({ currentScreen, onNavigate }: BookmarkProps): ReactElem
     }
   };
 
-  const handleDeleteSavedRoute = async (id: string) => {
+  const handleDeleteSavedRoute = async (id: string | number) => {
     try {
       await removeSavedRoute(id);
     } catch (error) {
@@ -339,7 +339,7 @@ type SavedRouteRowProps = {
  */
 const SavedRouteRow = ({ route, showDivider, onDelete, onPress, isEditing }: SavedRouteRowProps): ReactElement => {
   // 출발지와 도착지를 모두 지나는 실제 버스 번호 목록 계산
-  // 같은 노선(route_id)에서 출발지가 도착지보다 앞에 있어야 갈 수 있음
+  // 같은 노선(routeid)에서 출발지가 도착지보다 앞에 있어야 갈 수 있음
   const availableBuses = useMemo(() => {
     // 1. 정류장 이름으로 stationId 조회
     const origin_id = getStationIdByName(route.from);
@@ -356,8 +356,8 @@ const SavedRouteRow = ({ route, showDivider, onDelete, onPress, isEditing }: Sav
     const common_buses = origin_buses.filter((bus) => dest_buses.includes(bus));
 
     // 3. 각 버스가 실제로 출발지에서 도착지로 갈 수 있는지 확인
-    // (같은 route_id에서 출발지가 도착지보다 앞에 있어야 함)
-    // 모든 route_id를 확인하여 실제로 갈 수 있는 버스만 필터링
+    // (같은 routeid에서 출발지가 도착지보다 앞에 있어야 함)
+    // 모든 routeid를 확인하여 실제로 갈 수 있는 버스만 필터링
     const validBuses = common_buses.filter((bus) => {
       return canGoFromTo(bus, origin_id, dest_id);
     });

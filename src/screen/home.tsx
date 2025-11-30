@@ -132,7 +132,7 @@ const Home = ({ currentScreen, onNavigate }: HomeProps): ReactElement => {
       return { from_label, to_label, bus_numbers_text, duration_text };
     }
 
-    // 3. 실제로 갈 수 있는 버스만 필터링 (같은 route_id에서 출발지가 도착지보다 앞에 있어야 함)
+    // 3. 실제로 갈 수 있는 버스만 필터링 (같은 routeid에서 출발지가 도착지보다 앞에 있어야 함)
     const validBuses = common_buses.filter((bus) => canGoFromTo(bus, origin_id, dest_id));
 
     if (validBuses.length === 0) {
@@ -146,8 +146,8 @@ const Home = ({ currentScreen, onNavigate }: HomeProps): ReactElement => {
     const main_bus = validBuses[0];
     bus_numbers_text = main_bus;
 
-    // 5. 이 버스 노선에서 출발/도착 정류장의 위치 찾기 (실제로 갈 수 있는 route_id 사용)
-    // canGoFromTo가 true를 반환했으므로, 해당 route_id를 찾아야 함
+    // 5. 이 버스 노선에서 출발/도착 정류장의 위치 찾기 (실제로 갈 수 있는 routeid 사용)
+    // canGoFromTo가 true를 반환했으므로, 해당 routeid를 찾아야 함
     const routeIds = getRouteIdsByRouteNm(main_bus);
     let origin_pos: { routeId: RouteId; order: number } | null = null;
     let dest_pos: { routeId: RouteId; order: number } | null = null;
@@ -200,7 +200,7 @@ const Home = ({ currentScreen, onNavigate }: HomeProps): ReactElement => {
     const common_buses = origin_buses.filter((bus) => dest_buses.includes(bus));
 
     // 각 버스가 실제로 출발지에서 도착지로 갈 수 있는지 확인
-    // 모든 route_id를 확인하여 실제로 갈 수 있는 버스만 필터링
+    // 모든 routeid를 확인하여 실제로 갈 수 있는 버스만 필터링
     const validBuses = common_buses.filter((bus) => {
       return canGoFromTo(bus, origin_id, dest_id);
     });

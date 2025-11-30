@@ -80,7 +80,7 @@ const UserScreen = ({ currentScreen, onNavigate }: UserProps): ReactElement => {
     setIsEditing((prev) => !prev);
   };
 
-  const handleDeleteFavorite = async (id: string) => {
+  const handleDeleteFavorite = async (id: string | number) => {
     try {
       await removeFavorite(id);
     } catch (error) {
