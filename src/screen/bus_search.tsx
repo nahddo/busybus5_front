@@ -24,7 +24,7 @@ const ICONS = {
   directionsBus: require("../../assets/images/bus_search/directions_bus.png"),
 };
 
-type TimeSlot = "6:00" | "6:30" | "7:00" | "7:30" | "8:00" | "8:30";
+type TimeSlot = "6:00" | "6:30" | "7:00" | "7:30" | "8:00" | "8:30" | "9:00";
 
 const TIME_TABS: Array<{ id: TimeSlot; label: string }> = [
   { id: "6:00", label: "6:00" },
@@ -33,6 +33,7 @@ const TIME_TABS: Array<{ id: TimeSlot; label: string }> = [
   { id: "7:30", label: "7:30" },
   { id: "8:00", label: "8:00" },
   { id: "8:30", label: "8:30" },
+  { id: "9:00", label: "9:00" },
 ];
 
 

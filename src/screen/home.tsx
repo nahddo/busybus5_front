@@ -31,12 +31,12 @@ const COLOR = {
 
 type Weekday = "월요일" | "화요일" | "수요일" | "목요일" | "금요일";
 type TimeType = "도착시간" | "출발시간";
-type TimeSlot = "6:00" | "6:30" | "7:00" | "7:30" | "8:00" | "8:30";
+type TimeSlot = "6:00" | "6:30" | "7:00" | "7:30" | "8:00" | "8:30" | "9:00";
 type FastOption = "최단시간" | "최소대기";
 
 const WEEKDAYS: Weekday[] = ["월요일", "화요일", "수요일", "목요일", "금요일"];
 const TIME_TYPES: TimeType[] = ["도착시간", "출발시간"];
-const TIME_SLOTS: TimeSlot[] = ["6:00", "6:30", "7:00", "7:30", "8:00", "8:30"];
+const TIME_SLOTS: TimeSlot[] = ["6:00", "6:30", "7:00", "7:30", "8:00", "8:30", "9:00"];
 const FAST_OPTIONS: FastOption[] = ["최단시간", "최소대기"];
 
 const ICONS = {

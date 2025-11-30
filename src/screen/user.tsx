@@ -8,7 +8,8 @@ import { FavoriteItem, getFavorites, removeFavorite, subscribeFavorites } from "
 import { setSearchIntent } from "../store/searchIntentStore";
 import { setBusSearchNumber } from "../store/busSearchStore";
 import { setDepartureStation } from "../store/stationSearchStore";
-import { getAuthState, subscribeAuth, logout } from "../store/authStore";
+import { getAuthState, subscribeAuth, logout, login } from "../store/authStore";
+import { get_current_user, logout_user } from "../api/auth";
 
 type UserProps = {
   currentScreen: ScreenName;
@@ -47,6 +48,23 @@ const UserScreen = ({ currentScreen, onNavigate }: UserProps): ReactElement => {
     return unsubscribe;
   }, []);
 
+  // 앱 시작 시 현재 사용자 정보 조회
+  useEffect(() => {
+    const checkCurrentUser = async () => {
+      try {
+        const currentUser = await get_current_user();
+        if (currentUser.is_authenticated && currentUser.username) {
+          // 로그인 상태인 경우 인증 상태 갱신
+          login(currentUser.username, currentUser.username);
+        }
+      } catch (error) {
+        console.error("현재 사용자 정보 조회 중 오류가 발생했습니다.", error);
+      }
+    };
+
+    checkCurrentUser();
+  }, []);
+
   const toggleEditMode = () => {
     setIsEditing((prev) => !prev);
   };
@@ -71,11 +89,21 @@ const UserScreen = ({ currentScreen, onNavigate }: UserProps): ReactElement => {
 
   /**
    * 로그아웃 처리 함수
-   * 로그아웃 후 로그인 화면으로 이동합니다.
+   * 백엔드에 로그아웃 요청을 보낸 후 로컬 상태를 갱신하고 로그인 화면으로 이동합니다.
    */
-  const handleLogout = () => {
-    logout();
-    onNavigate("login");
+  const handleLogout = async () => {
+    try {
+      // 백엔드에 로그아웃 요청
+      await logout_user();
+    } catch (error) {
+      console.error("로그아웃 요청 중 오류가 발생했습니다.", error);
+      // 에러가 발생해도 로컬 상태는 갱신
+    } finally {
+      // 로컬 인증 상태 갱신
+      logout();
+      // 로그인 화면으로 이동
+      onNavigate("login");
+    }
   };
 
   return (

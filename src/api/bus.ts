@@ -28,22 +28,21 @@ export const getBusRealtimeData = async (
   service_date: string,
   time_slot: string
 ): Promise<BusRealtimeData[]> => {
-  /**
-   * TODO(백엔드 개발자용):
-   * - 실제 엔드포인트 URL을 확인하여 경로를 수정하세요.
-   *   예) /bus/realtime/ 또는 /bus/route/{routeid}/ 등
-   * - 현재는 /bus/realtime/ 로 가정합니다.
-   * - 쿼리 파라미터로 routeid, service_date, time_slot을 전달합니다.
-   */
-  const response = await api_client.get<BusRealtimeData[]>("/bus/realtime/", {
-    params: {
-      routeid,
-      service_date,
-      time_slot,
-    },
-  });
+  try {
+    const response = await api_client.get<BusRealtimeData[]>("/bus/realtime/", {
+      params: {
+        routeid,
+        service_date,
+        time_slot,
+      },
+    });
 
-  return response.data;
+    return response.data;
+  } catch (error: any) {
+    // 에러 발생 시 빈 배열 반환 (프론트엔드가 에러 없이 동작하도록)
+    console.error("버스 실시간 데이터 조회 실패:", error);
+    return [];
+  }
 };
 
 /**
@@ -58,22 +57,21 @@ export const getStationRealtimeData = async (
   service_date: string,
   time_slot: string
 ): Promise<BusRealtimeData[]> => {
-  /**
-   * TODO(백엔드 개발자용):
-   * - 실제 엔드포인트 URL을 확인하여 경로를 수정하세요.
-   *   예) /station/realtime/ 또는 /station/{stationid}/ 등
-   * - 현재는 /station/realtime/ 로 가정합니다.
-   * - 쿼리 파라미터로 stationid, service_date, time_slot을 전달합니다.
-   */
-  const response = await api_client.get<BusRealtimeData[]>("/station/realtime/", {
-    params: {
-      stationid,
-      service_date,
-      time_slot,
-    },
-  });
+  try {
+    const response = await api_client.get<BusRealtimeData[]>("/station/realtime/", {
+      params: {
+        stationid,
+        service_date,
+        time_slot,
+      },
+    });
 
-  return response.data;
+    return response.data;
+  } catch (error: any) {
+    // 에러 발생 시 빈 배열 반환 (프론트엔드가 에러 없이 동작하도록)
+    console.error("정류장 실시간 데이터 조회 실패:", error);
+    return [];
+  }
 };
 
 /**
@@ -93,6 +91,47 @@ export const getCongestionLevel = (level: number): "empty" | "normal" | "crowded
       return "veryCrowded"; // 매우 혼잡
     default:
       return "normal";
+  }
+};
+
+/**
+ * 좌석 예측 API 응답 타입
+ */
+export type PredictSeatResponse = {
+  ok: boolean;
+  routeid?: string;
+  select_time?: string;
+  predications?: number[]; // 각 정류장별 예측 좌석 수 배열
+  error?: string;
+};
+
+/**
+ * 좌석 예측 API
+ * - 백엔드 엔드포인트: /api/predict-seat/
+ * - routeid와 select_time을 쿼리 파라미터로 전달
+ * @param routeid 노선 ID (예: "234001736")
+ * @param select_time 선택 시간 (예: "8" - 시간만 숫자로)
+ * @returns 예측 좌석 수 배열
+ */
+export const predictSeat = async (
+  routeid: string,
+  select_time: string
+): Promise<PredictSeatResponse> => {
+  try {
+    const response = await api_client.get<PredictSeatResponse>("/predict-seat/", {
+      params: {
+        routeid,
+        select_time,
+      },
+    });
+
+    return response.data;
+  } catch (error: any) {
+    // 에러 응답 처리
+    if (error.response?.data) {
+      return error.response.data;
+    }
+    throw error;
   }
 };
 

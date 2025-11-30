@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.http import require_GET
+from django.views.decorators.csrf import csrf_exempt
 import pandas as pd
 from .models import bus_arrival_past
 from .ml_train import train_model_and_save
@@ -53,3 +54,69 @@ def predict_seat(request):
 
     }
     return JsonResponse(data, status=200)
+
+@csrf_exempt
+@require_GET
+def bus_realtime(request):
+    """
+    버스 노선별 실시간 데이터 조회
+    - 쿼리 파라미터: routeid, service_date, time_slot
+    - 반환: 해당 노선의 모든 정류장별 실시간 데이터 배열
+    """
+    routeid = request.GET.get('routeid')
+    service_date = request.GET.get('service_date')
+    time_slot = request.GET.get('time_slot')
+
+    if not routeid or not service_date or not time_slot:
+        return JsonResponse(
+            {"error": "routeid, service_date, time_slot 파라미터가 필요합니다."},
+            status=400,
+        )
+
+    try:
+        # TODO: 실제 실시간 데이터 소스에서 데이터를 가져와야 합니다.
+        # 현재는 빈 배열을 반환합니다. 실제 데이터베이스나 외부 API와 연동 필요
+        # 예시: bus_arrival_past 모델에서 최근 데이터를 조회하거나 외부 API 호출
+        
+        # 임시로 빈 배열 반환 (프론트엔드가 에러 없이 동작하도록)
+        data = []
+        
+        return JsonResponse(data, status=200, safe=False)
+    except Exception as e:
+        return JsonResponse(
+            {"error": f"서버 오류: {str(e)}"},
+            status=500,
+        )
+
+@csrf_exempt
+@require_GET
+def station_realtime(request):
+    """
+    정류장별 실시간 데이터 조회
+    - 쿼리 파라미터: stationid, service_date, time_slot
+    - 반환: 해당 정류장을 지나가는 모든 버스의 실시간 데이터 배열
+    """
+    stationid = request.GET.get('stationid')
+    service_date = request.GET.get('service_date')
+    time_slot = request.GET.get('time_slot')
+
+    if not stationid or not service_date or not time_slot:
+        return JsonResponse(
+            {"error": "stationid, service_date, time_slot 파라미터가 필요합니다."},
+            status=400,
+        )
+
+    try:
+        # TODO: 실제 실시간 데이터 소스에서 데이터를 가져와야 합니다.
+        # 현재는 빈 배열을 반환합니다. 실제 데이터베이스나 외부 API와 연동 필요
+        # 예시: bus_arrival_past 모델에서 해당 정류장의 최근 데이터를 조회하거나 외부 API 호출
+        
+        # 임시로 빈 배열 반환 (프론트엔드가 에러 없이 동작하도록)
+        data = []
+        
+        return JsonResponse(data, status=200, safe=False)
+    except Exception as e:
+        return JsonResponse(
+            {"error": f"서버 오류: {str(e)}"},
+            status=500,
+        )

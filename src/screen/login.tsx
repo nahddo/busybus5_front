@@ -57,11 +57,12 @@ const LoginVersion1 = ({ onNavigate }: LoginProps) => {
 
       /**
        * 4. 응답으로 받은 사용자 정보로 전역 인증 상태 갱신
-       * - 현재 authStore의 login 함수는 (email, name) 형태로 가정합니다.
-       * - 백엔드 응답 스키마에 맞추어 email, name을 적절히 매핑해야 합니다.
+       * - 백엔드 응답에서 user 객체를 사용하여 인증 상태를 갱신합니다.
        */
       const auth_user = auth_response.user;
-      login(auth_user.email, auth_user.name);
+      if (auth_user) {
+        login(auth_user.email || auth_user.username, auth_user.name || auth_user.username);
+      }
 
       // 5. 로그인 성공 시 사용자 화면으로 이동
       onNavigate("user");

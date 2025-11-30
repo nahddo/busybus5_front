@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--x0p0k+1sny#ca_h@jp(q(^=2qtqtv38x5$6f8^m=si5%-gbw=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']  # 개발 환경용, 프로덕션에서는 특정 호스트만 허용해야 함
 
 
 # Application definition
@@ -49,6 +49,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# 세션 쿠키 설정 (React Native에서 세션 사용을 위해)
+# React Native는 웹 브라우저가 아니므로 CORS는 필요 없지만, 세션 쿠키 설정은 필요합니다.
+SESSION_COOKIE_HTTPONLY = False  # JavaScript에서 접근 가능하도록 (필요시)
+SESSION_COOKIE_SAMESITE = 'None'  # 크로스 사이트 요청 허용
+SESSION_COOKIE_SECURE = False  # 개발 환경에서는 False, 프로덕션에서는 True로 변경
 
 ROOT_URLCONF = 'DjangoProject.urls'
 
@@ -81,7 +87,7 @@ DATABASES = {
         'USER': 'postgres',         # PostgreSQL 사용자명
         'PASSWORD': 'postgres',
         'HOST': 'localhost',
-        'PORT': '5433',
+        'PORT': '5432',
     }
 }
 
