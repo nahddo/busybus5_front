@@ -15,12 +15,13 @@ const create_api_client = (): AxiosInstance => {
    * - 실제 기기: http://<PC_로컬_IP>:8000
    */
   const api_client = axios.create({
-    baseURL: "http://10.0.2.2:8000/api", // 예시 기본값
+    baseURL: "http://10.0.2.2:8000/api",
     timeout: 10000,
+    withCredentials: true,
     headers: {
-      "Content-Type": "application/json",
+      "Accept": "application/json",
+      "Content-Type": "application/json; charset=utf-8",
     },
-    withCredentials: true, // 세션 쿠키를 포함하여 요청 (Django 세션 인증용)
   });
 
   /**
