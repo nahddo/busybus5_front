@@ -4,12 +4,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import LinearGradient from "react-native-linear-gradient";
 import BottomTabBar from "../components/BottomTabBar";
 import { NavigateHandler, ScreenName } from "../types/navigation";
-import { FavoriteItem, getFavorites, removeFavorite, subscribeFavorites } from "../store/favoriteStore";
+import { FavoriteItem, getFavorites, removeFavorite, subscribeFavorites, clearFavorites, loadUserFavorites } from "../store/favoriteStore";
 import { setSearchIntent } from "../store/searchIntentStore";
 import { setBusSearchNumber } from "../store/busSearchStore";
 import { setDepartureStation } from "../store/stationSearchStore";
 import { getAuthState, subscribeAuth, logout, login } from "../store/authStore";
 import { get_current_user, logout_user } from "../api/auth";
+import { clearSavedRoutes, loadUserSavedRoutes } from "../store/savedRoutesStore";
 
 type UserProps = {
   currentScreen: ScreenName;
@@ -56,6 +57,16 @@ const UserScreen = ({ currentScreen, onNavigate }: UserProps): ReactElement => {
         if (currentUser.is_authenticated && currentUser.username) {
           // 로그인 상태인 경우 인증 상태 갱신
           login(currentUser.username, currentUser.username);
+          
+          // 로그인한 사용자의 즐겨찾기와 저장된 경로 데이터 로드
+          try {
+            await Promise.all([
+              loadUserFavorites(currentUser.username),
+              loadUserSavedRoutes(currentUser.username),
+            ]);
+          } catch (error) {
+            console.error("사용자 데이터 로드 중 오류가 발생했습니다.", error);
+          }
         }
       } catch (error) {
         console.error("현재 사용자 정보 조회 중 오류가 발생했습니다.", error);
@@ -69,8 +80,12 @@ const UserScreen = ({ currentScreen, onNavigate }: UserProps): ReactElement => {
     setIsEditing((prev) => !prev);
   };
 
-  const handleDeleteFavorite = (id: string) => {
-    removeFavorite(id);
+  const handleDeleteFavorite = async (id: string) => {
+    try {
+      await removeFavorite(id);
+    } catch (error) {
+      console.error("즐겨찾기 삭제 중 오류가 발생했습니다.", error);
+    }
   };
 
   const handleFavoritePress = (item: FavoriteItem) => {
@@ -99,6 +114,10 @@ const UserScreen = ({ currentScreen, onNavigate }: UserProps): ReactElement => {
       console.error("로그아웃 요청 중 오류가 발생했습니다.", error);
       // 에러가 발생해도 로컬 상태는 갱신
     } finally {
+      // 즐겨찾기와 저장된 경로 데이터 초기화
+      clearFavorites();
+      clearSavedRoutes();
+      
       // 로컬 인증 상태 갱신
       logout();
       // 로그인 화면으로 이동

@@ -12,6 +12,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { NavigateHandler } from "../types/navigation";
 import { login } from "../store/authStore";
 import { login_user } from "../api/auth";
+import { loadUserFavorites } from "../store/favoriteStore";
+import { loadUserSavedRoutes } from "../store/savedRoutesStore";
 
 const ICONS = {
   arrowNarrowLeft: require("../../assets/images/signup/arrow-narrow-left.png"),
@@ -27,17 +29,28 @@ type LoginProps = {
 };
 
 const LoginVersion1 = ({ onNavigate }: LoginProps) => {
-  // 4) 실제 입력 값 상태
+  // 4) 실제 입력 값 상태 (마스터 계정 기본값)
   const [email, setEmail] = useState("aaaa@gmail.com");
-  const [password, setPassword] = useState("*******");
+  const [password, setPassword] = useState("0000");
 
   // 서버 통신 상태 및 에러 메시지 관리
   const [is_loading, setIs_loading] = useState(false);
   const [error_message, setError_message] = useState<string | null>(null);
 
   /**
+   * 마스터 계정 정보 (프론트엔드에 하드코딩)
+   * 백엔드 연결 없이 바로 로그인 가능
+   */
+  const MASTER_ACCOUNT = {
+    email: "aaaa@gmail.com",
+    password: "0000",
+    name: "master",
+  };
+
+  /**
    * 로그인 처리 함수
-   * - 사용자가 입력한 이메일, 비밀번호를 이용해 Django 백엔드에 로그인 요청을 보냅니다.
+   * - 마스터 계정인 경우 백엔드 호출 없이 바로 로그인
+   * - 다른 계정인 경우 Django 백엔드에 로그인 요청을 보냅니다.
    * - 성공 시 전역 auth 상태를 갱신하고 사용자 화면으로 이동합니다.
    */
   const handleLogin = async () => {
@@ -52,32 +65,70 @@ const LoginVersion1 = ({ onNavigate }: LoginProps) => {
       setIs_loading(true);
       setError_message(null);
 
-      // 3. Django 백엔드에 로그인 요청 전송
+      // 3. 마스터 계정 체크 (백엔드 연결 없이 바로 로그인)
+      if (email.trim() === MASTER_ACCOUNT.email && password.trim() === MASTER_ACCOUNT.password) {
+        // 마스터 계정으로 바로 로그인
+        login(MASTER_ACCOUNT.email, MASTER_ACCOUNT.name);
+        
+        // 마스터 계정의 즐겨찾기와 저장된 경로 데이터 로드 (AsyncStorage에서)
+        try {
+          await Promise.all([
+            loadUserFavorites(MASTER_ACCOUNT.email),
+            loadUserSavedRoutes(MASTER_ACCOUNT.email),
+          ]);
+        } catch (error) {
+          console.error("사용자 데이터 로드 중 오류가 발생했습니다.", error);
+        }
+
+        // 로그인 성공 시 사용자 화면으로 이동
+        onNavigate("user");
+        return;
+      }
+
+      // 4. 마스터 계정이 아닌 경우 백엔드에 로그인 요청 전송
       const auth_response = await login_user(email, password);
 
       /**
-       * 4. 응답으로 받은 사용자 정보로 전역 인증 상태 갱신
+       * 5. 응답으로 받은 사용자 정보로 전역 인증 상태 갱신
        * - 백엔드 응답에서 user 객체를 사용하여 인증 상태를 갱신합니다.
        */
       const auth_user = auth_response.user;
       if (auth_user) {
-        login(auth_user.email || auth_user.username, auth_user.name || auth_user.username);
+        const userEmail = auth_user.email || auth_user.username;
+        login(userEmail, auth_user.name || auth_user.username);
+        
+        // 6. 로그인한 사용자의 즐겨찾기와 저장된 경로 데이터 로드
+        try {
+          await Promise.all([
+            loadUserFavorites(userEmail),
+            loadUserSavedRoutes(userEmail),
+          ]);
+        } catch (error) {
+          console.error("사용자 데이터 로드 중 오류가 발생했습니다.", error);
+        }
       }
 
-      // 5. 로그인 성공 시 사용자 화면으로 이동
+      // 7. 로그인 성공 시 사용자 화면으로 이동
       onNavigate("user");
-    } catch (error) {
+    } catch (error: any) {
       /**
-       * 6. 에러 처리
+       * 8. 에러 처리
        * - 네트워크 오류, 서버 오류, 잘못된 자격 증명 등 다양한 에러가 발생할 수 있습니다.
-       * - 사용자에게는 구체적인 내부 정보를 노출하지 않고 일반적인 안내 문구를 제공합니다.
+       * - 디버깅을 위해 상세한 에러 정보를 로그에 기록합니다.
        */
-      console.error("로그인 요청 중 오류가 발생했습니다.", error);
-      setError_message(
-        "로그인에 실패했습니다. 이메일과 비밀번호를 확인한 후 다시 시도해주세요.",
-      );
+      console.error("로그인 요청 중 오류가 발생했습니다.", {
+        error,
+        message: error?.message,
+        response: error?.response?.data,
+        status: error?.response?.status,
+        url: error?.config?.url,
+      });
+      
+      // 백엔드에서 전달한 에러 메시지가 있으면 사용, 없으면 기본 메시지
+      const errorMessage = error?.response?.data?.error || error?.message || "로그인에 실패했습니다. 이메일과 비밀번호를 확인한 후 다시 시도해주세요.";
+      setError_message(errorMessage);
     } finally {
-      // 7. 로딩 상태 해제
+      // 9. 로딩 상태 해제
       setIs_loading(false);
     }
   };

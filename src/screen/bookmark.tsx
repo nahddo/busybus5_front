@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useRef, useState } from "react";
+import React, { ReactElement, useEffect, useMemo, useRef, useState } from "react";
 import { Animated, Image, PanResponder, ScrollView, StatusBar, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import BottomTabBar from "../components/BottomTabBar";
@@ -9,6 +9,7 @@ import { setSearchIntent } from "../store/searchIntentStore";
 import { setBusSearchNumber } from "../store/busSearchStore";
 import { setDepartureStation } from "../store/stationSearchStore";
 import { setRouteLocation } from "../store/routeSelectionStore";
+import { getStationIdByName, getBusesAtStation, canGoFromTo } from "../data";
 
 const ICONS = {
   cellular: require("../../assets/images/bookmark/Cellular Connection.png"),
@@ -46,8 +47,12 @@ const BookmarkScreen = ({ currentScreen, onNavigate }: BookmarkProps): ReactElem
     return unsubscribe;
   }, []);
 
-  const handleDeleteFavorite = (id: string) => {
-    removeFavorite(id);
+  const handleDeleteFavorite = async (id: string) => {
+    try {
+      await removeFavorite(id);
+    } catch (error) {
+      console.error("즐겨찾기 삭제 중 오류가 발생했습니다.", error);
+    }
   };
 
   const toggleEditMode = () => {
@@ -68,8 +73,12 @@ const BookmarkScreen = ({ currentScreen, onNavigate }: BookmarkProps): ReactElem
     }
   };
 
-  const handleDeleteSavedRoute = (id: string) => {
-    removeSavedRoute(id);
+  const handleDeleteSavedRoute = async (id: string) => {
+    try {
+      await removeSavedRoute(id);
+    } catch (error) {
+      console.error("저장된 경로 삭제 중 오류가 발생했습니다.", error);
+    }
   };
 
   /**
@@ -326,8 +335,39 @@ type SavedRouteRowProps = {
  * SavedRouteRow
  * 저장된 경로 카드 안의 행.
  * 클릭 시 home.tsx에서 해당 경로가 표시되도록 한다.
+ * 출발지와 도착지를 모두 지나는 실제 버스 번호만 표시한다.
  */
 const SavedRouteRow = ({ route, showDivider, onDelete, onPress, isEditing }: SavedRouteRowProps): ReactElement => {
+  // 출발지와 도착지를 모두 지나는 실제 버스 번호 목록 계산
+  // 같은 노선(route_id)에서 출발지가 도착지보다 앞에 있어야 갈 수 있음
+  const availableBuses = useMemo(() => {
+    // 1. 정류장 이름으로 stationId 조회
+    const origin_id = getStationIdByName(route.from);
+    const dest_id = getStationIdByName(route.to);
+
+    if (!origin_id || !dest_id) {
+      // 정류장 ID를 찾을 수 없는 경우 빈 배열 반환
+      return [];
+    }
+
+    // 2. 두 정류장을 지나는 버스 번호 목록 계산 (교집합)
+    const origin_buses = getBusesAtStation(origin_id);
+    const dest_buses = getBusesAtStation(dest_id);
+    const common_buses = origin_buses.filter((bus) => dest_buses.includes(bus));
+
+    // 3. 각 버스가 실제로 출발지에서 도착지로 갈 수 있는지 확인
+    // (같은 route_id에서 출발지가 도착지보다 앞에 있어야 함)
+    // 모든 route_id를 확인하여 실제로 갈 수 있는 버스만 필터링
+    const validBuses = common_buses.filter((bus) => {
+      return canGoFromTo(bus, origin_id, dest_id);
+    });
+
+    return validBuses;
+  }, [route.from, route.to]);
+
+  // 버스 번호를 쉼표로 구분한 문자열로 변환
+  const busesText = availableBuses.length > 0 ? availableBuses.join(", ") : "경로 정보 없음";
+
   return (
     <SwipeableFavoriteRow showDivider={showDivider} onDelete={onDelete}>
       <TouchableOpacity
@@ -343,7 +383,7 @@ const SavedRouteRow = ({ route, showDivider, onDelete, onPress, isEditing }: Sav
           <Text style={styles.saved_title}>
             {route.from} → {route.to}
           </Text>
-          <Text style={styles.saved_detail}>{route.detail}</Text>
+          <Text style={styles.saved_detail}>{busesText}</Text>
         </View>
       </TouchableOpacity>
     </SwipeableFavoriteRow>

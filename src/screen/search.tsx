@@ -99,11 +99,15 @@ const RecentSection = ({
     }
   };
 
-  const handleAddToFavorite = (item: SearchHistoryItem) => {
-    addFavorite({
-      label: item.title,
-      type: item.type === "bus" ? "bus" : "stop",
-    });
+  const handleAddToFavorite = async (item: SearchHistoryItem) => {
+    try {
+      await addFavorite({
+        label: item.title,
+        type: item.type === "bus" ? "bus" : "stop",
+      });
+    } catch (error) {
+      console.error("즐겨찾기 추가 중 오류가 발생했습니다.", error);
+    }
   };
 
   return (

@@ -20,6 +20,7 @@ const create_api_client = (): AxiosInstance => {
     headers: {
       "Content-Type": "application/json",
     },
+    withCredentials: true, // 세션 쿠키를 포함하여 요청 (Django 세션 인증용)
   });
 
   /**
@@ -28,6 +29,14 @@ const create_api_client = (): AxiosInstance => {
    */
   api_client.interceptors.request.use(
     (config) => {
+      // 디버깅: 요청 정보 로깅
+      console.log("API 요청:", {
+        url: config.url,
+        method: config.method,
+        baseURL: config.baseURL,
+        withCredentials: config.withCredentials,
+      });
+      
       // TODO: 토큰 기반 인증을 사용할 경우, 여기에 토큰을 추가합니다.
       // const token = await load_auth_token();
       // if (token) {

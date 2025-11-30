@@ -122,13 +122,17 @@ const SearchingScreen = ({ currentScreen, onNavigate }: SearchingProps): ReactEl
     setSearchIntent("default");
   };
 
-  const handleAddResultToFavorite = (result: SearchResult) => {
-    addFavorite({
-      label: result.title,
-      type: result.type === "bus" ? "bus" : "stop",
-    });
-    setSearchIntent("default");
-    onNavigate("bookmark");
+  const handleAddResultToFavorite = async (result: SearchResult) => {
+    try {
+      await addFavorite({
+        label: result.title,
+        type: result.type === "bus" ? "bus" : "stop",
+      });
+      setSearchIntent("default");
+      onNavigate("bookmark");
+    } catch (error) {
+      console.error("즐겨찾기 추가 중 오류가 발생했습니다.", error);
+    }
   };
 
   const handleResultPress = (result: SearchResult) => {

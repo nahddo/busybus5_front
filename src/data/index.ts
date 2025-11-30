@@ -136,6 +136,39 @@ export function findStationInRoute(
 }
 
 /**
+ * 버스 번호로 출발지에서 도착지로 갈 수 있는지 확인
+ * 같은 route_id에서 출발지가 도착지보다 앞에 있어야 함
+ * @param routeNm 버스 번호
+ * @param originStationId 출발지 정류장 ID
+ * @param destStationId 도착지 정류장 ID
+ * @returns 갈 수 있으면 true, 없으면 false
+ */
+export function canGoFromTo(
+  routeNm: string,
+  originStationId: string,
+  destStationId: string
+): boolean {
+  const routeIds = getRouteIdsByRouteNm(routeNm);
+  
+  // 모든 route_id를 확인하여 출발지와 도착지가 같은 route_id에 있고
+  // 출발지가 도착지보다 앞에 있는 경우가 있는지 확인
+  for (const routeId of routeIds) {
+    const stops = ROUTES[routeId];
+    if (!stops) continue;
+
+    const originStop = stops.find((stop) => stop.stationId === originStationId);
+    const destStop = stops.find((stop) => stop.stationId === destStationId);
+
+    // 둘 다 같은 route_id에 있고, 출발지가 도착지보다 앞에 있어야 함
+    if (originStop && destStop && originStop.order < destStop.order) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+/**
  * 호환성을 위한 함수: route_nm과 direction으로 정류장 리스트 가져오기
  * direction은 무시되고, route_nm에 해당하는 첫 번째 route_id를 사용
  * @param routeNm 예: "3302"

@@ -4,8 +4,18 @@ from django.views.decorators.http import require_GET
 from django.views.decorators.csrf import csrf_exempt
 import pandas as pd
 from .models import bus_arrival_past
-from .ml_train import train_model_and_save
-from .ml_predict import predict_remaining_seats
+
+# ML 관련 함수는 선택적으로 import (파일이 없을 수 있음)
+try:
+    from .ml_train import train_model_and_save
+except ImportError:
+    train_model_and_save = None
+
+try:
+    from .ml_predict import predict_remaining_seats
+except ImportError:
+    def predict_remaining_seats(routeid_int, select_time_int):
+        return []
 
 def train_from_db():
     # db(bus_arrival_past)에서 훈련 데이터를 가져와 학습함수에 전달

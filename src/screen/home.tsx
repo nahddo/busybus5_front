@@ -16,6 +16,10 @@ import {
   getBusesAtStation,
   getStationIdByName,
   findStationInRoute,
+  canGoFromTo,
+  getRouteIdsByRouteNm,
+  ROUTES,
+  RouteId,
 } from "../data";
 
 const COLOR = {
@@ -128,22 +132,42 @@ const Home = ({ currentScreen, onNavigate }: HomeProps): ReactElement => {
       return { from_label, to_label, bus_numbers_text, duration_text };
     }
 
-    // 3. 공통 버스 중 첫 번째를 대표 버스로 사용
-    const main_bus = common_buses[0];
-    bus_numbers_text = main_bus;
+    // 3. 실제로 갈 수 있는 버스만 필터링 (같은 route_id에서 출발지가 도착지보다 앞에 있어야 함)
+    const validBuses = common_buses.filter((bus) => canGoFromTo(bus, origin_id, dest_id));
 
-    // 4. 이 버스 노선에서 출발/도착 정류장의 위치 찾기
-    const origin_pos = findStationInRoute(main_bus, origin_id);
-    const dest_pos = findStationInRoute(main_bus, dest_id);
-
-    if (!origin_pos || !dest_pos) {
-      duration_text = "경로 정보 없음";
+    if (validBuses.length === 0) {
+      // 갈 수 있는 버스가 없는 경우: 공통 버스 중 첫 번째를 표시하되 "환승 필요"로 표시
+      bus_numbers_text = common_buses[0];
+      duration_text = "환승 필요";
       return { from_label, to_label, bus_numbers_text, duration_text };
     }
 
-    // route_id가 다르면 단일 노선으로 바로 이동할 수 없다고 판단
-    if (origin_pos.routeId !== dest_pos.routeId) {
-      duration_text = "환승 필요";
+    // 4. 갈 수 있는 버스 중 첫 번째를 대표 버스로 사용
+    const main_bus = validBuses[0];
+    bus_numbers_text = main_bus;
+
+    // 5. 이 버스 노선에서 출발/도착 정류장의 위치 찾기 (실제로 갈 수 있는 route_id 사용)
+    // canGoFromTo가 true를 반환했으므로, 해당 route_id를 찾아야 함
+    const routeIds = getRouteIdsByRouteNm(main_bus);
+    let origin_pos: { routeId: RouteId; order: number } | null = null;
+    let dest_pos: { routeId: RouteId; order: number } | null = null;
+
+    for (const routeId of routeIds) {
+      const stops = ROUTES[routeId];
+      if (!stops) continue;
+
+      const originStop = stops.find((stop) => stop.stationId === origin_id);
+      const destStop = stops.find((stop) => stop.stationId === dest_id);
+
+      if (originStop && destStop && originStop.order < destStop.order) {
+        origin_pos = { routeId, order: originStop.order };
+        dest_pos = { routeId, order: destStop.order };
+        break;
+      }
+    }
+
+    if (!origin_pos || !dest_pos) {
+      duration_text = "경로 정보 없음";
       return { from_label, to_label, bus_numbers_text, duration_text };
     }
 
@@ -159,33 +183,66 @@ const Home = ({ currentScreen, onNavigate }: HomeProps): ReactElement => {
     return { from_label, to_label, bus_numbers_text, duration_text };
   }, [routeSelection]);
 
+  // 실제로 갈 수 있는 버스 번호 목록 계산 (bookmark.tsx와 동일한 로직)
+  const availableBusesForBookmark = useMemo(() => {
+    const origin_name = routeSelection.origin.title;
+    const dest_name = routeSelection.destination.title;
+
+    const origin_id = getStationIdByName(origin_name);
+    const dest_id = getStationIdByName(dest_name);
+
+    if (!origin_id || !dest_id) {
+      return [];
+    }
+
+    const origin_buses = getBusesAtStation(origin_id);
+    const dest_buses = getBusesAtStation(dest_id);
+    const common_buses = origin_buses.filter((bus) => dest_buses.includes(bus));
+
+    // 각 버스가 실제로 출발지에서 도착지로 갈 수 있는지 확인
+    // 모든 route_id를 확인하여 실제로 갈 수 있는 버스만 필터링
+    const validBuses = common_buses.filter((bus) => {
+      return canGoFromTo(bus, origin_id, dest_id);
+    });
+
+    return validBuses;
+  }, [routeSelection]);
+
+  const busesTextForBookmark = availableBusesForBookmark.length > 0 
+    ? availableBusesForBookmark.join(", ") 
+    : "";
+
   const isRouteBookmarked = useMemo(() => {
+    if (!busesTextForBookmark) return false;
+    
     return savedRoutes.some(
       (route) =>
         route.from === routeSelection.origin.title &&
         route.to === routeSelection.destination.title &&
-        route.detail === "3302, 3301, 500-1" &&
+        route.detail === busesTextForBookmark &&
         route.type === "bus"
     );
-  }, [savedRoutes, routeSelection]);
+  }, [savedRoutes, routeSelection, busesTextForBookmark]);
 
-  const handleBookmarkRoute = () => {
+  const handleBookmarkRoute = async () => {
+    if (!busesTextForBookmark) return;
+
     if (isRouteBookmarked) {
       const existing = savedRoutes.find(
         (route) =>
           route.from === routeSelection.origin.title &&
           route.to === routeSelection.destination.title &&
-          route.detail === "3302, 3301, 500-1" &&
+          route.detail === busesTextForBookmark &&
           route.type === "bus"
       );
       if (existing) {
-        removeSavedRoute(existing.id);
+        await removeSavedRoute(existing.id);
       }
     } else {
-      addSavedRouteIfNotExists({
+      await addSavedRouteIfNotExists({
         from: routeSelection.origin.title,
         to: routeSelection.destination.title,
-        detail: "3302, 3301, 500-1",
+        detail: busesTextForBookmark,
         type: "bus",
       });
     }

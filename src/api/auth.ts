@@ -79,11 +79,15 @@ export const login_user = async (
   password: string
 ): Promise<Auth_response> => {
   try {
+    console.log("로그인 요청 시작:", { email, password: "***" });
+    
     // 백엔드는 username과 password만 받으므로 email을 username으로 사용
     const response = await api_client.post<Auth_response>("/auth/login/", {
       username: email, // email을 username으로 사용
       password,
     });
+
+    console.log("로그인 응답:", response.data);
 
     // 백엔드 응답 형식에 맞게 변환
     return {
@@ -97,6 +101,18 @@ export const login_user = async (
       },
     };
   } catch (error: any) {
+    console.error("로그인 API 에러 상세:", {
+      message: error?.message,
+      response: error?.response?.data,
+      status: error?.response?.status,
+      statusText: error?.response?.statusText,
+      config: {
+        url: error?.config?.url,
+        method: error?.config?.method,
+        data: error?.config?.data,
+      },
+    });
+    
     // 에러 응답 처리
     if (error.response?.data?.error) {
       throw new Error(error.response.data.error);
