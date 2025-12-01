@@ -1,12 +1,25 @@
 import React, { ReactElement, useEffect, useMemo, useState } from "react";
-import { FlatList, Image, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Image,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Svg, { Defs, LinearGradient, Path, Stop } from "react-native-svg";
 import BottomTabBar from "../components/BottomTabBar";
 import { NavigateHandler, ScreenName } from "../types/navigation";
-import { getBusSearchState, setBusSearchNumber, subscribeBusSearch } from "../store/busSearchStore";
+import {
+  getBusSearchState,
+  setBusSearchNumber,
+  subscribeBusSearch,
+} from "../store/busSearchStore";
 import { getRouteStops, RouteStop, getRouteIdsByRouteNm } from "../data";
-import { getBusRealtimeData, BusRealtimeData, predictSeat, PredictSeatResponse } from "../api/bus";
+import { predictSeat, PredictSeatResponse } from "../api/bus";
 
 type BusSearchProps = {
   currentScreen: ScreenName;
@@ -14,15 +27,8 @@ type BusSearchProps = {
 };
 
 const ICONS = {
-  cellular: require("../../assets/images/bus_search/Cellular Connection.png"),
-  wifi: require("../../assets/images/bus_search/Wifi.png"),
-  battery: require("../../assets/images/bus_search/Battery.png"),
-  bookmark: require("../../assets/images/bus_search/Bookmark.png"),
-  home: require("../../assets/images/bus_search/Home.png"),
-  search: require("../../assets/images/bus_search/Search.png"),
-  user: require("../../assets/images/bus_search/User.png"),
-  directionsBus: require("../../assets/images/bus_search/directions_bus.png"),
   reload: require("../../assets/images/station_search/Examples/reload.png"),
+  directionsBus: require("../../assets/images/bus_search/directions_bus.png"), // (실시간용 아이콘이지만 스타일 때문에 남겨둠)
 };
 
 type TimeSlot = "6:00" | "6:30" | "7:00" | "7:30" | "8:00" | "8:30" | "9:00";
@@ -37,12 +43,12 @@ const TIME_TABS: Array<{ id: TimeSlot; label: string }> = [
   { id: "9:00", label: "9:00" },
 ];
 
-
 const TIMELINE_LINE_WIDTH = 5;
 const TIMELINE_DOT_SIZE = 16;
 const TIMELINE_LINE_OFFSET = 22; // timelineContainer 내부에서 회색 라인이 위치할 X 좌표
 const TIMELINE_TEXT_SPACING = 12;
-const TIMELINE_TEXT_OFFSET = TIMELINE_LINE_OFFSET + TIMELINE_DOT_SIZE / 2 + TIMELINE_TEXT_SPACING;
+const TIMELINE_TEXT_OFFSET =
+  TIMELINE_LINE_OFFSET + TIMELINE_DOT_SIZE / 2 + TIMELINE_TEXT_SPACING;
 
 /**
  * 잔여 좌석 수에 따라 색상을 반환한다.
@@ -74,16 +80,22 @@ const COLOR = {
 };
 
 /**
- * BusSearchScreen
- * 버스 검색 화면을 Figma 디자인 기반으로 구성한다.
+ * BusSearchPredictionScreen
+ * - 실시간 버스 조회 제거
+ * - 예측 좌석 시각화만 담당
  */
-const BusSearchScreen = ({ currentScreen, onNavigate }: BusSearchProps): ReactElement => {
+const BusSearchPredictionScreen = ({
+  currentScreen,
+  onNavigate,
+}: BusSearchProps): ReactElement => {
   const initialBusNumber = getBusSearchState().busNumber;
   const [busNumber, setBusNumber] = useState(initialBusNumber);
   const [selectedTime, setSelectedTime] = useState<TimeSlot>("6:30");
   // 기본값을 실제 데이터에 존재하는 버스 번호로 변경 (3302 또는 3200)
-  const [selectedRoute, setSelectedRoute] = useState<string>(initialBusNumber || "3302");
-  // 상행만 있으므로 direction을 항상 0으로 고정
+  const [selectedRoute, setSelectedRoute] = useState<string>(
+    initialBusNumber || "3302"
+  );
+  // 상행만 있으므로 direction을 항상 0으로 고정 (지금은 사용 X, 그래도 남겨둠)
   const direction: 0 = 0;
 
   // 선택된 노선에 따라 정류장 목록 가져오기 (상행만)
@@ -91,64 +103,27 @@ const BusSearchScreen = ({ currentScreen, onNavigate }: BusSearchProps): ReactEl
     return getRouteStops(selectedRoute, 0);
   }, [selectedRoute]);
 
-  // 실시간 버스 데이터 조회
-  const [realtimeData, setRealtimeData] = useState<BusRealtimeData[]>([]);
-  const [isLoadingData, setIsLoadingData] = useState(false);
-
   // 예측 좌석 데이터 조회 (station_num -> remainseat_pred 맵)
-  const [predictionData, setPredictionData] = useState<Map<number, number>>(new Map());
+  const [predictionData, setPredictionData] = useState<Map<number, number>>(
+    new Map()
+  );
   const [isLoadingPrediction, setIsLoadingPrediction] = useState(false);
 
   /**
-   * 시간 슬롯을 API 요청 형식으로 변환 (0~7 인덱스)
-   * 백엔드에서 select_time을 0~7 범위의 정수로 받습니다.
+   * 시간 슬롯을 API 요청 형식으로 변환 (0~6 인덱스)
    * "6:00" -> 0, "6:30" -> 1, "7:00" -> 2, "7:30" -> 3, "8:00" -> 4, "8:30" -> 5, "9:00" -> 6
    */
   const convertTimeSlotToIndex = (timeSlot: TimeSlot): number => {
-    const timeSlots: TimeSlot[] = ["6:00", "6:30", "7:00", "7:30", "8:00", "8:30", "9:00"];
+    const timeSlots: TimeSlot[] = [
+      "6:00",
+      "6:30",
+      "7:00",
+      "7:30",
+      "8:00",
+      "8:30",
+      "9:00",
+    ];
     return timeSlots.indexOf(timeSlot);
-  };
-
-  /**
-   * 실시간 버스 위치 데이터 조회 함수
-   * - routeid에 따라 현재 버스의 위치 정보를 실시간 API에서 받아옴
-   * - 버스 위치는 vehid1과 stationid로 표시됨
-   * - 잔여좌석 정보는 예측 모델에서 따로 받음
-   */
-  const fetchRealtimeData = async () => {
-    if (!selectedRoute) return;
-
-    setIsLoadingData(true);
-    try {
-      // 버스 번호(routename)로 routeid 찾기
-      const routeIds = getRouteIdsByRouteNm(selectedRoute);
-      if (routeIds.length === 0) {
-        console.warn(`버스 번호 ${selectedRoute}에 해당하는 routeid를 찾을 수 없습니다.`);
-        setRealtimeData([]);
-        return;
-      }
-
-      // 상행만 있으므로 첫 번째 routeid 선택
-      const selectedRouteId = routeIds[0];
-
-      // 오늘 날짜를 YYYY-MM-DD 형식으로 변환
-      const today = new Date();
-      const service_date = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
-
-      // routeid로 실시간 버스 위치 데이터 조회 (버스 위치만, 잔여좌석 제외)
-      const data = await getBusRealtimeData(selectedRouteId, service_date, selectedTime);
-      setRealtimeData(data);
-      console.log(`실시간 버스 위치 데이터 조회 성공:`, {
-        routeid: selectedRouteId,
-        데이터_개수: data.length,
-        버스_위치_있는_정류장: data.filter((d) => d.vehid1 && d.vehid1.trim() !== "").length,
-      });
-    } catch (error) {
-      console.error("실시간 버스 위치 데이터 조회 실패:", error);
-      setRealtimeData([]);
-    } finally {
-      setIsLoadingData(false);
-    }
   };
 
   /**
@@ -163,7 +138,9 @@ const BusSearchScreen = ({ currentScreen, onNavigate }: BusSearchProps): ReactEl
       // 버스 번호(routename)로 routeid 찾기
       const routeIds = getRouteIdsByRouteNm(selectedRoute);
       if (routeIds.length === 0) {
-        console.warn(`버스 번호 ${selectedRoute}에 해당하는 routeid를 찾을 수 없습니다.`);
+        console.warn(
+          `버스 번호 ${selectedRoute}에 해당하는 routeid를 찾을 수 없습니다.`
+        );
         setPredictionData(new Map());
         return;
       }
@@ -174,27 +151,34 @@ const BusSearchScreen = ({ currentScreen, onNavigate }: BusSearchProps): ReactEl
       // routeid를 숫자로 변환
       const routeidNum = parseInt(selectedRouteId, 10);
       if (isNaN(routeidNum)) {
-        console.warn(`routeid를 숫자로 변환할 수 없습니다: ${selectedRouteId}`);
+        console.warn(
+          `routeid를 숫자로 변환할 수 없습니다: ${selectedRouteId}`
+        );
         setPredictionData(new Map());
         return;
       }
 
-      // 시간 슬롯을 API 형식으로 변환 (0~7 인덱스)
+      // 시간 슬롯을 API 형식으로 변환 (0~6 인덱스)
       const select_time = convertTimeSlotToIndex(selectedTime);
       if (select_time < 0) {
-        console.warn(`시간 슬롯을 인덱스로 변환할 수 없습니다: ${selectedTime}`);
+        console.warn(
+          `시간 슬롯을 인덱스로 변환할 수 없습니다: ${selectedTime}`
+        );
         setPredictionData(new Map());
         return;
       }
 
       // 예측 좌석 데이터 조회
-      const response: PredictSeatResponse = await predictSeat(routeidNum, select_time);
+      const response: PredictSeatResponse = await predictSeat(
+        routeidNum,
+        select_time
+      );
 
       if (response.predictions && response.predictions.length > 0) {
         // predictions 배열을 station_num -> remainseat_pred 맵으로 변환
         const predictionMap = new Map<number, number>();
         response.predictions.forEach((pred) => {
-          predictionMap.set(pred.station_num, pred.remainseat_pred);
+          predictionMap.set(Number(pred.station_num), pred.remainseat_pred);
         });
         setPredictionData(predictionMap);
         console.log(`예측 좌석 데이터 조회 성공:`, {
@@ -204,7 +188,10 @@ const BusSearchScreen = ({ currentScreen, onNavigate }: BusSearchProps): ReactEl
           샘플_예측값: response.predictions.slice(0, 5),
         });
       } else {
-        console.warn("예측 좌석 데이터 조회 실패:", response.error || "예측 데이터가 없습니다.");
+        console.warn(
+          "예측 좌석 데이터 조회 실패:",
+          response.error || "예측 데이터가 없습니다."
+        );
         setPredictionData(new Map());
       }
     } catch (error) {
@@ -217,22 +204,18 @@ const BusSearchScreen = ({ currentScreen, onNavigate }: BusSearchProps): ReactEl
 
   /**
    * 새로고침 함수
-   * 실시간 버스 위치 데이터와 예측 좌석 데이터를 다시 조회한다.
+   * 예측 좌석 데이터만 다시 조회한다.
    */
   const handleRefresh = async () => {
-    await Promise.all([fetchRealtimeData(), fetchPredictionData()]);
+    await fetchPredictionData();
   };
-
-  // 실시간 버스 위치 데이터 조회
-  useEffect(() => {
-    fetchRealtimeData();
-  }, [selectedRoute, selectedTime]);
 
   // 예측 좌석 데이터 조회
   useEffect(() => {
     fetchPredictionData();
   }, [selectedRoute, selectedTime]);
 
+  // busSearchStore 구독 (검색 화면에서 설정한 버스 번호 반영)
   useEffect(() => {
     const unsubscribe = subscribeBusSearch((state) => {
       setBusNumber(state.busNumber);
@@ -258,20 +241,29 @@ const BusSearchScreen = ({ currentScreen, onNavigate }: BusSearchProps): ReactEl
       <View style={styles.container}>
         <View style={styles.content_wrapper}>
           <View style={styles.header_row}>
-            <BusNumberField busNumber={busNumber} onBusNumberChange={handleBusNumberChange} />
+            <BusNumberField
+              busNumber={busNumber}
+              onBusNumberChange={handleBusNumberChange}
+            />
             <TouchableOpacity
               style={styles.reload_button}
               activeOpacity={0.7}
               onPress={handleRefresh}
-              disabled={isLoadingData || isLoadingPrediction}
+              disabled={isLoadingPrediction}
             >
-              <Image source={ICONS.reload} style={styles.reload_icon} resizeMode="contain" />
+              <Image
+                source={ICONS.reload}
+                style={styles.reload_icon}
+                resizeMode="contain"
+              />
             </TouchableOpacity>
           </View>
-          <TimeFilterTabs selectedTime={selectedTime} onTimeSelect={setSelectedTime} />
+          <TimeFilterTabs
+            selectedTime={selectedTime}
+            onTimeSelect={setSelectedTime}
+          />
           <BusSeatsVisualization
             routeStops={routeStops}
-            realtimeData={realtimeData}
             predictionData={predictionData}
           />
         </View>
@@ -284,8 +276,6 @@ const BusSearchScreen = ({ currentScreen, onNavigate }: BusSearchProps): ReactEl
 /**
  * BusNumberField
  * 버스 번호 입력 필드
- * 선택된 버스 번호가 있으면 "버스 번호 {버스번호}" 형태로 표시
- * "버스 번호"와 버스 번호 사이에 간격을 두고 전체 길이를 길게 표시
  */
 const BusNumberField = ({
   busNumber,
@@ -320,7 +310,7 @@ const BusNumberField = ({
 
 /**
  * TimeFilterTabs
- * 시간 필터 탭 (6:00, 6:30, 7:00, 7:30, 8:00, 8:30)
+ * 시간 필터 탭 (6:00, 6:30, 7:00, 7:30, 8:00, 8:30, 9:00)
  */
 const TimeFilterTabs = ({
   selectedTime,
@@ -341,7 +331,12 @@ const TimeFilterTabs = ({
               activeOpacity={0.8}
               onPress={() => onTimeSelect(tab.id)}
             >
-              <Text style={[styles.time_tab_label, isActive && styles.time_tab_label_active]}>
+              <Text
+                style={[
+                  styles.time_tab_label,
+                  isActive && styles.time_tab_label_active,
+                ]}
+              >
                 {tab.label}
               </Text>
             </TouchableOpacity>
@@ -356,14 +351,13 @@ const TimeFilterTabs = ({
  * BusSeatsVisualization
  * 버스 좌석/혼잡도 시각화 (Vertical Area Shape)
  * y축: 정류장 목록(카테고리), x축: 잔여좌석(연속값)
+ * → 실시간 데이터 제거, 예측값만 사용
  */
 const BusSeatsVisualization = ({
   routeStops,
-  realtimeData,
-  predictionData
+  predictionData,
 }: {
   routeStops: RouteStop[];
-  realtimeData: BusRealtimeData[];
   predictionData: Map<number, number>; // station_num -> remainseat_pred 맵
 }): ReactElement => {
   // 각 정류장의 높이 (일직선 배치를 위해)
@@ -371,60 +365,43 @@ const BusSeatsVisualization = ({
   const MAX_WIDTH = 70; // 그래프 최대 너비 (60~80px 범위)
   const totalHeight = routeStops.length * stationHeight; // 전체 높이
 
-  // 실시간 버스 위치 데이터를 정류장별로 매핑
-  // 실시간 API에서 받은 현재 버스의 위치 정보를 정류장별로 매핑
-  // stationid와 station_num 둘 다 사용하여 매핑 (백엔드가 생성한 stationid와 실제 stationId가 다를 수 있음)
-  const realtimeDataMapById = new Map<string, BusRealtimeData>();
-  const realtimeDataMapByNum = new Map<number, BusRealtimeData>();
-  realtimeData.forEach((data) => {
-    // stationid를 키로 사용하여 정류장별 버스 위치 정보 저장
-    realtimeDataMapById.set(data.stationid, data);
-    // station_num도 키로 사용 (백엔드가 생성한 stationid와 실제 stationId가 다를 수 있으므로)
-    const stationNum = parseInt(data.station_num, 10);
-    if (!isNaN(stationNum)) {
-      realtimeDataMapByNum.set(stationNum, data);
-    }
-  });
-
   // 최대 좌석 수 계산 (예측 데이터에서 최대값 찾기, 없으면 기본값 45)
-  const maxSeats = predictionData.size > 0
-    ? Math.max(...Array.from(predictionData.values()), 45)
-    : 45;
+  const maxSeats =
+    predictionData.size > 0
+      ? Math.max(...Array.from(predictionData.values()), 45)
+      : 45;
 
   // 각 정류장의 좌표 계산
   // y: 타임라인의 점들과 정확히 일치 (정류장 중앙)
   // x: 잔여좌석 수에 비례하여 계산
-  // 우선순위: 실시간 데이터 > 예측 데이터 > 기본값
-  const points: Array<{ x: number; y: number; seats: number; vehid1?: string }> = routeStops.map((stop, index) => {
-    const y = index * stationHeight + stationHeight / 2; // 정류장 중앙 (타임라인과 일치)
+  const points: Array<{ x: number; y: number; seats: number }> = routeStops.map(
+    (stop, index) => {
+      const y = index * stationHeight + stationHeight / 2; // 정류장 중앙 (타임라인과 일치)
 
-    // 실시간 API에서 받은 해당 정류장의 버스 위치 정보 가져오기
-    // stationid로 먼저 시도하고, 없으면 station_num(order)로 시도
-    let realtimeInfo = realtimeDataMapById.get(stop.stationId);
-    if (!realtimeInfo) {
-      // stationid로 매핑 실패 시 station_num(order)로 매핑 시도
-      realtimeInfo = realtimeDataMapByNum.get(stop.order);
+      // 좌석 수 결정: 예측 데이터 > 기본값
+      let seats: number;
+      const predictedSeats = predictionData.get(stop.order);
+      if (predictedSeats !== undefined) {
+        // 예측 모델에서 받은 잔여좌석 수 사용
+        seats = predictedSeats;
+      } else {
+        // 예측 데이터가 없으면 기본값 사용 (단순 감소 형태)
+        seats = Math.max(
+          0,
+          Math.floor(
+            maxSeats *
+              (1 - (index / Math.max(routeStops.length - 1, 1)) * 0.8)
+          )
+        );
+      }
+
+      return {
+        x: 0,
+        y,
+        seats,
+      };
     }
-
-    // 좌석 수 결정: 예측 데이터 > 기본값
-    // 잔여좌석은 routeid와 timeslot에 따라 예측 모델에서 받음
-    let seats: number;
-    const predictedSeats = predictionData.get(stop.order);
-    if (predictedSeats !== undefined) {
-      // 예측 모델에서 받은 잔여좌석 수 사용
-      seats = predictedSeats;
-    } else {
-      // 예측 데이터가 없으면 기본값 사용
-      seats = Math.max(0, Math.floor(maxSeats * (1 - (index / Math.max(routeStops.length - 1, 1)) * 0.8)));
-    }
-
-    return {
-      x: 0,
-      y,
-      seats,
-      vehid1: realtimeInfo?.vehid1, // 실시간 API에서 받은 버스 ID (현재 버스 위치 표시용)
-    };
-  });
+  );
 
   // 실제 좌석 수의 최대값과 최소값 계산
   const actualMaxSeats = Math.max(...points.map((p) => p.seats), maxSeats);
@@ -488,7 +465,12 @@ const BusSeatsVisualization = ({
     return [
       { offset: "0%", color: getSeatColor(normalizedPoints[0].seats) },
       ...stops,
-      { offset: "100%", color: getSeatColor(normalizedPoints[normalizedPoints.length - 1].seats) },
+      {
+        offset: "100%",
+        color: getSeatColor(
+          normalizedPoints[normalizedPoints.length - 1].seats
+        ),
+      },
     ];
   })();
 
@@ -510,102 +492,126 @@ const BusSeatsVisualization = ({
           style={styles.card_scroll_view}
           contentContainerStyle={[
             styles.card_scroll_content,
-            { minHeight: totalHeight + 40 } // padding 20 * 2 = 40
+            { minHeight: totalHeight + 40 }, // padding 20 * 2 = 40
           ]}
           showsVerticalScrollIndicator={true}
           nestedScrollEnabled={true}
         >
           {/* 전체 레이아웃: 가로 방향 3컬럼 */}
           <View style={styles.main_row}>
-          {/* [0] seatsAreaContainer: 좌석 수 그라디언트 면 */}
-          <View style={[styles.seats_area_container, { height: totalHeight, width: MAX_WIDTH }]}>
-            <Svg width={MAX_WIDTH} height={totalHeight} style={styles.svg_container}>
-              <Defs>
-                {/* 수직 그라데이션 (위에서 아래로) */}
-              <LinearGradient id="congestionGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                {gradientStops.map((stop, index) => (
-                    <Stop
-                      key={index}
-                      offset={stop.offset}
-                      stopColor={stop.color}
-                    />
-                  ))}
-                </LinearGradient>
-              </Defs>
-              {/* Area Chart Path - 2차원 면 그래프 */}
-              <Path
-                d={areaPath}
-                fill="url(#congestionGradient)"
-              fillOpacity={0.5}
-                stroke="none"
-              />
-            </Svg>
-          </View>
+            {/* [0] seatsAreaContainer: 좌석 수 그라디언트 면 */}
+            <View
+              style={[
+                styles.seats_area_container,
+                { height: totalHeight, width: MAX_WIDTH },
+              ]}
+            >
+              <Svg
+                width={MAX_WIDTH}
+                height={totalHeight}
+                style={styles.svg_container}
+              >
+                <Defs>
+                  {/* 수직 그라데이션 (위에서 아래로) */}
+                  <LinearGradient
+                    id="congestionGradient"
+                    x1="0%"
+                    y1="0%"
+                    x2="0%"
+                    y2="100%"
+                  >
+                    {gradientStops.map((stop, index) => (
+                      <Stop
+                        key={index}
+                        offset={stop.offset}
+                        stopColor={stop.color}
+                      />
+                    ))}
+                  </LinearGradient>
+                </Defs>
+                {/* Area Chart Path - 2차원 면 그래프 */}
+                <Path
+                  d={areaPath}
+                  fill="url(#congestionGradient)"
+                  fillOpacity={0.5}
+                  stroke="none"
+                />
+              </Svg>
+            </View>
 
-          {/* [1] yAxisLabelContainer: y축 라벨 (45석, 44석...) */}
-          <View style={[styles.y_axis_label_container, { height: totalHeight }]}>
-            {normalizedPoints.map((point, index) => {
-              const y = point.y; // 정류장 중앙 (타임라인과 일치)
-              return (
-                <Text
-                  key={`${routeStops[index].stationId}-${index}`}
-                  style={[
-                    styles.y_axis_label,
-                    {
-                      position: "absolute",
-                      top: y - 12, // 텍스트 중앙 정렬 (lineHeight 24 기준)
-                    },
-                  ]}
-                >
-                  {point.seats}석
-                </Text>
-              );
-            })}
-          </View>
-
-          {/* [2] timelineContainer: 회색 세로 라인 + 정류장 원 + 버스 아이콘 + 정류장 이름 */}
-          <View style={[styles.timeline_container, { height: totalHeight }]}>
-            {/* 회색 세로 라인 */}
-            <View style={styles.timeline_line} />
-
-            {/* 정류장 정보 */}
-            {normalizedPoints.map((point, index) => {
-              const stop = routeStops[index];
-              const color = getSeatColor(point.seats);
-              // 실시간 데이터에서 버스 위치 확인 (vehid1이 있으면 버스가 해당 정류장에 있음)
-              const isBusPosition = !!point.vehid1;
-              const y = point.y; // 정류장 중앙
-
-              return (
-                <View
-                  key={`${stop.stationId}-${index}`}
-                  style={[
-                    styles.station_row,
-                    {
-                      position: "absolute",
-                      top: y - 24, // 텍스트 중앙 정렬 (lineHeight 24 기준)
-                    },
-                  ]}
-                >
-                  {/* 정류장 원 */}
-                  <View style={styles.timeline_dot_wrapper}>
-                    <View style={[styles.station_circle, { backgroundColor: color }]} />
-                    {isBusPosition && (
-                      <View style={styles.bus_icon_wrapper}>
-                        <Image source={ICONS.directionsBus} style={styles.bus_icon} resizeMode="contain" />
-                      </View>
-                    )}
-                  </View>
-
-                  {/* 정류장 이름 - 정류장 원 오른쪽에 배치 */}
-                  <Text style={styles.station_text} numberOfLines={1} ellipsizeMode="tail">
-                    {stop.stationName || stop.stationId || `정류장 ${stop.order}`}
+            {/* [1] yAxisLabelContainer: y축 라벨 (45석, 44석...) */}
+            <View
+              style={[styles.y_axis_label_container, { height: totalHeight }]}
+            >
+              {normalizedPoints.map((point, index) => {
+                const y = point.y; // 정류장 중앙 (타임라인과 일치)
+                return (
+                  <Text
+                    key={`${routeStops[index].stationId}-${index}`}
+                    style={[
+                      styles.y_axis_label,
+                      {
+                        position: "absolute",
+                        top: y - 12, // 텍스트 중앙 정렬 (lineHeight 24 기준)
+                      },
+                    ]}
+                  >
+                    {point.seats}석
                   </Text>
-                </View>
-              );
-            })}
+                );
+              })}
+            </View>
+
+            {/* [2] timelineContainer: 회색 세로 라인 + 정류장 원 + 정류장 이름 */}
+            <View
+              style={[styles.timeline_container, { height: totalHeight }]}
+            >
+              {/* 회색 세로 라인 */}
+              <View style={styles.timeline_line} />
+
+              {/* 정류장 정보 */}
+              {normalizedPoints.map((point, index) => {
+                const stop = routeStops[index];
+                const color = getSeatColor(point.seats);
+                const y = point.y; // 정류장 중앙
+
+                return (
+                  <View
+                    key={`${stop.stationId}-${index}`}
+                    style={[
+                      styles.station_row,
+                      {
+                        position: "absolute",
+                        top: y - 24, // 텍스트 중앙 정렬 (lineHeight 24 기준)
+                      },
+                    ]}
+                  >
+                    {/* 정류장 원 */}
+                    <View style={styles.timeline_dot_wrapper}>
+                      <View
+                        style={[
+                          styles.station_circle,
+                          { backgroundColor: color },
+                        ]}
+                      />
+                      {/* 실시간 버스 아이콘은 예측 화면에서는 사용하지 않음 */}
+                    </View>
+
+                    {/* 정류장 이름 - 정류장 원 오른쪽에 배치 */}
+                    <Text
+                      style={styles.station_text}
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                    >
+                      {stop.stationName ||
+                        stop.stationId ||
+                        `정류장 ${stop.order}`}
+                    </Text>
+                  </View>
+                );
+              })}
+            </View>
           </View>
-        </View>
         </ScrollView>
       </View>
     </View>
@@ -641,32 +647,6 @@ const styles = StyleSheet.create({
     height: 24,
     tintColor: COLOR.textPrimary,
   },
-  status_bar: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 8,
-    marginBottom: 24,
-  },
-  status_time: {
-    fontSize: 17,
-    fontWeight: "600",
-    color: COLOR.textPrimary,
-    fontFamily: "SF Pro",
-  },
-  status_icons: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 7,
-  },
-  status_icon: {
-    width: 19,
-    height: 12,
-  },
-  status_battery: {
-    width: 27,
-    height: 13,
-  },
   bus_number_field: {
     marginBottom: 20,
   },
@@ -689,7 +669,6 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "600",
     color: COLOR.textPrimary,
-    fontFamily: "SF Pro",
     letterSpacing: -0.43,
     flexShrink: 0,
     lineHeight: 22,
@@ -701,7 +680,6 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "600",
     color: COLOR.textPrimary,
-    fontFamily: "SF Pro",
     letterSpacing: -0.43,
     lineHeight: 22,
     flex: 1,
@@ -710,7 +688,6 @@ const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: "400",
     color: COLOR.textSecondary,
-    fontFamily: "SF Pro",
     letterSpacing: -0.43,
     lineHeight: 22,
     flex: 1,
@@ -741,7 +718,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "500",
     color: "#090909",
-    fontFamily: "SF Pro",
     lineHeight: 20,
     letterSpacing: -0.23,
   },
@@ -790,7 +766,6 @@ const styles = StyleSheet.create({
   y_axis_label: {
     fontSize: 13,
     color: COLOR.textPrimary,
-    fontFamily: "Inter-Regular",
     lineHeight: 24,
     textAlign: "right", // 오른쪽 정렬
     width: "100%",
@@ -825,7 +800,10 @@ const styles = StyleSheet.create({
     height: TIMELINE_DOT_SIZE,
     alignItems: "center",
     justifyContent: "center",
-    left: TIMELINE_LINE_OFFSET + TIMELINE_LINE_WIDTH / 2 - TIMELINE_DOT_SIZE / 2,
+    left:
+      TIMELINE_LINE_OFFSET +
+      TIMELINE_LINE_WIDTH / 2 -
+      TIMELINE_DOT_SIZE / 2,
     top: (48 - TIMELINE_DOT_SIZE) / 2,
   },
   station_circle: {
@@ -833,45 +811,21 @@ const styles = StyleSheet.create({
     height: 16,
     borderRadius: 8,
   },
-  bus_icon_wrapper: {
-    position: "absolute",
-    left: -2,
-    top: -2,
-    width: 20,
-    height: 20,
-    alignItems: "center",
-    justifyContent: "center",
-    zIndex: 3,
-  },
-  bus_icon: {
-    width: 20,
-    height: 20,
-    tintColor: COLOR.textPrimary,
-  },
   station_text: {
     flex: 1,
     fontSize: 13,
     color: COLOR.textPrimary,
-    fontFamily: "Inter-Regular",
     lineHeight: 24,
     textAlign: "left",
-    // timeline_container의 paddingLeft를 고려하여 정류장 원 오른쪽부터 시작
-    // 정류장 원 중심: TIMELINE_LINE_OFFSET + TIMELINE_LINE_WIDTH / 2 = 22 + 2.5 = 24.5
-    // 정류장 원 오른쪽 끝: 24.5 + TIMELINE_DOT_SIZE / 2 = 24.5 + 8 = 32.5
-    // 텍스트 시작: 32.5 + TIMELINE_TEXT_SPACING = 32.5 + 12 = 44.5
-    // timeline_container paddingLeft: TIMELINE_TEXT_OFFSET = 42
-    // 따라서 marginLeft: 44.5 - 42 = 2.5, 하지만 더 명확하게 하기 위해 간단히 계산
-    // 추가로 16px 더 오른쪽으로 이동
-    marginLeft: TIMELINE_DOT_SIZE / 2 + TIMELINE_TEXT_SPACING + 22, // 정류장 원 중심에서 오른쪽 끝까지 + 간격 + 16px
-    paddingRight: 8, // 오른쪽 여백
+    marginLeft: TIMELINE_DOT_SIZE / 2 + TIMELINE_TEXT_SPACING + 22,
+    paddingRight: 8,
   },
   empty_text: {
     fontSize: 15,
     color: COLOR.grayDark,
-    fontFamily: "SF Pro",
     textAlign: "center",
     paddingVertical: 20,
   },
 });
 
-export default BusSearchScreen;
+export default BusSearchPredictionScreen;

@@ -484,7 +484,7 @@ const BusRouteCard = ({
   });
 
   // 버스 현재 위치: 실시간 API에서 받은 데이터로 표시
-  // 각 정류장별로 vehid1이 있는지 확인 (bus_search.tsx와 동일한 방식)
+  // 각 정류장별로 vehid1이 있는지 확인 (bus_search_prediction.tsx와 동일한 방식)
   // vehid1이 있으면 해당 정류장에 현재 버스가 있음
   // displayStops에 맞춰 각 정류장의 버스 위치 정보 계산
   const busPositions = Array.from({ length: displayStops }).map((_, index) => {
