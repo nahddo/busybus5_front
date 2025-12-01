@@ -10,7 +10,6 @@ import {
 import LinearGradient from "react-native-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { NavigateHandler } from "../types/navigation";
-import { login } from "../store/authStore";
 import { register_user } from "../api/auth";
 
 // 이미지 리소스 import
@@ -64,16 +63,18 @@ const SignUpVersion1 = ({ onNavigate }: SignUpProps) => {
       const auth_response = await register_user(name, email, password);
 
       /**
-       * 4. 응답으로 받은 사용자 정보로 전역 인증 상태 갱신
-       * - 백엔드 응답에서 user 객체를 사용하여 인증 상태를 갱신합니다.
+       * 4. 응답으로 받은 사용자 정보 확인
+       * - 백엔드 응답에서 user 객체를 사용하여 회원가입 성공 여부를 확인합니다.
        */
       const auth_user = auth_response.user;
-      if (auth_user) {
-        login(auth_user.email || auth_user.username, auth_user.name || auth_user.username);
+      if (!auth_user) {
+        setError_message("회원가입에 실패했습니다. 사용자 정보를 받을 수 없습니다.");
+        return;
       }
 
-      // 5. 회원가입 및 로그인 성공 시 사용자 화면으로 이동
-      onNavigate("user");
+      // 5. 회원가입 성공 시 로그인 화면으로 이동
+      // 사용자가 직접 로그인하도록 로그인 화면으로 이동합니다.
+      onNavigate("login");
     } catch (error) {
       /**
        * 6. 에러 처리

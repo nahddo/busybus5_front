@@ -3,16 +3,17 @@ import api_client from "./client";
 /**
  * 버스 실시간 데이터 타입 정의
  * 백엔드에서 받는 데이터 구조에 맞춤
+ * - 버스 위치 정보만 포함 (잔여좌석은 예측 모델에서 따로 받음)
  */
 export type BusRealtimeData = {
   service_date: string;          // 서비스 날짜 (예: "2025-11-05")
   arrival_time: string;          // 도착 시간 (예: "2025-11-05 8:01")
-  vehid1: string;                // 버스 ID (예: "230010040")
+  vehid1: string;                // 버스 ID (예: "230010040") - 버스 위치 표시용
   station_num: string;           // 정류장 번호 (예: "2")
-  remainseat_at_arrival: number; // 도착 시 잔여 좌석 수 (예: 40)
+  remainseat_at_arrival?: number; // 도착 시 잔여 좌석 수 (예: 40) - 예측 모델에서 받으므로 optional
   routeid: string;              // 노선 ID (예: "234001736")
   routename: string;             // 노선 이름/번호 (예: "3302")
-  stationid: string;            // 정류장 ID (예: "234000384")
+  stationid: string;            // 정류장 ID (예: "234000384") - 정류장 매핑용
   crowded_level: number;         // 혼잡도 레벨 (1-4, 1=여유, 2=보통, 3=혼잡, 4=매우혼잡)
 };
 
@@ -109,6 +110,14 @@ export type PredictSeatResponse = {
   error?: string;
 };
 
+/**
+ * 좌석 예측 API
+ * - 백엔드 엔드포인트: /api/predict-seat/
+ * - routeid와 select_time을 쿼리 파라미터로 전달
+ * @param routeid 노선 ID (예: 234001736)
+ * @param select_time 선택 시간 (0~7)
+ * @returns 예측 좌석 수 배열
+ */
 export const predictSeat = async (
   routeid: number,
   select_time: number   // 0~7
@@ -123,6 +132,69 @@ export const predictSeat = async (
 
     return response.data;
   } catch (error: any) {
+    if (error.response?.data) {
+      return error.response.data;
+    }
+    throw error;
+  }
+};
+
+/**
+ * 경로 추천 API 응답 타입
+ */
+export type RecommendRouteResponse = {
+  ok: boolean;
+  origin_stationid?: string;
+  dest_stationid?: string;
+  weekday?: string;
+  time_slot?: string;
+  time_type?: string;
+  fast_option?: string;
+  recommended_route?: {
+    bus_numbers: string[];  // 추천 버스 번호 목록
+    routeid: string | null;  // 추천 routeid
+    duration_minutes: number | null;  // 예상 소요 시간 (분)
+    congestion_level: string | null;  // 예상 혼잡도
+  };
+  message?: string;
+  error?: string;
+};
+
+/**
+ * 경로 추천 API
+ * - 백엔드 엔드포인트: /api/recommend-route/
+ * - 출발지, 도착지, 요일, 시간대, 시간 타입, 최적화 옵션을 쿼리 파라미터로 전달
+ * @param origin_stationid 출발 정류장 ID (예: "234000384")
+ * @param dest_stationid 도착 정류장 ID (예: "234000385")
+ * @param weekday 요일 (예: "월요일")
+ * @param time_slot 시간대 (예: "8:30")
+ * @param time_type 시간 타입 (예: "도착시간" | "출발시간")
+ * @param fast_option 최적화 옵션 (예: "최단시간" | "최소대기")
+ * @returns 추천 경로 정보
+ */
+export const recommendRoute = async (
+  origin_stationid: string,
+  dest_stationid: string,
+  weekday: string = "월요일",
+  time_slot: string = "8:30",
+  time_type: string = "도착시간",
+  fast_option: string = "최단시간"
+): Promise<RecommendRouteResponse> => {
+  try {
+    const response = await api_client.get<RecommendRouteResponse>("/recommend-route/", {
+      params: {
+        origin_stationid,
+        dest_stationid,
+        weekday,
+        time_slot,
+        time_type,
+        fast_option,
+      },
+    });
+
+    return response.data;
+  } catch (error: any) {
+    // 에러 응답 처리
     if (error.response?.data) {
       return error.response.data;
     }

@@ -158,7 +158,7 @@ const HeaderSection = ({ isEditing, onEditToggle }: HeaderSectionProps): ReactEl
 type FavoriteCardProps = {
   items: FavoriteItem[];
   isEditing: boolean;
-  onDeleteFavorite: (id: string) => void;
+  onDeleteFavorite: (id: string | number) => void;
   onSelectFavorite: (item: FavoriteItem) => void;
 };
 
@@ -183,7 +183,7 @@ type FavoriteRowProps = {
   item: FavoriteItem;
   showDivider: boolean;
   isEditing: boolean;
-  onDeleteFavorite: (id: string) => void;
+  onDeleteFavorite: (id: string | number) => void;
   onPress: () => void;
 };
 
@@ -301,7 +301,7 @@ const SwipeableFavoriteRow = ({ children, showDivider, onDelete }: SwipeableFavo
  */
 type SavedRouteCardProps = {
   routes: SavedRouteItem[];
-  onDeleteRoute: (id: string) => void;
+  onDeleteRoute: (id: string | number) => void;
   onSelectRoute: (route: SavedRouteItem) => void;
   isEditing: boolean;
 };
@@ -310,10 +310,10 @@ const SavedRouteCard = ({ routes, onDeleteRoute, onSelectRoute, isEditing }: Sav
   return (
     <View style={styles.saved_card}>
       {routes.map((route, index) => (
-        <SavedRouteRow 
-          key={route.id} 
-          route={route} 
-          showDivider={index !== routes.length - 1} 
+        <SavedRouteRow
+          key={route.id}
+          route={route}
+          showDivider={index !== routes.length - 1}
           onDelete={() => onDeleteRoute(route.id)}
           onPress={() => onSelectRoute(route)}
           isEditing={isEditing}

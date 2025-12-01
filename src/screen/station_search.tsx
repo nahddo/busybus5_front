@@ -18,7 +18,7 @@ import {
   getRouteIdsByRouteNm,
   StationBusInfo,
 } from "../data";
-import { getStationRealtimeData, getBusRealtimeData, BusRealtimeData, getCongestionLevel } from "../api/bus";
+import { getStationRealtimeData, getBusRealtimeData, BusRealtimeData, getCongestionLevel, predictSeat, PredictSeatResponse } from "../api/bus";
 
 type CongestionLevel = "empty" | "normal" | "crowded" | "veryCrowded";
 
@@ -45,6 +45,7 @@ const ICONS = {
   mapPin: require("../../assets/images/station_search/Examples/Map pin.png"),
   directionsBus: require("../../assets/images/station_search/Examples/directions_bus.png"),
   icon: require("../../assets/images/station_search/Examples/icon.png"),
+  reload: require("../../assets/images/station_search/Examples/reload.png"),
 };
 
 type TimeSlot = "6:00" | "6:30" | "7:00" | "7:30" | "8:00" | "8:30" | "9:00";
@@ -102,26 +103,37 @@ const StationSearchScreen = ({ currentScreen, onNavigate }: StationSearchProps):
   const [realtimeData, setRealtimeData] = useState<BusRealtimeData[]>([]);
   const [isLoadingData, setIsLoadingData] = useState(false);
 
+  /**
+   * 실시간 정류장 데이터 조회 함수
+   */
+  const fetchRealtimeData = async () => {
+    if (!selectedStationId) return;
+
+    setIsLoadingData(true);
+    try {
+      // 오늘 날짜를 YYYY-MM-DD 형식으로 변환
+      const today = new Date();
+      const service_date = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
+
+      const data = await getStationRealtimeData(selectedStationId, service_date, selectedTime);
+      setRealtimeData(data);
+    } catch (error) {
+      console.error("실시간 정류장 데이터 조회 실패:", error);
+      setRealtimeData([]);
+    } finally {
+      setIsLoadingData(false);
+    }
+  };
+
+  /**
+   * 새로고침 함수
+   * 실시간 정류장 데이터를 다시 조회한다.
+   */
+  const handleRefresh = async () => {
+    await fetchRealtimeData();
+  };
+
   useEffect(() => {
-    const fetchRealtimeData = async () => {
-      if (!selectedStationId) return;
-
-      setIsLoadingData(true);
-      try {
-        // 오늘 날짜를 YYYY-MM-DD 형식으로 변환
-        const today = new Date();
-        const service_date = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
-        
-        const data = await getStationRealtimeData(selectedStationId, service_date, selectedTime);
-        setRealtimeData(data);
-      } catch (error) {
-        console.error("실시간 정류장 데이터 조회 실패:", error);
-        setRealtimeData([]);
-      } finally {
-        setIsLoadingData(false);
-      }
-    };
-
     fetchRealtimeData();
   }, [selectedStationId, selectedTime]);
 
@@ -142,12 +154,22 @@ const StationSearchScreen = ({ currentScreen, onNavigate }: StationSearchProps):
       <StatusBar barStyle="dark-content" />
       <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scroll_content} showsVerticalScrollIndicator={false}>
-          <DepartureField value={departureStationValue} onChange={handleDepartureChange} />
+          <View style={styles.header_row}>
+            <DepartureField value={departureStationValue} onChange={handleDepartureChange} />
+            <TouchableOpacity
+              style={styles.reload_button}
+              activeOpacity={0.7}
+              onPress={handleRefresh}
+              disabled={isLoadingData}
+            >
+              <Image source={ICONS.reload} style={styles.reload_icon} resizeMode="contain" />
+            </TouchableOpacity>
+          </View>
           <TimeFilterTabs selectedTime={selectedTime} onTimeSelect={setSelectedTime} />
           {selectedStationId !== null && stationBusInfo && (
-            <StationBusList 
-              stationBusInfo={stationBusInfo} 
-              stationId={selectedStationId} 
+            <StationBusList
+              stationBusInfo={stationBusInfo}
+              stationId={selectedStationId}
               selectedTime={selectedTime}
               realtimeData={realtimeData}
             />
@@ -162,6 +184,8 @@ const StationSearchScreen = ({ currentScreen, onNavigate }: StationSearchProps):
 /**
  * DepartureField
  * 출발 정류장 검색 입력 필드
+ * 선택된 정류장이 있으면 "출발 정류장 {정류장이름}" 형태로 표시
+ * "출발 정류장"과 정류장 이름 사이에 간격을 두고 전체 길이를 길게 표시
  */
 const DepartureField = ({
   value,
@@ -173,7 +197,15 @@ const DepartureField = ({
   return (
     <View style={styles.departure_field}>
       <View style={styles.departure_content}>
-        <Text style={styles.departure_title}>출발 정류장</Text>
+        <View style={styles.departure_title_container}>
+          <Text style={styles.departure_title}>출발 정류장</Text>
+          {value && (
+            <>
+              <View style={styles.departure_title_spacer} />
+              <Text style={styles.departure_station_name}>{value}</Text>
+            </>
+          )}
+        </View>
         <TextInput
           style={styles.departure_input}
           value={value}
@@ -295,6 +327,26 @@ const BusRouteCard = ({
   const [routeRealtimeData, setRouteRealtimeData] = useState<BusRealtimeData[]>([]);
   const [isLoadingRouteData, setIsLoadingRouteData] = useState(false);
 
+  // 예측 좌석 데이터 조회 (station_num -> remainseat_pred 맵)
+  const [predictionData, setPredictionData] = useState<Map<number, number>>(new Map());
+  const [isLoadingPrediction, setIsLoadingPrediction] = useState(false);
+
+  /**
+   * 시간 슬롯을 API 요청 형식으로 변환 (0~7 인덱스)
+   * 백엔드에서 select_time을 0~7 범위의 정수로 받습니다.
+   * "6:00" -> 0, "6:30" -> 1, "7:00" -> 2, "7:30" -> 3, "8:00" -> 4, "8:30" -> 5, "9:00" -> 6
+   */
+  const convertTimeSlotToIndex = (timeSlot: TimeSlot): number => {
+    const timeSlots: TimeSlot[] = ["6:00", "6:30", "7:00", "7:30", "8:00", "8:30", "9:00"];
+    return timeSlots.indexOf(timeSlot);
+  };
+
+  /**
+   * 실시간 버스 위치 데이터 조회
+   * routeid에 따라 현재 버스의 위치 정보를 실시간 API에서 받아옴
+   * - 버스 위치는 vehid1과 stationid로 표시됨
+   * - 잔여좌석 정보는 예측 모델에서 따로 받음
+   */
   useEffect(() => {
     const fetchRouteRealtimeData = async () => {
       if (!routeId) return;
@@ -304,8 +356,8 @@ const BusRouteCard = ({
         // 오늘 날짜를 YYYY-MM-DD 형식으로 변환
         const today = new Date();
         const service_date = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
-        
-        // 해당 노선의 모든 정류장별 실시간 데이터 조회
+
+        // routeid로 실시간 버스 위치 데이터 조회 (버스 위치만, 잔여좌석 제외)
         const data = await getBusRealtimeData(routeId, service_date, selectedTime);
         console.log(`[BusRouteCard] 버스 ${busNum} (routeId: ${routeId}) 실시간 데이터:`, {
           데이터_개수: data.length,
@@ -328,46 +380,125 @@ const BusRouteCard = ({
     fetchRouteRealtimeData();
   }, [routeId, selectedTime, busNum]);
 
+  /**
+   * 혼잡도 예측 데이터 조회
+   * routeid와 timeslot에 따라 예측 모델에서 잔여좌석을 받아 혼잡도로 변환
+   * - 각 버스 노선(routeid)별로 예측
+   * - timeslot에 따라 예측값이 달라짐
+   * - 예측된 좌석 수를 혼잡도 레벨로 변환하여 색깔로 표시
+   */
+  useEffect(() => {
+    const fetchPredictionData = async () => {
+      if (!routeId) return;
+
+      setIsLoadingPrediction(true);
+      try {
+        // routeid를 숫자로 변환
+        const routeidNum = parseInt(routeId, 10);
+        if (isNaN(routeidNum)) {
+          console.warn(`[BusRouteCard] routeid를 숫자로 변환할 수 없습니다: ${routeId}`);
+          setPredictionData(new Map());
+          return;
+        }
+
+        // 시간 슬롯을 API 형식으로 변환 (0~7 인덱스)
+        const select_time = convertTimeSlotToIndex(selectedTime);
+        if (select_time < 0) {
+          console.warn(`[BusRouteCard] 시간 슬롯을 인덱스로 변환할 수 없습니다: ${selectedTime}`);
+          setPredictionData(new Map());
+          return;
+        }
+
+        // routeid와 timeslot에 따라 예측 모델에서 잔여좌석 예측값 조회
+        const response: PredictSeatResponse = await predictSeat(routeidNum, select_time);
+
+        if (response.predictions && response.predictions.length > 0) {
+          // predictions 배열을 station_num -> remainseat_pred 맵으로 변환
+          const predictionMap = new Map<number, number>();
+          response.predictions.forEach((pred) => {
+            predictionMap.set(pred.station_num, pred.remainseat_pred);
+          });
+          setPredictionData(predictionMap);
+          console.log(`[BusRouteCard] 버스 ${busNum} 예측 좌석 데이터 조회 성공:`, {
+            routeid: routeidNum,
+            select_time,
+            예측값_개수: response.predictions.length,
+            샘플_예측값: response.predictions.slice(0, 5),
+          });
+        } else {
+          console.warn(`[BusRouteCard] 버스 ${busNum} 예측 좌석 데이터 조회 실패:`, response.error || "예측 데이터가 없습니다.");
+          setPredictionData(new Map());
+        }
+      } catch (error) {
+        console.error(`[BusRouteCard] 버스 ${busNum} 예측 좌석 데이터 조회 실패:`, error);
+        setPredictionData(new Map());
+      } finally {
+        setIsLoadingPrediction(false);
+      }
+    };
+
+    fetchPredictionData();
+  }, [routeId, selectedTime, busNum]);
+
   // 실시간 데이터를 정류장별로 매핑 (stationid 기준)
   const realtimeDataMap = new Map<string, BusRealtimeData>();
   routeRealtimeData.forEach((data) => {
     realtimeDataMap.set(data.stationid, data);
   });
 
-  // 각 정류장의 혼잡도 데이터: 실시간 데이터에서 각 정류장별 혼잡도 가져오기
+  /**
+   * 좌석 수를 혼잡도 레벨로 변환
+   * - 여유(>=35): "empty"
+   * - 보통(>=25): "normal"
+   * - 혼잡(>=10): "crowded"
+   * - 매우 혼잡(<10): "veryCrowded"
+   */
+  const getCongestionLevelFromSeats = (seats: number): CongestionLevel => {
+    if (seats >= 35) return "empty";
+    if (seats >= 25) return "normal";
+    if (seats >= 10) return "crowded";
+    return "veryCrowded";
+  };
+
+  // 각 정류장의 혼잡도 데이터: 예측 데이터 > 기본값 순으로 우선순위 적용
+  // routeid와 timeslot에 따라 예측 모델에서 받은 잔여좌석을 혼잡도로 변환하여 색깔로 표시
   const congestionData: CongestionLevel[] = Array.from({ length: displayStops }).map((_, index) => {
     // 실제 정류장 인덱스 계산 (step을 고려하여)
     const actualIndex = step > 1 ? index * step : index;
     const stop = routeStops[actualIndex];
-    
+
     if (stop) {
-      // 해당 정류장의 실시간 데이터 찾기
-      const stopRealtimeData = realtimeDataMap.get(stop.stationId);
-      if (stopRealtimeData) {
-        return getCongestionLevel(stopRealtimeData.crowded_level);
+      // 우선순위: 예측 데이터의 좌석 수를 혼잡도로 변환
+      // routeid와 timeslot에 따라 예측 모델에서 받은 잔여좌석 사용
+      // stop.order가 station_num과 일치한다고 가정
+      const predictedSeats = predictionData.get(stop.order);
+      if (predictedSeats !== undefined) {
+        // 예측된 좌석 수를 혼잡도 레벨로 변환 (색깔로 표시)
+        return getCongestionLevelFromSeats(predictedSeats);
       }
     }
-    
+
     // 기본값: 인덱스에 따라 분산
     const defaultLevels: CongestionLevel[] = ["empty", "empty", "normal", "normal", "crowded", "veryCrowded", "veryCrowded", "crowded"];
     return defaultLevels[index] || "normal";
   });
 
-  // 버스 위치: 각 정류장별로 vehid1이 있는지 확인 (bus_search.tsx와 동일한 방식)
-  // vehid1이 있으면 해당 정류장에 버스가 있음
+  // 버스 현재 위치: 실시간 API에서 받은 데이터로 표시
+  // 각 정류장별로 vehid1이 있는지 확인 (bus_search.tsx와 동일한 방식)
+  // vehid1이 있으면 해당 정류장에 현재 버스가 있음
   // displayStops에 맞춰 각 정류장의 버스 위치 정보 계산
   const busPositions = Array.from({ length: displayStops }).map((_, index) => {
     // 실제 정류장 인덱스 계산 (step을 고려하여)
     const actualIndex = step > 1 ? index * step : index;
     const stop = routeStops[actualIndex];
-    
+
     if (stop) {
-      // 해당 정류장의 실시간 데이터 찾기
+      // 해당 정류장의 실시간 API 데이터 찾기
       const stopRealtimeData = realtimeDataMap.get(stop.stationId);
-      // vehid1이 있고 빈 문자열이 아니면 버스가 해당 정류장에 있음
+      // 실시간 API에서 받은 vehid1이 있고 빈 문자열이 아니면 현재 버스가 해당 정류장에 있음
       const hasBus = !!(stopRealtimeData?.vehid1 && stopRealtimeData.vehid1.trim() !== "");
       if (hasBus) {
-        console.log(`[BusRouteCard] 버스 ${busNum} 위치 발견:`, {
+        console.log(`[BusRouteCard] 버스 ${busNum} 현재 위치 발견 (실시간 API):`, {
           정류장_인덱스: index,
           정류장_ID: stop.stationId,
           정류장_이름: stop.stationName,
@@ -378,10 +509,10 @@ const BusRouteCard = ({
     }
     return false;
   });
-  
+
   // 버스가 있는 첫 번째 정류장의 인덱스 찾기
   const busPositionIndex = busPositions.findIndex((hasBus) => hasBus);
-  
+
   // 디버깅: 버스 위치 정보 출력
   if (routeRealtimeData.length > 0) {
     console.log(`[BusRouteCard] 버스 ${busNum} 위치 요약:`, {
@@ -465,6 +596,22 @@ const styles = StyleSheet.create({
   scroll_content: {
     paddingBottom: 140,
   },
+  header_row: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 0,
+  },
+  reload_button: {
+    padding: 8,
+    marginLeft: "auto",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  reload_icon: {
+    width: 24,
+    height: 24,
+    tintColor: COLOR.textPrimary,
+  },
   status_bar: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -503,14 +650,32 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  departure_title_container: {
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    minWidth: 200,
+  },
   departure_title: {
     fontSize: 17,
     fontWeight: "600",
     color: COLOR.textPrimary,
     fontFamily: "SF Pro",
     letterSpacing: -0.43,
-    width: 100,
+    flexShrink: 0,
     lineHeight: 22,
+  },
+  departure_title_spacer: {
+    width: 24,
+  },
+  departure_station_name: {
+    fontSize: 17,
+    fontWeight: "600",
+    color: COLOR.textPrimary,
+    fontFamily: "SF Pro",
+    letterSpacing: -0.43,
+    lineHeight: 22,
+    flex: 1,
   },
   departure_input: {
     fontSize: 17,
