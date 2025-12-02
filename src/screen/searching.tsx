@@ -109,7 +109,7 @@ const SearchingScreen = ({ currentScreen, onNavigate }: SearchingProps): ReactEl
         type: "bus",
       });
       setBusSearchNumber(trimmedQuery);
-      onNavigate("bus_search_prediction");
+      onNavigate("bus_search");
     } else {
       addSearchHistory({
         title: trimmedQuery,
@@ -159,7 +159,7 @@ const SearchingScreen = ({ currentScreen, onNavigate }: SearchingProps): ReactEl
     if (result.type === "bus") {
       // 버스를 선택하면 버스 상세 화면으로 이동
       setBusSearchNumber(result.title);
-      onNavigate("bus_search_prediction");
+      onNavigate("bus_search");
     } else {
       setDepartureStation(result.title);
       onNavigate("station_search");

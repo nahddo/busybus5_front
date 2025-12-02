@@ -95,7 +95,7 @@ const UserScreen = ({ currentScreen, onNavigate }: UserProps): ReactElement => {
     setSearchIntent("default");
     if (item.type === "bus") {
       setBusSearchNumber(item.label);
-      onNavigate("bus_search_prediction");
+      onNavigate("bus_search");
     } else {
       setDepartureStation(item.label);
       onNavigate("station_search");
