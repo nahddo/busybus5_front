@@ -15,7 +15,7 @@ const create_api_client = (): AxiosInstance => {
    * - 실제 기기: http://<PC_로컬_IP>:8000
    */
   const api_client = axios.create({
-    baseURL: "http://10.0.2.2:8000/api",
+    baseURL: "http://10.34.153.229:8000/api",
     timeout: 10000,
     withCredentials: true,
     headers: {

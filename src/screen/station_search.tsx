@@ -540,28 +540,36 @@ const BusRouteCard = ({
     return "normal";
   });
 
-  // 버스 현재 위치: 실시간 API에서 받은 데이터로 표시
-  // 각 정류장별로 vehid1이 있는지 확인 (bus_search_prediction.tsx와 동일한 방식)
-  // vehid1이 있으면 해당 정류장에 현재 버스가 있음
-  // 모든 정류장을 order와 1:1로 매핑
-  const busPositions = routeStops.map((stop) => {
-    // 해당 정류장의 실시간 API 데이터 찾기
+    // 버스 현재 위치 + 좌석 수: 실시간 API에서 받은 데이터로 표시
+  // 각 정류장별로 vehid1 유무와 remainseat_at_arrival 를 같이 저장
+  const busInfoPerStop = routeStops.map((stop) => {
     const stopRealtimeData = realtimeDataMap.get(stop.stationId);
-    // 실시간 API에서 받은 vehid1이 있고 빈 문자열이 아니면 현재 버스가 해당 정류장에 있음
+
     const hasBus = !!(stopRealtimeData?.vehid1 && stopRealtimeData.vehid1.trim() !== "");
+    const seat =
+      hasBus && stopRealtimeData
+        ? stopRealtimeData.remainseat_at_arrival ?? null
+        : null;
+
     if (hasBus) {
       console.log(`[BusRouteCard] 버스 ${busNum} 현재 위치 발견 (실시간 API):`, {
         정류장_order: stop.order,
         정류장_ID: stop.stationId,
         정류장_이름: stop.stationName,
-        vehid1: stopRealtimeData.vehid1,
+        vehid1: stopRealtimeData?.vehid1,
+        remainseat_at_arrival: seat,
       });
     }
-    return hasBus;
+
+    return { hasBus, seat };
   });
 
-  // 버스가 있는 첫 번째 정류장의 인덱스 찾기
+  // 예전 로그랑 호환용: hasBus 배열
+  const busPositions = busInfoPerStop.map((info) => info.hasBus);
+
+  // 버스가 있는 첫 번째 정류장의 인덱스
   const busPositionIndex = busPositions.findIndex((hasBus) => hasBus);
+
 
   // 디버깅: 버스 위치 정보 출력
   if (routeRealtimeData.length > 0) {
@@ -607,34 +615,49 @@ const BusRouteCard = ({
               {/* 연결선 - 스크롤 가능한 영역의 전체 너비를 차지 */}
               <View style={[styles.route_line, { width: routeStops.length * 40 }]} />
 
-              {routeStops.map((stop, index) => {
-                const congestionLevel = congestionData[index] || "normal";
-                const color = CONGESTION_COLORS[congestionLevel];
-                // 버스 위치: 해당 정류장에 vehid1이 있으면 버스가 있음
-                const isBusPosition = busPositions[index] === true;
-                const isMyPosition = index === myPositionIndex;
+              {routeStops.map((stop, index) => {const congestionLevel = congestionData[index] || "normal";
+                  const color = CONGESTION_COLORS[congestionLevel];
 
-                return (
-                  <View key={`${stop.stationId}-${stop.order}`} style={styles.congestion_dot_wrapper}>
-                    {/* 혼잡도 원 */}
-                    <View style={[styles.congestion_dot, { backgroundColor: color }]} />
+                  const info = busInfoPerStop[index];
+                  const isBusPosition = info?.hasBus === true;
+                  const remainSeat = info?.seat ?? null;
 
-                    {/* 버스 위치 표시 */}
-                    {isBusPosition && (
-                      <View style={styles.bus_position_indicator}>
-                        <Image source={ICONS.directionsBus} style={styles.bus_position_icon} resizeMode="contain" />
-                      </View>
-                    )}
+                  const isMyPosition = index === myPositionIndex;
 
-                    {/* 내 위치 표시 */}
-                    {isMyPosition && (
-                      <View style={styles.my_position_indicator}>
-                        <Image source={ICONS.mapPin} style={styles.my_position_icon} resizeMode="contain" />
-                      </View>
-                    )}
-                  </View>
-                );
+                  return (
+                    <View key={`${stop.stationId}-${stop.order}`} style={styles.congestion_dot_wrapper}>
+                      {/* 혼잡도 원 */}
+                      <View style={[styles.congestion_dot, { backgroundColor: color }]} />
+
+                      {/* 버스 위치 + 좌석 수 */}
+                      {isBusPosition && (
+                        <View style={styles.bus_position_indicator}>
+                          <Image
+                            source={ICONS.directionsBus}
+                            style={styles.bus_position_icon}
+                            resizeMode="contain"
+                          />
+                          {remainSeat != null && (
+                            <Text style={styles.bus_seat_text}>{remainSeat}석</Text>
+                          )}
+                        </View>
+                      )}
+
+                      {/* 내 위치 표시 */}
+                      {isMyPosition && (
+                        <View style={styles.my_position_indicator}>
+                          <Image
+                            source={ICONS.mapPin}
+                            style={styles.my_position_icon}
+                            resizeMode="contain"
+                          />
+                        </View>
+                      )}
+                    </View>
+                  );
               })}
+
+
             </View>
           </ScrollView>
         </View>
@@ -894,6 +917,12 @@ const styles = StyleSheet.create({
     height: 24,
     tintColor: COLOR.textPrimary,
   },
+    bus_seat_text: {
+    fontSize: 10,
+    color: COLOR.blue,
+    marginTop: 1,
+  },
+
   my_position_indicator: {
     position: "absolute",
     top: -14,

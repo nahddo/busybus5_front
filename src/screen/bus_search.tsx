@@ -251,7 +251,7 @@ const BusSearchPredictionScreen = ({
 
       const response = await fetchLiveBus(routeId, stationsPayload);
 
-      console.log("🔥 서버 응답:", response);
+      console.log("🔥 [BusSearch] /bus/realtime 서버 응답:", response);
 
       setRealtimeData(response.results || []);
     } catch (error) {
@@ -266,6 +266,7 @@ const BusSearchPredictionScreen = ({
    * 새로고침 버튼: "실시간만" 갱신
    */
   const handleRefresh = async () => {
+    console.log("🔄 [BusSearch] handleRefresh 호출됨");
     await fetchRealtimeData();
   };
 

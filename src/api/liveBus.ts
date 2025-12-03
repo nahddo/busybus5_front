@@ -1,18 +1,33 @@
-import axios from "axios";
+// src/api/liveBus.ts
 
-//  Android 에뮬레이터에서 Django 서버(localhost)에 접근할 때 필수
-const BASE_URL = "http://10.0.2.2:8000";
+// ✅ 다른 API들에서 쓰는 공용 client 불러오기
+import client from "./client";
 
-export async function fetchLiveBus(routeId, stations) {
+type StationPayload = {
+  stationId: string;
+  staOrder: number;
+};
+
+/**
+ * 버스 번호 화면(BusSearch)에서 쓰는 실시간 API
+ * - POST /api/bus/realtime/
+ * - body: { routeId, stations }
+ */
+export async function fetchLiveBus(
+  routeId: string,
+  stations: StationPayload[]
+) {
   try {
-    const res = await axios.post(`${BASE_URL}/api/bus/realtime/`, {
+    const res = await client.post("/bus/realtime/", {
       routeId,
       stations,
     });
 
+    console.log("🔥 /bus/realtime 응답:", res.data); // 디버그용
     return res.data;
   } catch (err) {
     console.error("실시간 버스 조회 실패:", err);
     throw err;
   }
 }
+
